@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- SweetAlert CSS -->
+    <link href="~/lib/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+
+    <!-- Main CSS -->
+    <link href="~/css/Authentication.css" rel="stylesheet">
+
+</head>
+<body>
+    <br>
+    <br>
+    <div class="cont">
+        <div class="form sign-in">
+            <h2>خوش آمدید</h2>
+            <label>
+                <span>ایمیل</span>
+                <input type="email" id="Email_SignIn"/>
+            </label>
+            <label>
+                <span>رمز عبور</span>
+                <input type="password" id="Password_SignIn"/>
+            </label>
+            <p class="forgot-pass">رمز عبور خود را فراموش کرده اید؟</p>
+            <button onclick="SignInUser()" type="button" class="submit">وارد شدن</button>
+
+        </div>
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+
+                    <h3>حسابد کاربری ندارید؟ عضو شوید.<h3>
+                </div>
+                <div class="img__text m--in">
+
+                    <h3>اگر در حال حاظر حساب کاربری دارید؛ وارد شوید.<h3>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">عضویت</span>
+                    <span class="m--in">وارد شدن</span>
+                </div>
+            </div>
+            <div class="form sign-up">
+                <h2>ایجاد حساب کاربری</h2>
+                <label>
+                    <span>ایمیل</span>
+                    <input type="email" id="Email_SignUp"/>
+                </label>
+                <label>
+                    <span>رمز عبور</span>
+                    <input type="password" id="Password_SignUp"/>
+                </label>
+                <label>
+                    <span>نام کاربری</span>
+                    <input type="text" id="UserName_SignUp"/>
+                </label>
+                <label>
+                    <span>همراه</span>
+                    <input type="text" id="Phone_SignUp"/>
+                </label>
+
+                <button onclick="SignUpUser()" type="button" class="submit">عضویت</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- SweetAlert JS -->
+    <script src="~/lib/Sweetalert2/sweetalert2.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="~/js/Authentication.js"></script>
+
+</body>
+
+</html>
