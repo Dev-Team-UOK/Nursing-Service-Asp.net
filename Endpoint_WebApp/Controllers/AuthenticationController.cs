@@ -36,26 +36,6 @@ namespace Endpoint_WebApp.Controllers
                 Password = password
             });
 
-            //if (signinResult.IsSuccess == true)
-            //{
-            //    var claims = new List<Claim>()
-            //    {
-            //        new Claim(ClaimTypes.NameIdentifier,signinResult.Data.Id.ToString()),
-            //        new Claim(ClaimTypes.Email, email),
-            //        new Claim(ClaimTypes.Name, signinResult.Data.UserName),
-            //        new Claim(ClaimTypes.Role, String.Join(",", signinResult.Data.Roles.Select(x => x.Name)) ),
-            //    };
-
-            //    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            //    var principal = new ClaimsPrincipal(identity);
-            //    var properties = new AuthenticationProperties()
-            //    {
-            //        IsPersistent = true
-            //    };
-
-            //    await HttpContext.SignInAsync(principal);
-
-            //}
             return Json(signinResult);
         }
 
@@ -74,33 +54,6 @@ namespace Endpoint_WebApp.Controllers
                 UserName = req.UserName,
                 Phone = req.Phone
             });
-
-            //if (signupResult.IsSuccess is true)
-            //{
-            //    var signinresult = await SignIn(req.Email, req.Password);
-            //}
-
-            //if (signupResult.IsSuccess is true)
-            //{
-            //    var claims = new List<Claim>()
-            //    {
-            //        new Claim(ClaimTypes.NameIdentifier, signupResult.Data.Id.ToString()),
-            //        new Claim(ClaimTypes.Email, req.Email),
-            //        new Claim(ClaimTypes.Name, req.UserName),
-            //        new Claim(ClaimTypes.Role, String.Join(",", signupResult.Data.Roles.Select(x => x.Name)) ),
-            //    };
-
-            //    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-            //    var principal = new ClaimsPrincipal(identity);
-
-            //    var properties = new AuthenticationProperties()
-            //    {
-            //        IsPersistent = true
-            //    };
-
-            //    await HttpContext.SignInAsync(principal);
-            //}
 
             return Json(signupResult);
         }
