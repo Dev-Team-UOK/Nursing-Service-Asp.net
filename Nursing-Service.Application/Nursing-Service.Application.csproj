@@ -15,5 +15,5 @@
     <ProjectReference Include="..\Nursing-Service.Common\Nursing-Service.Common.csproj" />
     <ProjectReference Include="..\Nursing-Service.Domain\Nursing-Service.Domain.csproj" />
   </ItemGroup>
-
+	
 </Project>

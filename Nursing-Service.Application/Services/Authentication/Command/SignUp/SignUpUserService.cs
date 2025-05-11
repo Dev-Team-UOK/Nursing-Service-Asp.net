@@ -33,8 +33,6 @@ namespace Nursing_Service.Application.Services.Authentication.Command.SignUp
                 if (Regex.Match(req.Email, RegexValidations.Email, RegexOptions.IgnoreCase).Success is false)
                     throw new FormatException("ایمیل معتبر نیست.");
 
-
-
                 var passHasher = new PasswordHasher();
 
                 var user = new User(

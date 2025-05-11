@@ -16,6 +16,8 @@ namespace Nursing_Service.Domain.Entities.User
             Password = password;
         }
 
+        public User() { }
+
         public required string UserName { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

@@ -24,7 +24,7 @@ namespace Endpoint_WebApp.Controllers
         [Route("/Authentication/")]
         public IActionResult Authentication()
         {
-            return View();
+            return View("Authentication");
         }
 
         [HttpPost]
