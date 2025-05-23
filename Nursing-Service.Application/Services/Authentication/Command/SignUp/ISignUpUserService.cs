@@ -9,6 +9,6 @@ namespace Nursing_Service.Application.Services.Authentication.Command.SignUp
 {
     public interface ISignUpUserService
     {
-        Task<BaseResultDto<SignUpUserResultDto>> ExcuteAsync(SignUpUserRequestInfo req);
+        Task<BaseResultDTO<SignUpUserResultDto>> ExcuteAsync(SignUpUserRequestInfo req);
     }
 }

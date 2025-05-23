@@ -4,6 +4,6 @@ namespace Nursing_Service.Application.Services.Users.Commands.Create
 {
     public interface ICreateUserService
     {
-        Task<BaseResultDto<CreateUserResultDto>> ExcuteAsync(CreateUserRequestInfo req);
+        Task<BaseResultDTO<CreateUserResultDto>> ExcuteAsync(CreateUserRequestInfo req);
     }
 }

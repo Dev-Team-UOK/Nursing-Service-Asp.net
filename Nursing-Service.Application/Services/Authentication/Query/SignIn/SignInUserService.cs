@@ -14,10 +14,10 @@ namespace Nursing_Service.Application.Services.Users.Queries.SignIn
             _context = context;
         }
 
-        public async Task<BaseResultDto<SignInUserResultDto>> ExcuteAsync(SignInUserRequestInfo req)
+        public async Task<BaseResultDTO<SignInUserResultDto>> ExcuteAsync(SignInUserRequestInfo req)
         {
             if (string.IsNullOrWhiteSpace(req.Email) || string.IsNullOrWhiteSpace(req.Password))
-                return new BaseResultDto<SignInUserResultDto>
+                return new BaseResultDTO<SignInUserResultDto>
                 {
                     IsSuccess = false,
                     Message = "نام کاربری یا رمز عبور وارد نگردیده است.",
@@ -31,7 +31,7 @@ namespace Nursing_Service.Application.Services.Users.Queries.SignIn
                 );
 
             if (user is null)
-                return new BaseResultDto<SignInUserResultDto>
+                return new BaseResultDTO<SignInUserResultDto>
                 {
                     IsSuccess = false,
                     Message = "ایمیل به درستی وارد نشده است.",
@@ -41,14 +41,14 @@ namespace Nursing_Service.Application.Services.Users.Queries.SignIn
             var passHasher = new PasswordHasher();
 
             if (passHasher.VerifyPassword(user.Password, req.Password) is false)
-                return new BaseResultDto<SignInUserResultDto>
+                return new BaseResultDTO<SignInUserResultDto>
                 {
                     IsSuccess = false,
                     Message = "رمز عبور اشتباه است.",
                     Data = null
                 };
 
-            return new BaseResultDto<SignInUserResultDto>
+            return new BaseResultDTO<SignInUserResultDto>
             {
                 IsSuccess = true,
                 Message = "ورود به سایت با موفقیت انجام شد",

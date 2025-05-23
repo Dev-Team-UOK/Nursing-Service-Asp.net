@@ -44,7 +44,7 @@ namespace Endpoint_WebApp.Controllers
         {
             if (User?.Identity?.IsAuthenticated == true)
             {
-                return Json(new BaseResultDto { IsSuccess = false, Message = "جهت ایجاد حساب کاربری جدید؛ ابتدا از حساب کاربری خود خارج شوید سپس مجددا اقدام فرمایید." });
+                return Json(new BaseResultDTO { IsSuccess = false, Message = "جهت ایجاد حساب کاربری جدید؛ ابتدا از حساب کاربری خود خارج شوید سپس مجددا اقدام فرمایید." });
             }
 
             var signupResult = await _signUpUserService.ExcuteAsync(new SignUpUserRequestInfo

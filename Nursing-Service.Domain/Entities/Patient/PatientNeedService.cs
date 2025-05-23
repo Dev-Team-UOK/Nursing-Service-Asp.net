@@ -8,11 +8,11 @@ namespace Nursing_Service.Domain.Entities.Patient
         public bool IsDone { get; set; } = false;
         public bool IsPast { get; set; } = false;
         public virtual SuperVisor.SuperVisor AssignSuperVisor { get; set; }
-        public ulong SuperVisor { get; set; }
-        public virtual Nurse.Nurse AssignNurse{ get; set; }
+        public ulong SuperVisorId { get; set; }
+        public virtual Nurse.Nurse? AssignNurse{ get; set; }
         public ulong? NurseId { get; set; }
-        public virtual Service.Service Services { get; set; }
-        public ulong? ServiceId { get; set; }
+        public virtual Service.Service Service { get; set; }
+        public ulong ServiceId { get; set; }
         public virtual Patient Patient { get; set; }
         public ulong PatientId { get; set; }    
     }

@@ -14,7 +14,7 @@ namespace Nursing_Service.Application.Services.Users.Commands.Create
             _context = context;
         }
 
-        public async Task<BaseResultDto<CreateUserResultDto>> ExcuteAsync(CreateUserRequestInfo req)
+        public async Task<BaseResultDTO<CreateUserResultDto>> ExcuteAsync(CreateUserRequestInfo req)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace Nursing_Service.Application.Services.Users.Commands.Create
 
                 await _context.SaveChangesAsync();
 
-                return new BaseResultDto<CreateUserResultDto>()
+                return new BaseResultDTO<CreateUserResultDto>()
                 {
                     IsSuccess = true,
                     Message = "کاربر با موفقیت ایجاد شد.",
@@ -57,7 +57,7 @@ namespace Nursing_Service.Application.Services.Users.Commands.Create
             }
             catch (Exception ex)
             {
-                return new BaseResultDto<CreateUserResultDto>()
+                return new BaseResultDTO<CreateUserResultDto>()
                 {
                     IsSuccess = false,
                     Message = ex.Message,

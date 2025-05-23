@@ -44,7 +44,7 @@ namespace Endpoint_WebApp_Test
 
             signInMock.Setup(x => x.ExcuteAsync(It.IsAny<SignInUserRequestInfo>()))
                 .ReturnsAsync(
-                new BaseResultDto<SignInUserResultDto>
+                new BaseResultDTO<SignInUserResultDto>
                 {
                     IsSuccess = true,
                 });
@@ -58,7 +58,7 @@ namespace Endpoint_WebApp_Test
             // بررسی اینکه دیتای بازگشتی تایپ جی سان دارد
             var jsonResult = Assert.IsType<JsonResult>(result);
             // بررسی اینکه مدل داخل جیسان بازگشتی معتبر و صحیح است
-            var resultModel = Assert.IsType<BaseResultDto<SignInUserResultDto>>(jsonResult.Value);
+            var resultModel = Assert.IsType<BaseResultDTO<SignInUserResultDto>>(jsonResult.Value);
             // بررسی اینکه دیتای بازگشتی نال نباشد
             Assert.NotNull(resultModel);
             // بررسی اینکه دیتای بازگشتی فیلد موفقیت آن درست باشد
@@ -88,7 +88,7 @@ namespace Endpoint_WebApp_Test
 
             signUpMock.Setup(x => x.ExcuteAsync(It.IsAny<SignUpUserRequestInfo>()))
                 .ReturnsAsync(
-                new BaseResultDto<SignUpUserResultDto>
+                new BaseResultDTO<SignUpUserResultDto>
                 {
                     IsSuccess = true,
                 });
@@ -108,7 +108,7 @@ namespace Endpoint_WebApp_Test
             // بررسی اینکه دیتای بازگشتی تایپ جی سان دارد
             var jsonResult = Assert.IsType<JsonResult>(result);
             // بررسی اینکه مدل داخل جیسان بازگشتی معتبر و صحیح است
-            var resultModel = Assert.IsType<BaseResultDto<SignUpUserResultDto>>(jsonResult.Value);
+            var resultModel = Assert.IsType<BaseResultDTO<SignUpUserResultDto>>(jsonResult.Value);
             // بررسی اینکه دیتای بازگشتی نال نباشد
             Assert.NotNull(resultModel);
             // بررسی اینکه دیتای بازگشتی فیلد موفقیت آن درست باشد

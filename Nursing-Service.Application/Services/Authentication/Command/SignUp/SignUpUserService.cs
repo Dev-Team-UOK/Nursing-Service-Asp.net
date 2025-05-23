@@ -17,7 +17,7 @@ namespace Nursing_Service.Application.Services.Authentication.Command.SignUp
             _context = context;
         }
 
-        public async Task<BaseResultDto<SignUpUserResultDto>> ExcuteAsync(SignUpUserRequestInfo req)
+        public async Task<BaseResultDTO<SignUpUserResultDto>> ExcuteAsync(SignUpUserRequestInfo req)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace Nursing_Service.Application.Services.Authentication.Command.SignUp
                 await _context.Users.AddAsync(user);
                 await _context.SaveChangesAsync();
 
-                return new BaseResultDto<SignUpUserResultDto>
+                return new BaseResultDTO<SignUpUserResultDto>
                 {
                     IsSuccess = true,
                     Message = "کاربر با موفقیت ایجاد شد.",
@@ -61,7 +61,7 @@ namespace Nursing_Service.Application.Services.Authentication.Command.SignUp
             }
             catch (Exception ex)
             {
-                return new BaseResultDto<SignUpUserResultDto>
+                return new BaseResultDTO<SignUpUserResultDto>
                 {
                     IsSuccess = false,
                     Message = ex.Message,

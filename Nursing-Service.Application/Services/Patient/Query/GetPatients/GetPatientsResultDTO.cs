@@ -1,8 +1,9 @@
-﻿using Nursing_Service.Domain.Entities.Base;
+﻿using Nursing_Service.Application.Services.Patient.Query.GetPatientNeedServices;
+using Nursing_Service.Domain.Entities.Patient;
 
-namespace Nursing_Service.Domain.Entities.Patient
+namespace Nursing_Service.Application.Services.Patient.Query.GetPatients
 {
-    public class Patient : BaseEntity
+    public class GetPatientsResultDTO
     {
         public string FullName { get; set; }
         public string PhoneNumber { get; set; }
@@ -12,6 +13,6 @@ namespace Nursing_Service.Domain.Entities.Patient
         public string Address { get; set; }
         public GenderEnum Gender { get; set; }
         public string? IllnessHistory { get; set; }
-        public virtual List<PatientNeedService>? NeedServices { get; set; }
+        public List<GetPatientNeedServicesResultDTO>? Services { get; set; }
     }
 }
