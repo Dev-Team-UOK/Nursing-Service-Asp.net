@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Nursing-Service.Application\Nursing-Service.Application.csproj" />
     <ProjectReference Include="..\Nursing-Service.Common\Nursing-Service.Common.csproj" />
+    <ProjectReference Include="..\Nursing-Service.Infrastructure\Nursing-Service.Infrastructure.csproj" />
     <ProjectReference Include="..\Nursing-Service.Persistence\Nursing-Service.Persistence.csproj" />
   </ItemGroup>
 

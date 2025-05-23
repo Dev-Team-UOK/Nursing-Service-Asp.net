@@ -4,6 +4,7 @@ using Nursing_Service.Application.Interfaces.Contexts;
 using Nursing_Service.Application.Services.Authentication.Command.SignUp;
 using Nursing_Service.Application.Services.Users.Commands.Create;
 using Nursing_Service.Application.Services.Users.Queries.SignIn;
+using Nursing_Service.Infrastructure.SMS.Ir;
 using Nursing_Service.Persistence.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,10 +28,13 @@ builder.Services.AddEntityFrameworkSqlServer().AddDbContext<DataBaseContext>(opt
     option.UseSqlServer(@"Data Source=localHost\DEVINSTANCE; Initial Catalog=NursingService; User Id=sa; Password=aA123456; Encrypt=false;")
 );
 
+builder.Services.Configure<SmsIrConfig>(builder.Configuration.GetSection("SmsIrConfig"));
+
 builder.Services.AddScoped<IDataBaseContext, DataBaseContext>();
 builder.Services.AddScoped<ICreateUserService, CreateUserService>();
 builder.Services.AddScoped<ISignUpUserService, SignUpUserService>();
 builder.Services.AddScoped<ISignInUserService, SignInUserService>();
+builder.Services.AddTransient<ISMSIr, SMSIr>();
 
 var app = builder.Build();
 
