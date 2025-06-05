@@ -1,5 +1,5 @@
 ﻿using Nursing_Service.Application.Interfaces.Contexts;
-using Nursing_Service.Application.Services.Patient.Query.GetPatientNeedServices;
+using Nursing_Service.Application.Services.PatinetNeedService.Query.GetPatientNeedServices;
 using Nursing_Service.Common.Dto.Base;
 
 namespace Nursing_Service.Application.Services.Patient.Query.GetPatient
@@ -25,9 +25,9 @@ namespace Nursing_Service.Application.Services.Patient.Query.GetPatient
             try
             {
                 if (patientId == 0)
-                    throw new Exception("شناسه بیمار معتبر نیست");
+                    throw new Exception("شناسه بیمار نمیتواند 0 باشد.");
 
-                var patient = _context.Patients.FirstOrDefault(p => p.Id == patientId);
+                var patient = _context.Patients.FirstOrDefault(p => p.Id == patientId && p.IsDeleted == false);
 
                 if (patient is null)
                     throw new Exception("هیچ بیماری با شناسه مورد نظر پیدا نشد.");
@@ -40,6 +40,7 @@ namespace Nursing_Service.Application.Services.Patient.Query.GetPatient
                     Message = "اطلاعات بیمار با موفقیت برگشت داده شد",
                     Data = new GetPatientResultDTO
                     {
+                        Id = patient.Id,
                         FullName = patient.FullName,
                         Address = patient.Address,
                         Age = patient.Age,

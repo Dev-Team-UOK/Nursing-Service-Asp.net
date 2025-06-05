@@ -1,5 +1,5 @@
 ﻿using Nursing_Service.Application.Interfaces.Contexts;
-using Nursing_Service.Application.Services.Patient.Query.GetPatientNeedServices;
+using Nursing_Service.Application.Services.PatinetNeedService.Query.GetPatientNeedServices;
 using Nursing_Service.Common.Dto.Base;
 
 namespace Nursing_Service.Application.Services.Patient.Query.GetPatients
@@ -31,6 +31,8 @@ namespace Nursing_Service.Application.Services.Patient.Query.GetPatients
                 {
                     result.Add(new GetPatientsResultDTO
                     {
+                        Id = p.Id,
+                        Weight = p.Weight,
                         FullName = p.FullName,
                         Address = p.Address,
                         Age = p.Age,

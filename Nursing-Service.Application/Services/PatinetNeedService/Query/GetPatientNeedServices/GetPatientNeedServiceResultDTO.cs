@@ -1,7 +1,8 @@
-﻿namespace Nursing_Service.Application.Services.Patient.Query.GetPatientNeedServices
+﻿namespace Nursing_Service.Application.Services.PatinetNeedService.Query.GetPatientNeedServices
 {
-    public class GetPatientNeedServicesResultDTO
+    public class GetPatientNeedServiceResultDTO
     {
+        public ulong Id { get; set; }
         public DateTime ServiceDateTime { get; set; }
         public bool IsDone { get; set; } = false;
         public bool IsPast { get; set; } = false;

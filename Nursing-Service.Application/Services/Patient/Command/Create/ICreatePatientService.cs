@@ -22,6 +22,8 @@ namespace Nursing_Service.Application.Services.Patient.Command.Create
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(req.NationalCode))
+                    throw new Exception("NationalCode cant be null.");
                 if (string.IsNullOrWhiteSpace(req.FullName))
                     throw new Exception("FullName cant be null.");
                 if (string.IsNullOrWhiteSpace(req.Address))
@@ -33,6 +35,7 @@ namespace Nursing_Service.Application.Services.Patient.Command.Create
 
                 var patient = new Domain.Entities.Patient.Patient
                 {
+                    NationalCode = req.NationalCode,
                     FullName = req.FullName,
                     Address = req.Address,
                     Age = req.Age,

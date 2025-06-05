@@ -2,11 +2,11 @@
 using Nursing_Service.Common.Dto.Base;
 using Nursing_Service.Domain.Entities.Patient;
 
-namespace Nursing_Service.Application.Services.Patient.Command.CreatePatientNeedService
+namespace Nursing_Service.Application.Services.PatinetNeedService.Command.CreatePatientNeedService
 {
     public interface ICreatePatientNeedService
     {
-        Task<BaseResultDTO<CreatePatientNeedSeviceResultDTO>> ExcuteAsync(CreatePatientRequesInfo req);
+        Task<BaseResultDTO<CreatePatientNeedSeviceResultDTO>> ExcuteAsync(CreatePatientNeedServiceRequesInfo req);
     }
 
     public class CreatePatientNeedService : ICreatePatientNeedService
@@ -18,7 +18,7 @@ namespace Nursing_Service.Application.Services.Patient.Command.CreatePatientNeed
             _context = context;
         }
 
-        public async Task<BaseResultDTO<CreatePatientNeedSeviceResultDTO>> ExcuteAsync(CreatePatientRequesInfo req)
+        public async Task<BaseResultDTO<CreatePatientNeedSeviceResultDTO>> ExcuteAsync(CreatePatientNeedServiceRequesInfo req)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace Nursing_Service.Application.Services.Patient.Command.CreatePatientNeed
                     IsSuccess = false,
                     Message = ex.Message,
                     Data = null
-                }
+                };
             }
         }
     }

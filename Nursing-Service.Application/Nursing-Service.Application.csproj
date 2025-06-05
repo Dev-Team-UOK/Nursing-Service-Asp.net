@@ -15,5 +15,13 @@
     <ProjectReference Include="..\Nursing-Service.Common\Nursing-Service.Common.csproj" />
     <ProjectReference Include="..\Nursing-Service.Domain\Nursing-Service.Domain.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\Service\Command\Delete\" />
+    <Folder Include="Services\Service\Command\Update\" />
+    <Folder Include="Services\SuperVisor\Command\Create\" />
+    <Folder Include="Services\SuperVisor\Command\Delete\" />
+    <Folder Include="Services\SuperVisor\Command\Update\" />
+  </ItemGroup>
 	
 </Project>

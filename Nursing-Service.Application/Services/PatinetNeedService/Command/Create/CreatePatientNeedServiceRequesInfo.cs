@@ -1,6 +1,6 @@
-﻿namespace Nursing_Service.Application.Services.Patient.Command.CreatePatientNeedService
+﻿namespace Nursing_Service.Application.Services.PatinetNeedService.Command.CreatePatientNeedService
 {
-    public class CreatePatientRequesInfo
+    public class CreatePatientNeedServiceRequesInfo
     {
         public DateTime ServiceDateTime { get; set; }
         public ulong SuperVisorId { get; set; }

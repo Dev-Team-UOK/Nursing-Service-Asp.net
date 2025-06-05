@@ -1,4 +1,4 @@
-﻿namespace Nursing_Service.Application.Services.Patient.Command.CreatePatientNeedService
+﻿namespace Nursing_Service.Application.Services.PatinetNeedService.Command.CreatePatientNeedService
 {
     public class CreatePatientNeedSeviceResultDTO
     {

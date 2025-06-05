@@ -61,10 +61,7 @@ namespace Nursing_Service.Application.Services.Users.Commands.Create
                 {
                     IsSuccess = false,
                     Message = ex.Message,
-                    Data = new CreateUserResultDto
-                    {
-                        UserId = 0
-                    }
+                    Data = null
                 };
             }
         }

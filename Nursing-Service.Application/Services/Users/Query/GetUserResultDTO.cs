@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Nursing_Service.Application.Services.Users.Commands.Create
+﻿namespace Nursing_Service.Application.Services.Users.Query
 {
-    public class CreateUserRequestInfo
+    public class GetUserResultDTO
     {
         public required string UserName { get; set; }
         public string? FirstName { get; set; }
