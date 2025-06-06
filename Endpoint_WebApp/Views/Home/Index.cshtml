@@ -1,8 +1,320 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = null;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>خدمات پرستاری در منزل</title>
+    <link rel="stylesheet" href="~/css/HomePage.css" />
+    
+</head>
+
+
+<body>
+  
+    <!-- هدر  -->
+    <header class="main-header">
+        <div class="container header-flex">
+            <div class="logo-box">
+                <img src="~/lib/HomePageImages/image/2966484.png" alt="لوگو پرستاری" class="site-logo" />
+                <h1 class="fancy-title">پرستار سلامت</h1>
+            </div>
+
+
+
+            <nav>
+                <a href="#">خانه</a>
+                <a href="#services">خدمات </a>
+                <a href="#about">درباره ما</a>
+                <a href="#team">تیم </a>
+                <a href="#contact">تماس با ما</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="tel:02112345678" class="header-phone">
+                    <span class="phone-icon">
+                        <!-- آیکون هدفون SVG -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C6.48 2 2 6.48 2 12v7a3 3 0 003 3h1a1 1 0 001-1v-6a1 1 0 00-1-1H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-1a1 1 0 00-1 1v6a1 1 0 001 1h1a3 3 0 003-3v-7c0-5.52-4.48-10-10-10z" fill="#fff" />
+                        </svg>
+                    </span>
+                    021-12345678
+                </a>
+                <a href="#" class="header-btn reserve-btn">
+                    <span class="btn-icon">
+                        <!-- آیکون تقویم SVG -->
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M7 10h5v5H7z" fill="#fff" />
+                            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zm0-13H5V6h14v1z" fill="#fff" />
+                        </svg>
+                    </span> رزرو آنلاین
+                </a>
+                <a href="#" class="header-btn staff-btn">
+                    <span class="btn-icon">
+                        <!-- آیکون ورود SVG -->
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M10 17l5-5-5-5v10z" fill="#fff" />
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" fill="#fff" />
+                        </svg>
+                    </span>
+                    ورود پرسنل
+                </a>
+            </div>
+    </header>
+
+
+    <section id="hero-section" class="hero-section">
+        <!-- <div class="hero-bg"></div> -->
+        <div class="container hero-content">
+            <h1 class="hero-title">خدمات پرستاری در منزل</h1>
+            <form class="quick-form" id="form">
+                <div class="form-icon">
+                    <img src="~/lib/HomePageImages/image/2922656.png" alt="فرم پرستار" />
+                </div>
+                <h2>درخواست پرستار در منزل</h2>
+                <label>
+                    <span>نام و نام خانوادگی</span>
+                    <input type="text" placeholder="لطفاً نام خود را وارد کنید" required>
+                </label>
+                <label>
+                    <span>شماره موبایل</span>
+                    <input type="tel" placeholder="مثال: ۰۹۱۲۱۲۳۴۵۶۷" required>
+                </label>
+                <label>
+                    <span>آدرس</span>
+                    <input type="text" placeholder="مثال: تهران" required>
+                </label>
+                <label>
+                    <span>نوع خدمت مورد نیاز</span>
+                    <select required>
+                        <option value="">انتخاب کنید</option>
+                        <option>پرستاری سالمند</option>
+                        <option>پرستاری کودک</option>
+                        <option>پرستاری بیمار</option>
+                        <option>تزریقات و پانسمان</option>
+                        <option>فیزیوتراپی</option>
+                    </select>
+                </label>
+                <small class="form-note">با ثبت درخواست، با شما تماس خواهیم گرفت و هماهنگی‌های لازم انجام می‌شود.</small>
+                <button type="submit" class="btn-orange btn-block">رزرو و هماهنگی</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- بخش خدمات -->
+    <main class="container">
+        <section id="services" class="services" aria-label="خدمات پرستاری">
+            <div class="service-card"><h3>پرستاری سالمند</h3><p>مراقبت کامل و تخصصی از سالمندان در منزل با تیم مجرب و دلسوز.</p></div>
+            <div class="service-card"><h3>پرستاری کودک</h3><p>نگهداری و مراقبت از کودکان و نوزادان با رعایت کامل اصول بهداشتی.</p></div>
+            <div class="service-card"><h3>پرستاری بیمار</h3><p>مراقبت ویژه و تخصصی از بیماران با شرایط خاص و نیازمند مراقبت دائم.</p></div>
+            <div class="service-card"><h3>تزریقات و پانسمان</h3><p>انجام تزریقات، پانسمان و مراقبت‌های پزشکی در منزل.</p></div>
+            <div class="service-card"><h3>فیزیوتراپی</h3><p>خدمات توانبخشی و فیزیوتراپی در منزل توسط متخصصین مجرب.</p></div>
+        </section>
+    </main>
+
+
+    <!--  بخش سوابق-->
+    <section id="records" class="records-full" aria-label="سوابق">
+        <div class="records-content">
+            <h2>سوابق ما</h2>
+            <p class="records-desc">
+                ما در شرکت  پرستار سلامت، همواره در حال بالا بردن کیفیت خدمات و تعداد موسسات و مراقبین فعال هستیم.<br />
+                پرستاری مجاز و سفیران ما با افتخار در کنار شما هستند.
+            </p>
+            <div class="records-stats">
+                <div class="record-item">
+                    <span class="record-number record-red">۲۷,۸۳۰</span>
+                    <span class="record-label">خدمات انجام شده</span>
+                </div>
+                <div class="record-item">
+                    <span class="record-number record-green">+۷۸۰</span>
+                    <span class="record-label">مراقبین فعال</span>
+                </div>
+                <div class="record-item">
+                    <span class="record-number record-green">+۴۲۰</span>
+                    <span class="record-label">پرستاران فعال</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- چرا پرستار سلامت -->
+    <div class="container">
+        <h1>چرا پرستار در منزل خود را از پرستار سلامت بخواهیم؟</h1>
+        <p>
+            شرکت خدمات پرستاری، پرستار سلامت، ارائه دهنده خدمات مراقبتی و اعزام پرستار به منزل توسط
+            مراکز مجاز همکار دارای مجوز است. ما مفتخریم که نیازهای پرستاری شما برای کودکان یا سالمندان خودتان را فراهم کنیم.
+        </p>
+
+        <h2>تجربه و تخصص</h2>
+        <p>
+            شرکت پرستار سلامت یکی از اولین پلتفرم‌های ارائه‌دهنده خدمات پرستاری در منزل به کودکان و سالمندان بوده که
+            تعدادی مراکز مجاز با مجوز وزارت بهداشت و تیمی از پرستاران مجرب و با تخصص با ما همکاری می‌کنند.
+            هر فردی در زمینه مراقبت و پرستاری نیاز دارد، این تجربه کافی دارد و می‌تواند به بهترین شکل ممکن به نیازهای شما پاسخ دهند.
+        </p>
+
+        <h2>پرستاران مجرب، آموزش دیده و با اطمینان</h2>
+        <p>
+            امنیت و اعتماد مشتریان برای ما اولویت است. تمام پرستاران ما دارای مدارک و صلاحیت‌های لازم هستند و به دقت انتخاب می‌شوند.
+            ما نیز فرایندهای کنترل کیفیت را اجرا کرده و اطمینان حاصل می‌کنیم که فردی که به منزل و خانه شما می‌آید مورد اعتماد شما هستند.
+        </p>
+
+        <h2>ارائه خدمات پرستاری سالمند</h2>
+        <p>
+            هر فردی شرایط مختلفی برای نیاز به پرستار در منزل خود دارد. برای همین، شرکت ما در زمینه‌های
+            مختلف مانند مراقبت پس از عمل جراحی،
+            همراهی در بیمارستان، پیگیری بهداشت و سلامت سالمندان شما تخصص کافی دارد و پرستار مناسب را برای شما اعزام می‌کند.
+        </p>
+
+        <h2>نگهداری تخصصی و پرستاری از کودکان در منزل</h2>
+        <p>
+            مراقبت و نگهداری فرزندتان شما از نوزادی تا کودکی هستند.
+            با اعزام پرستار کودک از تجربه و عشق ما به کودکان خود بهره‌مند شوید و اوقاتی مفرح و آموزشی برای کودک خود ایجاد کنید.
+        </p>
+
+        <h2>ارتباط مستمر و پشتیبانی دائم</h2>
+        <p>
+            ما به ارتباط مستمر و پشتیبانی با مشتریان اهمیت می‌دهیم. با ایجاد یک خط ارتباطی قوی،
+            شما می‌توانید در هر زمانی که نیاز دارید با تیم ما در ارتباط باشید و در مورد هر گونه نیاز یا سوال مشورت کنید.
+        </p>
+
+        <h2>قابلیت انتخاب و آزمایش پرستار</h2>
+        <p>
+            در صورت تمایل درخواست داده‌اید، می‌توانید به مدت ۲۴ تا ۴۸ ساعت به‌صورت
+            آزمایشی با پرستار بیشتر آشنا شوید. در صورتی که رضایت نداشتید، برای تعویض یک پرستار یا بهیار جدید درخواست دهید.
+        </p>
+    </div>
+
+
+
+
+
+    <!-- تیم حرفه ای ما -->
+    <main class="container">
+        <section id="team" class="team" aria-label="تیم پرستاران">
+            <h2>تیم حرفه‌ای ما</h2>
+            <div class="team-members" id="team-members">
+                <div class="member">
+                    <img src="~/lib/HomePageImages/image/qoraishi.jpg" alt="پرستار خانم مریم" />
+                    <h4>مریم حسینی</h4>
+                    <p>پرستار سالمند با 10 سال تجربه</p>
+                </div>
+                <div class="member">
+                    <img src="~/lib/HomePageImages/image/bradpitt.jpg" alt="  " />
+                    <h4>علی رضایی</h4>
+                    <p>متخصص مراقبت کودک و نوزاد</p>
+                </div>
+                <div class="member">
+                    <img src="~/lib/HomePageImages/image/the rock.jpg" alt="متخصص قلب علی احمدی" />
+                    <h4>علی احمدی</h4>
+                    <p>متخصص قلب و عروق</p>
+                </div>
+                <div class="member">
+                    <img src="~/lib/HomePageImages/image/Angelina.jpg" alt="پرستار خانم نازنین" />
+                    <h4>نازنین محمدی</h4>
+                    <p>پرستار بیمار و تزریقات</p>
+                </div>
+                <div class="member">
+                    <img src="~/lib/HomePageImages/image/sofia.jpg" alt="سهلا سبحانی متخصص" />
+                    <h4>مهلا سبحانی</h4>
+                    <p>سوپروایزر</p>
+                </div>
+                <div class="member">
+                    <img src="~/lib/HomePageImages/image/Scarlett_Johansson-8588.jpg" alt="ایلیا قربانی" />
+                    <h4>ایلیا قربانی </h4>
+                    <p>سوپروایزر</p>
+                </div>
+            </div>
+            <button class="team-scroll-nav-button prev" id="team-scroll-prev" aria-label="قبلی">›</button>
+            <button class="team-scroll-nav-button next" id="team-scroll-next" aria-label="بعدی">‹</button>
+        </section>
+    </main>
+
+
+    <footer class="custom-footer">
+        <div class="footer-container">
+            <div style="text-align:center;"></div>
+            <section id="contact"></section>
+            <!-- ستون ۱: اطلاعات تماس -->
+            <div class="footer-col contact-info">
+                <p>
+                    <span class="footer-icon"><img src="~/lib/HomePageImages/image/location (2).png" alt="آدرس" /></span>
+                    دفتر مرکزی: سعادت آباد، سرو غربی، نبش خیابان بخشایش، ساختمان پزشکان سرو، پلاک ۳۰، واحد ۴
+                </p>
+                <p>
+                    <span class="footer-icon"><img src="~/lib/HomePageImages/image/location (2).png" alt="آدرس" /></span>
+                    آموزش و استخدام: سعادت آباد، سرو غربی، خیابان بخشایش، کوچه بهار سوم، پلاک ۳۹
+                </p>
+                <p>
+                    <span class="footer-icon"><img src="~/lib/HomePageImages/image/telephone icon .png" alt="تلفن" /></span>
+                    خط ویژه: 1527
+                </p>
+                <p>
+                    <span class="footer-icon"><img src="~/lib/HomePageImages/image/telephone icon .png" alt="تلفن" /></span>
+                    021 - 27630
+                </p>
+                <p class="footer-desc">
+                    24 ساعته و 7 روز هفته آماده پاسخگویی هستیم.
+                </p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/asoo_fatahi?igsh=MWhsZTNlMTFlOG9vZA=="><img src="~/lib/HomePageImages/image/instagram.png" alt="instagram" /></a>
+                    <a href="https://www.linkedin.com/"><img src="~/lib/HomePageImages/image/images (1).png" alt="linkedin" /></a>
+                    <a href="https://t.me/hichvla"><img src="~/lib/HomePageImages/image/telegram.png" alt="telegram" /></a>
+                </div>
+            </div>
+            <!-- ستون ۲: خدمات پزشکی -->
+            <div class="footer-col footer-services">
+                <h4>خدمات پزشکی پرستار سلامت </h4>
+                <div class="footer-btn-group">
+                    <button>فیزیوتراپی در منزل</button>
+                    <button>رادیولوژی در منزل</button>
+                    <button>آمبولانس خصوصی</button>
+                    <button>متخصص داخلی</button>
+                    <button>متخصص اطفال</button>
+                    <button>طب سالمندی</button>
+                    <button>پزشک عمومی</button>
+                    <button>آزمایشات پزشکی</button>
+                    <button>همکاری با ما</button>
+                </div>
+            </div>
+            <!-- ستون ۳: خدمات پرستاری -->
+            <div class="footer-col footer-nursing">
+                <h4>خدمات پرستاری پرستار سلامت </h4>
+                <div class="footer-btn-group">
+                    <button>پرستار در منزل</button>
+                    <button>پرستار سالمند</button>
+                    <button>پرستار کودک</button>
+                    <button>پرستار بیمار</button>
+                </div>
+            </div>
+            <!-- ستون ۴: فرم درخواست -->
+            <div class="footer-col footer-form">
+                <h4>کیفیت و اعتبار</h4>
+
+                <p class="footer-about">
+                    مرکز خدمات پرستاری <span class="footer-highlight">پرستار سلامت</span> با مجوز رسمی از وزارت بهداشت، خدمات خود را به صورت شبانه‌روزی در تمامی ایام سال، حتی تعطیلات ارائه می‌دهد. اعزام پرستار در منزل، پرستار سالمند، پرستار کودک، پرستار بیمار و انجام کلیه خدمات کلینیکی و پاراکلینیکی در منزل از جمله فعالیت‌های موسسه می‌باشد. موسسه پرستاری سلامت اول، شعبه دیگری ندارد.
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <img src="~/lib/HomePageImages/image/enamad_icon_text_color_blue_1024.png" alt="نماد اعتماد" class="footer-logo" />
+            <img src="~/lib/HomePageImages/image/samandehi-logo-220x154.png" ساماندهی" class="footer-logo" />
+            <span>© 2025 پرستار سلامت | تمامی حقوق محفوظ است.</span>
+
+        </div>
+    </footer>
+
+
+    <script src="~/js/HomeScript.js"></script>
+
+</body>
+
+
+
+</html>
