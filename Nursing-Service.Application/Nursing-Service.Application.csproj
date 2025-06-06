@@ -19,9 +19,6 @@
   <ItemGroup>
     <Folder Include="Services\Service\Command\Delete\" />
     <Folder Include="Services\Service\Command\Update\" />
-    <Folder Include="Services\SuperVisor\Command\Create\" />
-    <Folder Include="Services\SuperVisor\Command\Delete\" />
-    <Folder Include="Services\SuperVisor\Command\Update\" />
   </ItemGroup>
 	
 </Project>

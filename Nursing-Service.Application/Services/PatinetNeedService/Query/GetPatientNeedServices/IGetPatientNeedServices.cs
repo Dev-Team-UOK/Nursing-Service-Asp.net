@@ -1,4 +1,5 @@
-﻿using Nursing_Service.Application.Interfaces.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using Nursing_Service.Application.Interfaces.Contexts;
 using Nursing_Service.Common.Dto.Base;
 using Nursing_Service.Domain.Entities.Patient;
 
@@ -28,9 +29,9 @@ namespace Nursing_Service.Application.Services.PatinetNeedService.Query.GetPatie
                 List<PatientNeedService> patientNeedServices;
 
                 if (patientId is not null)
-                    patientNeedServices = _context.PatientNeedService.Where(pns => pns.PatientId == patientId && pns.IsDeleted == false).ToList();
+                    patientNeedServices = await _context.PatientNeedService.Where(pns => pns.PatientId == patientId && pns.IsDeleted == false).ToListAsync();
                 else
-                    patientNeedServices = _context.PatientNeedService.Where(pns => pns.IsDeleted == false).ToList();
+                    patientNeedServices = await _context.PatientNeedService.Where(pns => pns.IsDeleted == false).ToListAsync();
 
                     return new BaseResultDTO<List<GetPatientNeedServiceResultDTO>>
                     {

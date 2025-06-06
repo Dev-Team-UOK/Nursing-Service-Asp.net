@@ -87,6 +87,8 @@ namespace Nursing_Service.Application.Services.Nurse.Command.Update
                     }
                 }
 
+                await _context.SaveChangesAsync();
+
                 return new BaseResultDTO
                 {
                     IsSuccess = true,

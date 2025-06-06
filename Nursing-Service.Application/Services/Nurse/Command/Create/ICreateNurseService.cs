@@ -42,7 +42,8 @@ namespace Nursing_Service.Application.Services.Nurse.Command.Create
                     NurseNumber = req.NurseNumber,
                     StartWorkingInCompany = req.StartWorkingInCompany,
                     SuperVisorId = req.SuperVisorId,
-                    WorkHistoryInYear = req.WorkHistoryInYear
+                    WorkHistoryInYear = req.WorkHistoryInYear,
+                    Role = Domain.Entities.User.RoleEnum.Nurse
                 };
 
                 await _context.Nurses.AddAsync(nurse);
