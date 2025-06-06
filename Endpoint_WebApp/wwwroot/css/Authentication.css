@@ -294,3 +294,25 @@ input {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
+
+.styled-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    font-size: 1em;
+    background: #d4af7a;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form.sign-up {
+       max-height: 400px; /* یا هر ارتفاعی که مناسب است */
+       overflow-y: auto;
+   }

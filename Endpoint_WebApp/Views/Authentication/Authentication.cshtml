@@ -5,13 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <!-- SweetAlert CSS -->
     <link href="~/lib/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
-
     <!-- Main CSS -->
     <link href="~/css/Authentication.css" rel="stylesheet">
-
 </head>
 <body>
     <br>
@@ -27,18 +24,22 @@
                 <span>رمز عبور</span>
                 <input type="password" id="Password_SignIn"/>
             </label>
+            <label>
+                <span>نقش</span>
+                <select id="Role_SignIn" class="styled-select">
+                    <option value="nurse">پرستار</option>
+                    <option value="headnurse">سرپرستار</option>
+                </select>
+            </label>
             <p class="forgot-pass">رمز عبور خود را فراموش کرده اید؟</p>
             <button onclick="SignInUser()" type="button" class="submit">وارد شدن</button>
-
         </div>
         <div class="sub-cont">
             <div class="img">
                 <div class="img__text m--up">
-
                     <h3>حسابد کاربری ندارید؟ عضو شوید.<h3>
                 </div>
                 <div class="img__text m--in">
-
                     <h3>اگر در حال حاظر حساب کاربری دارید؛ وارد شوید.<h3>
                 </div>
                 <div class="img__btn">
@@ -64,21 +65,28 @@
                     <span>همراه</span>
                     <input type="text" id="Phone_SignUp"/>
                 </label>
-
-                <button onclick="SignUpUser()" type="button" class="submit">عضویت</button>
+                <label>
+                    <span>نقش</span>
+                    <select id="Role_SignUp" class="styled-select">
+                        <option value="nurse">پرستار</option>
+                        <option value="headnurse">سرپرستار</option>
+                    </select>
+                </label>
+                <!-- Extra fields for role -->
+                <div id="ExtraFields_SignUp"></div>
+                
             </div>
+            <button onclick="SignUpUser()" type="button" class="submit">عضویت</button>
         </div>
     </div>
 
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <!-- SweetAlert JS -->
     <script src="~/lib/Sweetalert2/sweetalert2.min.js"></script>
-
     <!-- Main JS -->
     <script src="~/js/Authentication.js"></script>
 
-</body>
 
+</body>
 </html>

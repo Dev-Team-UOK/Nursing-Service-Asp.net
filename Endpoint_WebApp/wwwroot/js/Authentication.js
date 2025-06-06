@@ -94,3 +94,31 @@ function SignUpUser() {
         }
     });
 }
+
+$(function () {
+    $('#Role_SignUp').on('change', function () {
+        var role = $(this).val();
+        var $extra = $('#ExtraFields_SignUp');
+        $extra.empty();
+        if (role === 'nurse') {
+            $extra.append(`
+                    <label>
+                        <span>شماره نظام پرستاری</span>
+                        <input type="text" id="NurseCode_SignUp"/>
+                    </label>
+                `);
+        } else if (role === 'headnurse') {
+            $extra.append(`
+                    <label>
+                        <span>کد سرپرستاری</span>
+                        <input type="text" id="HeadNurseCode_SignUp"/>
+                    </label>
+                    <label>
+                        <span>تجربه مدیریت (سال)</span>
+                        <input type="number" id="ManagementExperience_SignUp"/>
+                    </label>
+                `);
+        }
+    });
+    $('#Role_SignUp').trigger('change');
+});
