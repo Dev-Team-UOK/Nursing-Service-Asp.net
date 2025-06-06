@@ -24,5 +24,6 @@ namespace Nursing_Service.Domain.Entities.User
         public required string PhoneNumber { get; set; }
         public required string Email { get; set; }
         public required string Password { get; set; }
+        public required RoleEnum Role { get; set; }
     }
 }

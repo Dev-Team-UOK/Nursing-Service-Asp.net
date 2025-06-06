@@ -5,8 +5,9 @@ namespace Nursing_Service.Domain.Entities.Nurse
 {
     public class Nurse : User.User
     {
+        public required string NurseNumber { get; set; }
         public virtual SuperVisor.SuperVisor SuperVisor { get; set; }
-        public ulong SuperVisorId { get; set; }
+        public ulong? SuperVisorId { get; set; }
         public List<PatientNeedService> ServicesForPatients { get; set; }
         public short? WorkHistoryInYear { get; set; }
         public DateTime StartWorkingInCompany { get; set; } = DateTime.Now;
