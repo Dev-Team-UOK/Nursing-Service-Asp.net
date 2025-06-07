@@ -2,8 +2,11 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Nursing_Service.Application.Interfaces.Contexts;
 using Nursing_Service.Application.Services.Authentication.Command.SignUp;
+using Nursing_Service.Application.Services.Nurse.Command.Create;
+using Nursing_Service.Application.Services.SuperVisor.Command.Create;
 using Nursing_Service.Application.Services.Users.Commands.Create;
 using Nursing_Service.Application.Services.Users.Queries.SignIn;
+using Nursing_Service.Application.Services.Users.Query;
 using Nursing_Service.Infrastructure.SMS.Ir;
 using Nursing_Service.Persistence.Contexts;
 
@@ -11,6 +14,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("https://localhost:7010") 
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddAuthentication(options =>
 {
@@ -34,7 +47,12 @@ builder.Services.AddScoped<IDataBaseContext, DataBaseContext>();
 builder.Services.AddScoped<ICreateUserService, CreateUserService>();
 builder.Services.AddScoped<ISignUpUserService, SignUpUserService>();
 builder.Services.AddScoped<ISignInUserService, SignInUserService>();
+builder.Services.AddScoped<IGetUserService, GetUserService>();
+builder.Services.AddScoped<ICreateNurseService, CreateNurseService>();
+builder.Services.AddScoped<ICreateSuperVisor, CreateSuperVisor>();
 builder.Services.AddTransient<ISMSIr, SMSIr>();
+
+
 
 var app = builder.Build();
 
@@ -46,6 +64,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
 app.UseRouting();
 

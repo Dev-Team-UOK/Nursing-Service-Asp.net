@@ -2,6 +2,7 @@
 using Nursing_Service.Application.Interfaces.Contexts;
 using Nursing_Service.Common.Dto.Base;
 using Nursing_Service.Common.Extensions;
+using Nursing_Service.Domain.Entities.User;
 
 namespace Nursing_Service.Application.Services.Users.Queries.SignIn
 {
@@ -25,9 +26,7 @@ namespace Nursing_Service.Application.Services.Users.Queries.SignIn
                 };
 
             var user = await _context.Users.FirstOrDefaultAsync(
-                    u => u.Email.Equals(req.Email) 
-                    //&&
-                    //u.Status.Equals(UserStatus.Active)
+                    u => u.Email.Equals(req.Email)
                 );
 
             if (user is null)
@@ -51,12 +50,15 @@ namespace Nursing_Service.Application.Services.Users.Queries.SignIn
             return new BaseResultDTO<SignInUserResultDto>
             {
                 IsSuccess = true,
-                Message = "ورود به سایت با موفقیت انجام شد",
+                Message = user.Role == RoleEnum.Operator ? "اپراتور وارد شدید" :
+                user.Role == RoleEnum.Nurse ? "پرستار وارد شدید" :
+                "سوپر وایزر وارد شدید",
                 Data = new SignInUserResultDto
                 {
                     Id = user.Id,
                     Phone = user.PhoneNumber,
                     UserName = user.UserName,
+                    Role = user.Role
                 }
             };
         }

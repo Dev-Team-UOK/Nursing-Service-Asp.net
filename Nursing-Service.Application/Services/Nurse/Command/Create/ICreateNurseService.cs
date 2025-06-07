@@ -48,6 +48,8 @@ namespace Nursing_Service.Application.Services.Nurse.Command.Create
 
                 await _context.Nurses.AddAsync(nurse);
 
+                await _context.SaveChangesAsync();
+
                 foreach (var serviceId in req.DoService)
                 {
                     await _context.NurseCanDoService.AddAsync(new NurseCanDoService

@@ -40,6 +40,7 @@ namespace Nursing_Service.Application.Services.Users.Query
                     Message = "لیست کاربران با موفقیت برگردانده شد.",
                     Data = users.Select(u => new GetUserResultDTO
                     {
+                        Id = u.Id,
                         Email = u.Email,
                         Password = u.Password,
                         PhoneNumber = u.PhoneNumber,

@@ -35,14 +35,16 @@ namespace Nursing_Service.Application.Services.Authentication.Command.SignUp
 
                 var passHasher = new PasswordHasher();
 
-                var user = new User(
-                    userName: req.UserName,
-                    email: req.Email,
-                    phoneNumber: req.Phone,
-                    password: passHasher.HashPassword(req.Password),
-                    firstName: null,
-                    lastName: null
-                );
+                var user = new User
+                {
+                    Email = req.Email,
+                    Password = passHasher.HashPassword(req.Password),
+                    PhoneNumber = req.Password,
+                    Role = RoleEnum.Operator,
+                    UserName = req.UserName,
+                    FirstName = req.FirstName,
+                    LastName = req.LastName
+                };
 
                 await _context.Users.AddAsync(user);
                 await _context.SaveChangesAsync();
@@ -56,6 +58,7 @@ namespace Nursing_Service.Application.Services.Authentication.Command.SignUp
                         Id = user.Id,
                         UserName = user.UserName,
                         Phone = user.PhoneNumber,
+                        Role = user.Role
                     }
                 };
             }

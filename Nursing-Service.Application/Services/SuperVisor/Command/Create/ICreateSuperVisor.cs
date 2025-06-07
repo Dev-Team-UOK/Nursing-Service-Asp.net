@@ -55,7 +55,7 @@ namespace Nursing_Service.Application.Services.SuperVisor.Command.Create
                 return new BaseResultDTO<CreateSuperVisorResultDto>()
                 {
                     IsSuccess = true,
-                    Message = "سوپر وایزور با موفقیت ایجاد شد.",
+                    Message = "سوپر وایزر با موفقیت ایجاد شد.",
                     Data = new CreateSuperVisorResultDto
                     {
                         // The user ID will be retrieved after creation.

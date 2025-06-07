@@ -80,7 +80,8 @@ namespace Nursing_Service.Application_Test.Authentication
                 Email = "user@example.com",
                 Password = hashedPassword,
                 UserName = "TestUser",
-                PhoneNumber = "09123456789"
+                PhoneNumber = "09123456789",
+                Role = RoleEnum.Operator
             };
 
             mockContext.Setup(c => c.Users).ReturnsDbSet(new List<User> { existingUser });
@@ -118,7 +119,8 @@ namespace Nursing_Service.Application_Test.Authentication
                 Email = "validuser@example.com",
                 Password = hashedPassword,
                 UserName = "ValidUser",
-                PhoneNumber = "09121234567"
+                PhoneNumber = "09121234567",
+                Role = RoleEnum.Operator
             };
 
             mockContext.Setup(c => c.Users).ReturnsDbSet(new List<User> { user });

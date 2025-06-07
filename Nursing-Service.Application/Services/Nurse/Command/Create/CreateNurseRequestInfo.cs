@@ -8,6 +8,6 @@ namespace Nursing_Service.Application.Services.Nurse.Command.Create
         public ulong? SuperVisorId { get; set; }
         public short? WorkHistoryInYear { get; set; }
         public DateTime StartWorkingInCompany { get; set; }
-        public List<ulong> DoService { get; set; }
+        public required List<ulong> DoService { get; set; }
     }
 }

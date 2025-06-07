@@ -50,12 +50,16 @@
             <div class="form sign-up">
                 <h2>ایجاد حساب کاربری</h2>
                 <label>
-                    <span>ایمیل</span>
-                    <input type="email" id="Email_SignUp"/>
+                    <span>نام</span>
+                    <input type="text" id="Name_SignUp" />
                 </label>
                 <label>
-                    <span>رمز عبور</span>
-                    <input type="password" id="Password_SignUp"/>
+                    <span>نام خانوادگی</span>
+                    <input type="text" id="LastName_SignUp" />
+                </label>
+                <label>
+                    <span>ایمیل</span>
+                    <input type="email" id="Email_SignUp"/>
                 </label>
                 <label>
                     <span>نام کاربری</span>
@@ -66,10 +70,15 @@
                     <input type="text" id="Phone_SignUp"/>
                 </label>
                 <label>
+                    <span>رمز عبور</span>
+                    <input type="password" id="Password_SignUp"/>
+                </label>
+                <label>
                     <span>نقش</span>
                     <select id="Role_SignUp" class="styled-select">
+                        <option value="operator">اپراتور</option>
                         <option value="nurse">پرستار</option>
-                        <option value="headnurse">سرپرستار</option>
+                        <option value="supervisor">سوپروایزور</option>
                     </select>
                 </label>
                 <!-- Extra fields for role -->

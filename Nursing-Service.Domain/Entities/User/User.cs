@@ -5,19 +5,6 @@ namespace Nursing_Service.Domain.Entities.User
 {
     public class User : BaseEntity
     {
-        [SetsRequiredMembers]
-        public User(string userName, string? firstName, string? lastName, string phoneNumber, string email, string password)
-        {
-            UserName = userName;
-            FirstName = firstName;
-            LastName = lastName;
-            PhoneNumber = phoneNumber;
-            Email = email;
-            Password = password;
-        }
-
-        public User() { }
-
         public required string UserName { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

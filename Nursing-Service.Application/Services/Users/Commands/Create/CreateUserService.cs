@@ -30,16 +30,16 @@ namespace Nursing_Service.Application.Services.Users.Commands.Create
                 var passHasher = new PasswordHasher();
 
                 var user = new User
-                (
-                    userName: req.UserName,
-                    firstName: req.FirstName,
-                    lastName: req.LastName,
-                    phoneNumber: req.PhoneNumber,
-                    email: req.Email,
-                    password: passHasher.HashPassword(req.Password)
-                );
+                {
+                   Email = req.Email,
+                   Password = req.Password,
+                   PhoneNumber = req.PhoneNumber,
+                   Role = RoleEnum.Operator,
+                   UserName = req.UserName,
+                   LastName = req.LastName,
+                   FirstName = req.FirstName,
+                };
                 
-
                 await _context.Users.AddAsync(user);
 
                 await _context.SaveChangesAsync();
