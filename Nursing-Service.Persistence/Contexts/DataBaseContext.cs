@@ -24,29 +24,15 @@ namespace Nursing_Service.Persistence.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Role>().HasData(new Role
-            //{
-            //    Id = 1,
-            //    Name = nameof(UserRoles.Admin)
-            //});
 
-            //modelBuilder.Entity<Role>().HasData(new Role
-            //{
-            //    Id = 2,
-            //    Name = nameof(UserRoles.Author)
-            //});
+            modelBuilder.Entity<User>()
+            .Property(u => u.Role)
+            .HasConversion<string>();
 
-            //modelBuilder.Entity<Role>().HasData(new Role
-            //{
-            //    Id = 3,
-            //    Name = nameof(UserRoles.Customer)
-            //});
-
-            //modelBuilder.Entity<Role>().HasData(new Role
-            //{
-            //    Id = 4,
-            //    Name = nameof(UserRoles.Operator)
-            //});
+            // TPT(TablePerType) for inheritance
+            modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<Nurse>().ToTable("Nurses");
+            modelBuilder.Entity<SuperVisor>().ToTable("Supervisors");
 
             // Applying index on the User entity's email.
             // Making email unique in the User entity.

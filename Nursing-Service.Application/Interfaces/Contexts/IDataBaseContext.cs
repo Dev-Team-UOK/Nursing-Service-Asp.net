@@ -9,13 +9,13 @@ namespace Nursing_Service.Application.Interfaces.Contexts
 {
     public interface IDataBaseContext
     {
-        DbSet<User> Users { get; set; }
-        DbSet<Patient> Patients { get; set; }
-        DbSet<PatientNeedService> PatientNeedService { get; set; }
-        DbSet<Nurse> Nurses { get; set; }
-        DbSet<NurseCanDoService> NurseCanDoService { get; set; }
-        DbSet<Service> Services { get; set; }
-        DbSet<SuperVisor> SuperVisors { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<PatientNeedService> PatientNeedService { get; set; }
+        public DbSet<Nurse> Nurses { get; set; }
+        public DbSet<NurseCanDoService> NurseCanDoService { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<SuperVisor> SuperVisors { get; set; }
 
         int SaveChanges(bool acceptAllChangesOnSuccess);
         int SaveChanges();

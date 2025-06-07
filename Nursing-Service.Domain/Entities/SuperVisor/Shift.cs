@@ -6,8 +6,8 @@ namespace Nursing_Service.Domain.Entities.SuperVisor
     {
         [Display(Name = "صبح")]
         Morning,
-        [Display(Name = "ظهر")]
-        noon,
+        [Display(Name = "عصر")]
+        Evening,
         [Display(Name = "شب")]
         Night
     }
