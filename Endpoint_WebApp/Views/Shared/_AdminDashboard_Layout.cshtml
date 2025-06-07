@@ -1,14 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <title>پرستار سلامت</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="~/lib/AdminDashboardAssets/css/Admindashboard.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link  rel="stylesheet" href="~/lib/AdminDashboardAssets/css/Admindashboard.css"/>
- 
 
 </head>
+
 <body>
 
     <!-- هدر -->
@@ -27,6 +27,9 @@
         <button class="icon-btn">
             <span class="material-icons">notifications</span>
         </button>
+        <button class="icon-btn logout" title="خروج">
+            <span class="material-icons">logout</span>
+        </button>
     </div>
 
 
@@ -38,29 +41,29 @@
                 <span>پرستار سلامت </span>
             </div>
             <ul class="sidebar-menu">
-                <li>بیماران</li>
-                <li>اپراتورها</li>
-                <li>پرستاران</li>
-                <li>سوپروایزرها</li>
-                <li>لیست درخواست‌ها</li>
-                <li>مدیریت سرویس‌ها</li>
+                <li class="patients">بیماران</li>
+                <li class="operators">اپراتورها</li>
+                <li class="nurses">پرستاران</li>
+                <li class="supervisors">سوپروایزرها</li>
+                <li class="requests">لیست درخواست‌ها</li>
+                <li class="services">مدیریت سرویس‌ها</li>
             </ul>
             <div class="sidebar-footer">
                 <button class="profile-btn">
                     <span>پروفایل</span>
-                    <img src="~/lib/AdminDashboardAssets/img/img_avatar.png" alt="پروفایل" class="profile-img">
+                    <img src="image/img_avatar.png" alt="پروفایل" class="profile-img">
                 </button>
                 <div class="sidebar-desc">
-                    پرستار سلامت
+                    پرستار سلامت<br>اپراتورها
                 </div>
             </div>
         </aside>
 
-
-
-        <main class="relative h-full max-h-screen transition-all duration-200 ease-in-out xl:mr-68 rounded-xl">
-            @RenderBody()
+        <!-- محتوای اصلی -->
+        <main class="main-content">
+             @RenderBody()
         </main>
+    </div>
 </body>
-</html>
 
+</html>

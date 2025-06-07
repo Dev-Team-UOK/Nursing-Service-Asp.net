@@ -85,6 +85,11 @@ body {
         color: #e3f2fd;
     }
 
+    .icon-btn.logout:hover {
+        color: #e53935;
+    }
+
+
 @media (max-width: 600px) {
     .header-tools {
         right: 10px;
@@ -132,7 +137,7 @@ body {
 
     .sidebar-menu li {
         padding: 14px 0;
-        color: #3c4b64;
+        color: #643c3c;
         font-size: 1rem;
         cursor: pointer;
         border-radius: 8px;
@@ -164,7 +169,7 @@ body {
 .profile-btn {
     display: flex;
     align-items: center;
-    background: #1976d2;
+    background: #767575;
     color: #fff;
     border: none;
     border-radius: 24px;
@@ -180,7 +185,7 @@ body {
 }
 
     .profile-btn:hover {
-        background: #1565c0;
+        background: #000000;
     }
 
 .profile-img {
