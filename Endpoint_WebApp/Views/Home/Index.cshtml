@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>خدمات پرستاری در منزل</title>
     <link rel="stylesheet" href="~/css/HomePage.css" />
-    
+    <link rel="stylesheet" href="~/css/Load_Stating.css" />
+    @await Html.PartialAsync("_LoaderState")
 </head>
 
 
@@ -311,10 +312,9 @@
     </footer>
 
 
-    <script src="~/js/HomeScript.js"></script>
 
 </body>
-
-
+<script src="~/js/HomeScript.js"></script>
+<script src="~/js/Load_Stating.js"></script>
 
 </html>
