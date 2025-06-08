@@ -2,6 +2,7 @@
 using Nursing_Service.Application.Interfaces.Contexts;
 using Nursing_Service.Domain.Entities.Nurse;
 using Nursing_Service.Domain.Entities.Patient;
+using Nursing_Service.Domain.Entities.RequestForm;
 using Nursing_Service.Domain.Entities.Service;
 using Nursing_Service.Domain.Entities.SuperVisor;
 using Nursing_Service.Domain.Entities.User;
@@ -21,6 +22,7 @@ namespace Nursing_Service.Persistence.Contexts
         public DbSet<NurseCanDoService> NurseCanDoService { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<SuperVisor> SuperVisors { get; set; }
+        public DbSet<RequestForm> RequestForms { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
