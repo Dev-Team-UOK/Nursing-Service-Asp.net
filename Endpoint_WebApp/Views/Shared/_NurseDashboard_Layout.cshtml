@@ -1,0 +1,68 @@
+﻿
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>پرستار سلامت</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- هدر -->
+    <div class="header-tools">
+        <div class="search-box">
+            <span class="material-icons">search</span>
+            <input type="text" placeholder="Type here..." />
+        </div>
+        <button class="icon-btn">
+            <span class="material-icons">person</span>
+            <span class="btn-text">پرستار</span>
+        </button>
+        <button class="icon-btn">
+            <span class="material-icons">settings</span>
+        </button>
+        <button class="icon-btn">
+            <span class="material-icons">notifications</span>
+        </button>
+        <button class="icon-btn logout" title="خروج">
+            <span class="material-icons">logout</span>
+        </button>
+    </div>
+
+
+
+    <div class="container">
+        <!-- سایدبار -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span>پرستار سلامت </span>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="patients">صفحه اصلی</li>
+                <li class="requests">لیست درخواست‌ها</li>
+                <li class="services">توانایی‌ها</li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <button class="profile-btn">
+                    <span>پروفایل</span>
+                    <img src="image/img_avatar.png" alt="پروفایل" class="profile-img">
+                </button>
+                <div class="sidebar-desc">
+                    پرستار سلامت<br>لیست درخواست‌ها
+                </div>
+            </div>
+        </aside>
+
+        <!-- محتوای اصلی -->
+        <main class="main-content">
+            @RenderBody()
+        </main>
+    </div>
+</body>
+
+</html>
