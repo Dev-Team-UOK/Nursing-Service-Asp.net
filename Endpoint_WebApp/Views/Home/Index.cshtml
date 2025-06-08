@@ -10,6 +10,8 @@
     <title>خدمات پرستاری در منزل</title>
     <link rel="stylesheet" href="~/css/HomePage.css" />
     <link rel="stylesheet" href="~/css/Load_Stating.css" />
+    <!-- SweetAlert CSS -->
+    <link href="~/lib/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
     @await Html.PartialAsync("_LoaderState")
 </head>
 
@@ -78,19 +80,19 @@
                 <h2>درخواست پرستار در منزل</h2>
                 <label>
                     <span>نام و نام خانوادگی</span>
-                    <input type="text" placeholder="لطفاً نام خود را وارد کنید" required>
+                    <input type="text" id="FormFullName" placeholder="لطفاً نام خود را وارد کنید" required>
                 </label>
                 <label>
                     <span>شماره موبایل</span>
-                    <input type="tel" placeholder="مثال: ۰۹۱۲۱۲۳۴۵۶۷" required>
+                    <input type="tel" id="FormPhoneNumber" placeholder="مثال: ۰۹۱۲۱۲۳۴۵۶۷" required>
                 </label>
                 <label>
                     <span>آدرس</span>
-                    <input type="text" placeholder="مثال: تهران" required>
+                    <input type="text" id="FormAddress" placeholder="مثال: تهران" required>
                 </label>
                 <label>
                     <span>نوع خدمت مورد نیاز</span>
-                    <select required>
+                    <select id="FormService">
                         <option value="">انتخاب کنید</option>
                         <option>پرستاری سالمند</option>
                         <option>پرستاری کودک</option>
@@ -100,7 +102,7 @@
                     </select>
                 </label>
                 <small class="form-note">با ثبت درخواست، با شما تماس خواهیم گرفت و هماهنگی‌های لازم انجام می‌شود.</small>
-                <button type="submit" class="btn-orange btn-block">رزرو و هماهنگی</button>
+                <button type="submit" class="btn-orange btn-block" onclick="CreateForm()">رزرو و هماهنگی</button>
             </form>
         </div>
     </section>
@@ -314,7 +316,11 @@
 
 
 </body>
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- SweetAlert JS -->
+<script src="~/lib/Sweetalert2/sweetalert2.min.js"></script>
+
 <script src="~/js/HomeScript.js"></script>
 <script src="~/js/Load_Stating.js"></script>
-
 </html>

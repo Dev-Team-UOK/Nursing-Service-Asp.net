@@ -55,3 +55,51 @@ prevBtn.addEventListener('click', function () {
 nextBtn.addEventListener('click', function () {
     teamMembers.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 });
+
+// ثبت درخواست توسط بازدید کننده وبسایت
+function CreateForm() {
+    var FullName = $("#FormFullName").val();
+    var PhoneNumber = $("#FormPhoneNumber").val();
+    var Address = $("#FormAddress").val();
+    var ServiceName = $("#FormService").val()
+
+    var postData = {
+        'FullName': FullName,
+        'PhoneNumber': PhoneNumber,
+        'Address': Address,
+        'ServiceName': ServiceName
+    };
+
+    $.ajax({
+        contentType: 'application/x-www-form-urlencoded',
+        dataType: 'json',
+        type: "POST",
+        url: "/Home/CreateForm",
+        data: postData,
+        success: function (data) {
+            if (data.isSuccess == true) {
+                swal.fire(
+                    'موفق!',
+                    data.message,
+                    'success'
+                ).then(function (isConfirm) {
+                    window.location.replace("/AdminDashboard/Index");
+                });
+            }
+            else {
+                swal.fire(
+                    'هشدار!',
+                    data.message,
+                    'warning'
+                );
+            }
+        },
+        error: function (request, status, error) {
+            swal.fire(
+                'هشدار!',
+                request.responseText,
+                'warning'
+            );
+        }
+    });
+}
