@@ -1,0 +1,76 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>پرستار سلامت</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+
+    <!-- هدر -->
+    <div class="header-tools">
+        <div class="search-box">
+            <span class="material-icons">search</span>
+            <input type="text" placeholder="Type here..." />
+        </div>
+        <button class="icon-btn">
+            <span class="material-icons">person</span>
+            <span class="btn-text">اپراتور</span>
+        </button>
+        <button class="icon-btn">
+            <span class="material-icons">settings</span>
+        </button>
+        <button class="icon-btn">
+            <span class="material-icons">notifications</span>
+        </button>
+        <button class="icon-btn logout" title="خروج">
+            <span class="material-icons">logout</span>
+        </button>
+    </div>
+
+
+
+    <div class="container">
+        <!-- سایدبار -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span>پرستار سلامت </span>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="HomePage ">صفحه اصلی</li>
+                <li class="NewRequestPatient">ایجاد درخواست جدید</li>
+                <li class="NewRequestService">ایجاد بیمار جدید</li>
+                <li class="ListRequest">لیست درخواست‌ها</li>
+            </ul>
+            </ul>
+
+
+
+            <div class="sidebar-footer">
+                <button class="profile-btn">
+                    <span>پروفایل</span>
+                    <img src="image/img_avatar.png" alt="پروفایل" class="profile-img">
+                </button>
+                <div class="sidebar-desc">
+                    پرستار سلامت <br>صفحه اصلی
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            @RenderBody()
+        </main>
+    </div>
+</body>
+
+</html>
