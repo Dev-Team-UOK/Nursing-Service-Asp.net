@@ -69,7 +69,8 @@ namespace Nursing_Service.Application.Services.Nurse.Query.GetNurses
                         StartWorkingInCompany = n.StartWorkingInCompany,
                         SuperVisorId = n.SuperVisorId,
                         WorkHistoryInYear = n.WorkHistoryInYear,
-                        DoService = (await _getService.ExcuteAsync(nurseId: nurseId, null, null)).Data!
+                        DoService = (await _getService.ExcuteAsync(nurseId: nurseId, null, null)).Data!,
+                        SuperVisorFullName = $"{n.SuperVisor?.FirstName} {n.SuperVisor?.LastName}"
                     });
                 }
 

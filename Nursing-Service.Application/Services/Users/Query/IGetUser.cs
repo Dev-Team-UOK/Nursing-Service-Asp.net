@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Nursing_Service.Application.Interfaces.Contexts;
 using Nursing_Service.Common.Dto.Base;
+using Nursing_Service.Domain.Entities.User;
 
 namespace Nursing_Service.Application.Services.Users.Query
 {
@@ -29,7 +30,7 @@ namespace Nursing_Service.Application.Services.Users.Query
                         throw new NotImplementedException("شناسه کاربر نمیتواند 0 باشد.")
                         : await _context.Users.Where(u => u.Id == userId && u.IsDeleted == false).ToListAsync();
                 else
-                    users = await _context.Users.Where(u => u.IsDeleted == false).ToListAsync();
+                    users = await _context.Users.Where(u => u.IsDeleted == false && u.Role == RoleEnum.Operator).ToListAsync();
 
                 if (users.Any() is false && userId is not null)
                     throw new NotImplementedException("هیچ کاربری با شناسه مورد نظر یافت نشد.");

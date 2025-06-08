@@ -44,9 +44,13 @@ namespace Nursing_Service.Application.Services.PatinetNeedService.Query.GetPatie
                             IsPast = pns.IsPast,
                             NurseId = pns.NurseId,
                             PatientId = pns.Id,
+                            PatientFullName = pns.Patient.FullName,
                             ServiceDateTime = pns.ServiceDateTime,
                             ServiceId = pns.ServiceId,
-                            SuperVisorId = pns.SuperVisorId
+                            ServiceName = pns.Service.Name,
+                            SuperVisorId = pns.SuperVisorId,
+                            SuperVisorFullName = $"{pns.AssignSuperVisor.FirstName} {pns.AssignSuperVisor.LastName}",
+                            NurseFullName = pns.AssignNurse != null ? $"{pns.AssignNurse.FirstName} {pns.AssignNurse.LastName}" : null
                         }).ToList()
                     };
 

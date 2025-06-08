@@ -1,7 +1,8 @@
-﻿@{
+﻿@using Nursing_Service.Application.Services.Users.Query
+@model List<GetUserResultDTO>
+@{
     Layout = "_AdminDashboard_Layout";
 }
-
 
 <div class="main-header">
     <h2>لیست اپراتورها</h2>
@@ -19,96 +20,36 @@
         <tr>
             <th>نام کاربری</th>
             <th>نام و نام خانوادگی</th>
-            <th>کدملی</th>
+            <th>رمز عبور</th>
             <th>تلفن همراه</th>
             <th>ایمیل</th>
             <th>عملیات</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td><span class="status">3750636785</span></td>
-            <td>09187889654</td>
-            <td>asoo.fatahi@gmail.com</td>
-            <td>
-                <button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">
-                    حذف
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">آروین الیاسی</span></td>
-            <td><span class="status">386536785</span></td>
-            <td>09127896623</td>
-            <td>asoo.fatahi@gmail.com</td>
-            <td>
-                <button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">
-                    حذف
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">زاهد محمودی</span></td>
-            <td><span class="status">3869763514</span></td>
-            <td>09146782315</td>
-            <td>asoo.fatahi@gmail.com</td>
-            <td>
-                <button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">
-                    حذف
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">پیام زارعی</span></td>
-            <td><span class="status">386536785</span></td>
-            <td>09187793265</td>
-            <td>asoo.fatahi@gmail.com</td>
-            <td>
-                <button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">
-                    حذف
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">آرمان علوی </span></td>
-            <td><span class="status">3750626478</span></td>
-            <td>09226782034</td>
-            <td>asoo.fatahi@gmail.com</td>
-            <td>
-                <button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">
-                    حذف
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">علی انتظاری </span></td>
-            <td><span class="status">3830626596</span></td>
-            <td>09126452943</td>
-            <td>asoo.fatahi@gmail.com</td>
-            <td>
-                <button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">
-                    حذف
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">پارسا کریمی</span></td>
-            <td><span class="status">292067984</span></td>
-            <td>09147983005</td>
-            <td>asoo.fatahi@gmail.com</td>
-            <td>
-                <button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">
-                    حذف
-                </button>
-            </td>
-        </tr>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.UserName</td>
+                    <td><span class="status">@user.FirstName @user.LastName</span></td>
+                    <td><span class="status">@user.Password</span></td>
+                    <td>@user.PhoneNumber</td>
+                    <td>@user.Email</td>
+                    <td>
+                        <button class="edit-btn">مشاهده</button>
+                        <button class="edit-btn">ویرایش</button>
+                        <button class="edit-btn status offline">حذف</button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" style="text-align:center;">اپراتوری یافت نشد.</td>
+            </tr>
+        }
     </tbody>
 </table>

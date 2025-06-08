@@ -345,3 +345,16 @@ body {
         background: #fbe9e7;
         color: #d84315;
     }
+
+.sidebar-menu a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.dashboard-cards {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    margin-top: 50px; /* فاصله از بالا */
+}

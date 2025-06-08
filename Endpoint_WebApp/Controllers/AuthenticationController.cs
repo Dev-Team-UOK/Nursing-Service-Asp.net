@@ -186,6 +186,7 @@ namespace Endpoint_WebApp.Controllers
                 throw new ArgumentOutOfRangeException(nameof(req.Role));
         }
 
+        [Route("/SignOut")]
         public async Task<IActionResult> SignOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

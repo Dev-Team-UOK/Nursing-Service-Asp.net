@@ -26,7 +26,7 @@ function SignInUser() {
                 ).then(function (isConfirm) {
                     // Redirect based on data.message value
                     if (data.message === "مدیر وارد شدید") {
-                        window.location.replace("/AdminDashboard/Index");
+                        window.location.replace("/AdminDashboard/Reports");
                     } else if (data.message === "پرستار وارد شدید") {
                         window.location.replace("/NurseDashboard/Index");
                     } else if (data.message === "سوپر وایزر وارد شدید") {

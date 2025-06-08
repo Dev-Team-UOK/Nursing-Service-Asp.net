@@ -6,6 +6,7 @@ namespace Nursing_Service.Application.Services.Patient.Query.GetPatients
     public class GetPatientsResultDTO
     {
         public ulong Id { get; set; }
+        public string NationalCode { get; set; }
         public string FullName { get; set; }
         public string PhoneNumber { get; set; }
         public uint Age { get; set; }

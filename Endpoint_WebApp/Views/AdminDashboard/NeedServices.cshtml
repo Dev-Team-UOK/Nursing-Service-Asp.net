@@ -1,14 +1,15 @@
-﻿@{
-	Layout = "_AdminDashboard_Layout";
+﻿@using Nursing_Service.Application.Services.PatinetNeedService.Query.GetPatientNeedServices
+@model List<GetPatientNeedServiceResultDTO>
+@{
+    Layout = "_AdminDashboard_Layout";
 }
-<<div class="main-header">
+<div class="main-header">
     <h2>لیست درخواست‌ها</h2>
     <span class="subtitle">درخواست‌ها </span>
 </div>
 <table class="patients-table">
     <div class="table-actions">
     </div>
-
     <thead>
         <tr>
             <th>شناسه</th>
@@ -21,68 +22,29 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>علی همتی</td>
-            <td>الناز مشیری</td>
-            <td>واکسیناسیون</td>
-            <td><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>علی همتی</td>
-            <td>الناز مشیری</td>
-            <td>واکسیناسیون</td>
-            <td><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>علی همتی</td>
-            <td>الناز مشیری</td>
-            <td>واکسیناسیون</td>
-            <td><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>علی همتی</td>
-            <td>الناز مشیری</td>
-            <td>واکسیناسیون</td>
-            <td><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>علی همتی</td>
-            <td>الناز مشیری</td>
-            <td>واکسیناسیون</td>
-            <td><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>علی همتی</td>
-            <td>الناز مشیری</td>
-            <td>واکسیناسیون</td>
-            <td><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>علی همتی</td>
-            <td>مهناز وحیدی</td>
-            <td>واکسیناسیون</td>
-            <td><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var request in Model)
+            {
+                <tr>
+                    <td><span class="status">@request.Id</span></td>
+                    <td>@request.ServiceDateTime</td>
+                    <td><span class="status">@request.PatientFullName</span></td>
+                    <td>@request.NurseFullName</td>
+                    <td>@request.SuperVisorFullName</td>
+                    <td>@request.ServiceName</td>
+                    <td>
+                        <button class="edit-btn">ویرایش</button>
+                        <button class="edit-btn status offline">حذف</button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" style="text-align:center;">هیچ درخواستی یافت نشد.</td>
+            </tr>
+        }
     </tbody>
 </table>

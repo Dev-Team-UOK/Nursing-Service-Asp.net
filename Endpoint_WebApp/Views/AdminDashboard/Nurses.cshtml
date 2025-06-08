@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Nursing_Service.Application.Services.Nurse.Query.GetNurses
+@model List<GetNurseResultDTO>
+@{
 	Layout = "_AdminDashboard_Layout";
 }
 <div class="main-header">
@@ -12,126 +14,46 @@
             <span class="material-icons">add</span>
         </button>
     </div>
-
     <thead>
         <tr>
             <th>نام کاربری</th>
             <th>شماره پرستاری</th>
             <th>نام و نام خانوادگی</th>
-            <th>کدملی</th>
+            <th>تاریخ شروع همکاری</th>
             <th>تلفن همراه</th>
-            <th>سابقه کاری(سال) </th>
+            <th>سابقه کاری(سال)</th>
             <th>ایمیل</th>
             <th>سوپروایزر</th>
             <th>عملیات</th>
         </tr>
     </thead>
-    </thead>
     <tbody>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">1234</span></td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td><span class="status">3750636785</span></td>
-            <td>09187889654</td>
-            <td>2</td>
-            <td>asoo.fatahi@gmail.com</td>
-            <td>ناصر وکیلی</td>
-            <td>
-                <button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">
-                    حذف
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">1234</span></td>
-            <td><span class="status">آروین الیاسی</span></td>
-            <td><span class="status">386536785</span></td>
-            <td>09127896623</td>
-            <td>2</td>
-            <td>asoo.fatahi@gmail.com</td>
-            <td><button class="edit-btn status offline">انتخاب</button></td>
-            <td>
-                <button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">
-                    حذف
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">1234</span></td>
-            <td><span class="status">زاهد محمودی</span></td>
-            <td><span class="status">3869763514</span></td>
-            <td>09146782315</td>
-            <td>2</td>
-            <td>asoo.fatahi@gmail.com</td>
-            <td>ناصر وکیلی</td>
-            <td>
-                <button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">
-                    حذف
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">1234</span></td>
-            <td><span class="status">پیام زارعی</span></td>
-            <td><span class="status">386536785</span></td>
-            <td>09187793265</td>
-            <td>2</td>
-            <td>asoo.fatahi@gmail.com</td>
-            <td>ناصر وکیلی</td>
-            <td>
-                <button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">
-                    حذف
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">1234</span></td>
-            <td><span class="status">آرمان علوی </span></td>
-            <td><span class="status">3750626478</span></td>
-            <td>09226782034</td>
-            <td>2</td>
-            <td>asoo.fatahi@gmail.com</td>
-            <td>ناصر وکیلی</td>
-            <td>
-                <button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">
-                    حذف
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">1234</span></td>
-            <td><span class="status">علی انتظاری </span></td>
-            <td><span class="status">3830626596</span></td>
-            <td>09126452943</td>
-            <td>2</td>
-            <td>asoo.fatahi@gmail.com</td>
-            <td>ناصر وکیلی</td>
-            <td>
-                <button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">
-                    حذف
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">1234</span></td>
-            <td><span class="status">پارسا کریمی</span></td>
-            <td><span class="status">292067984</span></td>
-            <td>09147983005</td>
-            <td>2</td>
-            <td>asoo.fatahi@gmail.com</td>
-            <td>ناصر وکیلی</td>
-            <td>
-                <button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">
-                    حذف
-                </button>
-            </td>
-        </tr>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var nurse in Model)
+            {
+                <tr>
+                    <td>@nurse.UserName</td>
+                    <td><span class="status">@nurse.NurseNumber</span></td>
+                    <td><span class="status">@nurse.FirstName @nurse.LastName</span></td>
+                    <td><span class="status">@nurse.StartWorkingInCompany</span></td>
+                    <td>@nurse.PhoneNumber</td>
+                    <td>@nurse.WorkHistoryInYear</td>
+                    <td>@nurse.Email</td>
+                    <td>@nurse.SuperVisorFullName</td>
+                    <td>
+                        <button class="edit-btn">مشاهده</button>
+                        <button class="edit-btn">ویرایش</button>
+                        <button class="edit-btn status offline">حذف</button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="9" style="text-align:center;">هیچ پرستاری یافت نشد.</td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -6,7 +6,6 @@
     <title>پرستار سلامت</title>
     <link rel="stylesheet" href="~/lib/AdminDashboardAssets/css/Admindashboard.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 </head>
 
 <body>
@@ -27,9 +26,11 @@
         <button class="icon-btn">
             <span class="material-icons">notifications</span>
         </button>
-        <button class="icon-btn logout" title="خروج">
-            <span class="material-icons">logout</span>
-        </button>
+        <a asp-action="SignOut" asp-controller="Authentication">
+            <button class="icon-btn logout" title="خروج">
+                <span class="material-icons">logout</span>
+            </button>
+        </a>
     </div>
 
 
@@ -41,12 +42,20 @@
                 <span>پرستار سلامت </span>
             </div>
             <ul class="sidebar-menu">
-                <li class="patients">بیماران</li>
-                <li class="operators">اپراتورها</li>
-                <li class="nurses">پرستاران</li>
-                <li class="supervisors">سوپروایزرها</li>
-                <li class="requests">لیست درخواست‌ها</li>
-                <li class="services">مدیریت سرویس‌ها</li>
+                <a asp-action="Reports" asp-controller="admindashboard">
+                <li class="patients">گزارشات</li></a>
+                <a asp-action="patients" asp-controller="admindashboard">
+                <li class="patients">بیماران</li></a>
+                <a asp-action="operators" asp-controller="admindashboard">
+                <li class="operators">اپراتورها</li></a>
+                <a asp-action="nurses" asp-controller="admindashboard">
+                <li class="nurses">پرستاران</li></a>
+                <a asp-action="supervisors" asp-controller="admindashboard">
+                <li class="supervisors">سوپروایزرها</li></a>
+                <a asp-action="NeedServices" asp-controller="admindashboard">
+                <li class="requests">لیست درخواست‌ها</li></a>
+                <a asp-action="Services" asp-controller="admindashboard">
+                <li class="services">مدیریت سرویس‌ها</li></a>
             </ul>
             <div class="sidebar-footer">
                 <button class="profile-btn">
@@ -54,16 +63,15 @@
                     <img src="image/img_avatar.png" alt="پروفایل" class="profile-img">
                 </button>
                 <div class="sidebar-desc">
-                    پرستار سلامت<br>اپراتورها
+                    پرستار سلامت<br>@ViewData["PageTitle"]
                 </div>
             </div>
         </aside>
 
         <!-- محتوای اصلی -->
         <main class="main-content">
-             @RenderBody()
+            @RenderBody()
         </main>
     </div>
 </body>
-
 </html>

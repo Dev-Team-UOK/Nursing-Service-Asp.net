@@ -1,6 +1,10 @@
-﻿@{
+﻿@using Nursing_Service.Application.Services.Patient.Query.GetPatients
+@model List<GetPatientsResultDTO> 
+@{
 	Layout = "_AdminDashboard_Layout";
-}<div class="main-header">
+}
+
+<div class="main-header">
     <h2>لیست بیماران</h2>
     <span class="subtitle">اطلاعات بیمار</span>
 </div>
@@ -14,7 +18,7 @@
 
     <thead>
         <tr>
-            <th>تاریخ</th>
+            <th>سن</th>
             <th>نام و نام خانوادگی</th>
             <th>کدملی</th>
             <th>تلفن همراه</th>
@@ -23,61 +27,43 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td><span class="status">3750636785</span></td>
-            <td>09187889654</td>
-            <td><span class="status pending">در حال بررسی</span></td>
-            <td><button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td>1404/04/18</td>
-            <td><span class="status">آروین الیاسی</span></td>
-            <td><span class="status">386536785</span></td>
-            <td>09127896623</td>
-            <td><span class="status online">انجام شده</span></td>
-            <td><button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td>1404/05/28</td>
-            <td><span class="status">زاهد محمودی</span></td>
-            <td><span class="status">3869763514</span></td>
-            <td>09146782315</td>
-            <td><span class="status online">انجام شده</span></td>
-            <td><button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td>1404/01/02</td>
-            <td><span class="status">پیام زارعی</span></td>
-            <td><span class="status">386536785</span></td>
-            <td>09187793265</td>
-            <td><span class="status online">انجام شده</span></td>
-            <td><button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td>1404/01/08</td>
-            <td><span class="status">آرمان علوی  </span></td>
-            <td><span class="status">3750626478</span></td>
-            <td>09226782034</td>
-            <td><span class="status offline">انجام نشده</span></td>
-            <td><button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td>1404/01/02</td>
-            <td><span class="status">علی انتظاری </span></td>
-            <td><span class="status">3830626596</span></td>
-            <td>09126452943</td>
-            <td><span class="status online">انجام شده</span></td>
-            <td><button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td>1404/09/12</td>
-            <td><span class="status">پارسا کریمی</span></td>
-            <td><span class="status">292067984</span></td>
-            <td>09147983005</td>
-            <td><span class="status online">انجام شده</span></td>
-            <td><button class="edit-btn">مشاهده</button><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var patient in Model)
+            {
+                <tr>
+                    <td>@patient.Age</td>
+                    <td><span class="status">@patient.FullName</span></td>
+                    <td><span class="status">@patient.NationalCode</span></td>
+                    <td>@patient.PhoneNumber</td>
+                    <td>
+                        @{
+                            var statusClass = patient.Services!.Any(s => s.IsDone == false && s.IsPast == true) is true ? "offline" :
+                            patient.Services.Any(s => s.IsDone == false) is false ? "online" : "pending";
+
+                            var context = statusClass switch
+                            {
+                                "online" => statusClass = "انجام شده",
+                                "offline" => statusClass = "انجام نشده",
+                                "pending" => statusClass = "درحال انجام",
+                                _ => statusClass = "status unknown"
+                            };
+                        }
+                        <span class="status @statusClass">@context</span>
+                    </td>
+                    <td>
+                        <button class="edit-btn">مشاهده</button>
+                        <button class="edit-btn">ویرایش</button>
+                        <button class="edit-btn status offline">حذف</button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" style="text-align:center;">بیماری یافت نشد.</td>
+            </tr>
+        }
     </tbody>
 </table>

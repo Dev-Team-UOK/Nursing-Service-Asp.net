@@ -1,5 +1,7 @@
-﻿@{
-	Layout = "_AdminDashboard_Layout";
+﻿@using Nursing_Service.Application.Services.Service.Query.GetServices
+@model List<GetServiceResultDTO>
+@{
+    Layout = "_AdminDashboard_Layout";
 }
 
 <div class="main-header">
@@ -13,7 +15,6 @@
             <span class="material-icons">add</span>
         </button>
     </div>
-
     <thead>
         <tr>
             <th>شناسه</th>
@@ -24,54 +25,27 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td><span class="status">مراقبت از سالمند</span></td>
-            <td>200,000</td>
-            <td>120</td>
-            <td><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td><span class="status">مراقبت از سالمند</span></td>
-            <td>200,000</td>
-            <td>120</td>
-            <td><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td><span class="status">مراقبت از سالمند</span></td>
-            <td>200,000</td>
-            <td>120</td>
-            <td><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td><span class="status">مراقبت از سالمند</span></td>
-            <td>200,000</td>
-            <td>120</td>
-            <td><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td><span class="status">مراقبت از سالمند</span></td>
-            <td>200,000</td>
-            <td>120</td>
-            <td><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td><span class="status">مراقبت از سالمند</span></td>
-            <td>200,000</td>
-            <td>120</td>
-            <td><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td><span class="status">مراقبت از سالمند</span></td>
-            <td>200,000</td>
-            <td>120</td>
-            <td><button class="edit-btn">ویرایش</button><button class="edit-btn status offline">حذف</button></td>
-        </tr>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var service in Model)
+            {
+                <tr>
+                    <td><span class="status">@service.Id</span></td>
+                    <td><span class="status">@service.Name</span></td>
+                    <td>@service.Cost.ToString("N0")</td>
+                    <td>@service.MinDuration</td>
+                    <td>
+                        <button class="edit-btn">ویرایش</button>
+                        <button class="edit-btn status offline">حذف</button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" style="text-align:center;">هیچ سرویسی یافت نشد.</td>
+            </tr>
+        }
     </tbody>
 </table>

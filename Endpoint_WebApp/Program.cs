@@ -3,7 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Nursing_Service.Application.Interfaces.Contexts;
 using Nursing_Service.Application.Services.Authentication.Command.SignUp;
 using Nursing_Service.Application.Services.Nurse.Command.Create;
+using Nursing_Service.Application.Services.Nurse.Query.GetNurses;
+using Nursing_Service.Application.Services.Patient.Query.GetPatients;
+using Nursing_Service.Application.Services.PatinetNeedService.Query.GetPatientNeedServices;
+using Nursing_Service.Application.Services.RequestForm.Command;
+using Nursing_Service.Application.Services.Service.Query.GetServices;
 using Nursing_Service.Application.Services.SuperVisor.Command.Create;
+using Nursing_Service.Application.Services.SuperVisor.Query.GetSuperVisors;
 using Nursing_Service.Application.Services.Users.Commands.Create;
 using Nursing_Service.Application.Services.Users.Queries.SignIn;
 using Nursing_Service.Application.Services.Users.Query;
@@ -50,6 +56,13 @@ builder.Services.AddScoped<ISignInUserService, SignInUserService>();
 builder.Services.AddScoped<IGetUserService, GetUserService>();
 builder.Services.AddScoped<ICreateNurseService, CreateNurseService>();
 builder.Services.AddScoped<ICreateSuperVisor, CreateSuperVisor>();
+builder.Services.AddScoped<IGetPatients, GetPatients>();
+builder.Services.AddScoped<IGetPatientNeedServices, GetPatientNeedSevices>();
+builder.Services.AddScoped<IGetNursesService, GetNursesService>();
+builder.Services.AddScoped<IGetPatientNeedServices, GetPatientNeedSevices>();
+builder.Services.AddScoped<IGetSuperVisors, GetSuperVisors>();
+builder.Services.AddScoped<IGetServices, GetService>();
+builder.Services.AddScoped<ICreateRequestForm, CreateRequestForm>();
 builder.Services.AddTransient<ISMSIr, SMSIr>();
 
 

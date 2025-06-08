@@ -33,6 +33,8 @@ namespace Nursing_Service.Application.Services.Service.Query.GetServices
             {
                 var services = new List<Domain.Entities.Service.Service>();
 
+                services = await _context.Services.Where(s => s.IsDeleted == false).ToListAsync();
+
                 if (nurseId is not null)
                     services = nurseId == 0 ? 
                         throw new NotImplementedException("شناسه پرستار نمیتواند 0 باشد.") 

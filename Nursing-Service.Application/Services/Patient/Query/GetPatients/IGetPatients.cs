@@ -32,6 +32,7 @@ namespace Nursing_Service.Application.Services.Patient.Query.GetPatients
                     result.Add(new GetPatientsResultDTO
                     {
                         Id = p.Id,
+                        NationalCode = p.NationalCode,
                         Weight = p.Weight,
                         FullName = p.FullName,
                         Address = p.Address,
