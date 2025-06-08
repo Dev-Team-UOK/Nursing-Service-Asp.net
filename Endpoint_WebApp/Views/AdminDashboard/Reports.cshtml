@@ -1,0 +1,45 @@
+﻿@using Endpoint_WebApp.Models.ViewModels.AdminDashboard
+@model ReportsViewModel
+@{
+    Layout = "_AdminDashboard_Layout";
+    // مقادیر دمو - اینها را با داده‌های واقعی جایگزین کنید
+    var totalNurses = Model.NumberOfNurses;
+    var totalPatients = Model.NumberOfPatients;
+    var totalServices = Model.NumberOfServices;
+    var lastMonthServices = Model.NumberOfPNSInThisMonth;
+}
+
+<div class="dashboard-cards">
+    <!-- کارت پرستاران -->
+    <div class="report-card" style="background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(44,62,80,0.10); padding: 32px 28px; min-width: 240px; flex: 1; display: flex; align-items: center; gap: 18px;">
+        <span class="material-icons" style="font-size: 48px; color: #1976d2;">medical_services</span>
+        <div>
+            <div style="font-size: 1.2rem; color: #1976d2; font-weight: bold;">تعداد کل پرستاران</div>
+            <div style="font-size: 2.2rem; font-weight: bold; color: #222;">@totalNurses</div>
+        </div>
+    </div>
+    <!-- کارت بیماران -->
+    <div class="report-card" style="background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(44,62,80,0.10); padding: 32px 28px; min-width: 240px; flex: 1; display: flex; align-items: center; gap: 18px;">
+        <span class="material-icons" style="font-size: 48px; color: #43a047;">accessible</span>
+        <div>
+            <div style="font-size: 1.2rem; color: #43a047; font-weight: bold;">تعداد کل بیماران</div>
+            <div style="font-size: 2.2rem; font-weight: bold; color: #222;">@totalPatients</div>
+        </div>
+    </div>
+    <!-- کارت سرویس‌ها -->
+    <div class="report-card" style="background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(44,62,80,0.10); padding: 32px 28px; min-width: 240px; flex: 1; display: flex; align-items: center; gap: 18px;">
+        <span class="material-icons" style="font-size: 48px; color: #ffb300;">healing</span>
+        <div>
+            <div style="font-size: 1.2rem; color: #ffb300; font-weight: bold;">تعداد سرویس‌ها</div>
+            <div style="font-size: 2.2rem; font-weight: bold; color: #222;">@totalServices</div>
+        </div>
+    </div>
+    <!-- کارت خدمات انجام شده در ماه اخیر -->
+    <div class="report-card" style="background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(44,62,80,0.10); padding: 32px 28px; min-width: 240px; flex: 1; display: flex; align-items: center; gap: 18px;">
+        <span class="material-icons" style="font-size: 48px; color: #1976d2;">event_available</span>
+        <div>
+            <div style="font-size: 1.2rem; color: #1976d2; font-weight: bold;">خدمات انجام شده در ماه اخیر</div>
+            <div style="font-size: 2.2rem; font-weight: bold; color: #222;">@lastMonthServices</div>
+        </div>
+    </div>
+</div>
