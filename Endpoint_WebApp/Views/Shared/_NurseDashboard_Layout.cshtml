@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>پرستار سلامت</title>
-    <link rel="stylesheet" href="styles.css">
+    @RenderSection("Styles", required: false)
+    <link rel="stylesheet" href="~/lib/NurseDashboardAssets/css/NurseDashboard.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
@@ -28,9 +29,11 @@
         <button class="icon-btn">
             <span class="material-icons">notifications</span>
         </button>
-        <button class="icon-btn logout" title="خروج">
-            <span class="material-icons">logout</span>
-        </button>
+        <a asp-action="SignOut" asp-controller="Authentication">
+            <button class="icon-btn logout" title="خروج">
+                <span class="material-icons">logout</span>
+            </button>
+        </a>
     </div>
 
 
@@ -42,9 +45,15 @@
                 <span>پرستار سلامت </span>
             </div>
             <ul class="sidebar-menu">
+                <a asp-action="Index" asp-controller="NurseDashboard">
                 <li class="patients">صفحه اصلی</li>
+                </a>
+                <a asp-action="RequestList" asp-controller="NurseDashboard">
                 <li class="requests">لیست درخواست‌ها</li>
+                </a>
+                <a asp-action="Ability" asp-controller="NurseDashboard">
                 <li class="services">توانایی‌ها</li>
+                </a>
             </ul>
 
             <div class="sidebar-footer">
@@ -65,4 +74,5 @@
     </div>
 </body>
 
+@RenderSection("Scripts", required: false)
 </html>

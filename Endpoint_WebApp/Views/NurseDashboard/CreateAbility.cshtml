@@ -1,0 +1,41 @@
+﻿@model Endpoint_WebApp.Models.ViewModels.NurseDashboard.CreateAbilityViewModel
+@{
+    Layout = "_NurseDashboard_Layout";
+    ViewData["Title"] = "افزودن مهارت جدید";
+}
+
+<div class="main-header">
+    <h2>افزودن مهارت جدید</h2>
+</div>
+
+<form asp-action="CreateAbility" method="post" id="createAbilityForm">
+    <div class="form-group">
+        <label for="ServiceId">انتخاب سرویس</label>
+        <select asp-for="ServiceId" class="form-control" id="ServiceId" required>
+            <option value="">-- انتخاب سرویس --</option>
+            <!-- آیتم‌ها با جاوااسکریپت اضافه می‌شوند -->
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">ثبت مهارت</button>
+</form>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('/api/services') // فرض بر این است که یک API با این مسیر دارید
+                .then(response => response.json())
+                .then(data => {
+                    const select = document.getElementById('ServiceId');
+                    data.forEach(service => {
+                        const option = document.createElement('option');
+                        option.value = service.id;
+                        option.text = service.name + " - " + service.cost.toLocaleString() + " تومان";
+                        select.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    alert('خطا در دریافت لیست سرویس‌ها');
+                });
+        });
+    </script>
+}

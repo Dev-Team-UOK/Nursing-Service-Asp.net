@@ -431,3 +431,8 @@ body {
     transform: translateY(-50%);
     pointer-events: none;
 }
+
+a {
+    text-decoration: none !important;
+    color: inherit;
+}

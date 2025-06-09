@@ -486,11 +486,6 @@ body {
     }
 
 
-
-
-
-
-    
 /*  استایل مربوط به قسمت ایجاد بیمار جدید */
 body {
     font-family: Tahoma, sans-serif;
@@ -545,3 +540,7 @@ body {
   button:hover {
     background-color: #6fbdee;
   }
+a {
+    text-decoration: none !important;
+    color: inherit;
+}

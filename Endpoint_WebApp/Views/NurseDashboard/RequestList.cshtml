@@ -1,7 +1,7 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Nursing_Service.Application.Services.PatinetNeedService.Query.GetPatientNeedServices
+@model List<GetPatientNeedServiceResultDTO>
 @{
+    Layout = "_NurseDashboard_Layout";
 }
 
 <div class="main-header">
@@ -9,10 +9,6 @@
     <span class="subtitle">درخواست‌ها </span>
 </div>
 <table class="patients-table">
-    <div class="table-actions">
-    </div>
-
-
     <thead>
         <tr>
             <th>شناسه</th>
@@ -24,88 +20,39 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>واکسیناسیون</td>
-            <td>
-                <select id="Role_SignUp" class="styled-select">
-                    <option value="operator">اقدام نشده</option>
-                    <option value="nurse">انجام شد</option>
-                </select>
-            <td>ثبت شد</td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>واکسیناسیون</td>
-            <td>
-                <select id="Role_SignUp" class="styled-select">
-                    <option value="operator">اقدام نشده</option>
-                    <option value="nurse">انجام شد</option>
-                </select>
-            <td><button class="edit-btn">ثبت</button></td>
-        </tr>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>واکسیناسیون</td>
-            <td>
-                <select id="Role_SignUp" class="styled-select">
-                    <option value="operator">اقدام نشده</option>
-                    <option value="nurse">انجام شد</option>
-                </select>
-            <td>ثبت شد</td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>واکسیناسیون</td>
-            <td>
-                <select id="Role_SignUp" class="styled-select">
-                    <option value="operator">اقدام نشده</option>
-                    <option value="nurse">انجام شد</option>
-                </select>
-            <td>ثبت شد</td>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>واکسیناسیون</td>
-            <td>
-                <select id="Role_SignUp" class="styled-select">
-                    <option value="operator">اقدام نشده</option>
-                    <option value="nurse">انجام شد</option>
-                </select>
-            <td>ثبت شد</td>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>واکسیناسیون</td>
-            <td>
-                <select id="Role_SignUp" class="styled-select">
-                    <option value="operator">اقدام نشده</option>
-                    <option value="nurse">انجام شد</option>
-                </select>
-            <td>ثبت شد</td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>واکسیناسیون</td>
-            <td>
-                <select id="Role_SignUp" class="styled-select">
-                    <option value="operator">اقدام نشده</option>
-                    <option value="nurse">انجام شد</option>
-                </select>
-            <td>ثبت شد</td>
-        </tr>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td><span class="status">@item.Id</span></td>
+                    <td>@item.ServiceDateTime.ToString("yyyy/MM/dd HH:mm")</td>
+                    <td><span class="status">@item.PatientFullName</span></td>
+                    <td>@item.ServiceName</td>
+                    <td>
+                        <select class="styled-select" disabled>
+                            <option value="notdone" selected="@(item.IsDone ? "" : "selected")">اقدام نشده</option>
+                            <option value="done" selected="@(item.IsDone ? "selected" : "")">انجام شد</option>
+                        </select>
+                    </td>
+                    <td>
+                        @if (item.IsDone)
+                        {
+                            <span>ثبت شد</span>
+                        }
+                        else
+                        {
+                            <button class="edit-btn">ثبت</button>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">درخواستی وجود ندارد.</td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -1,79 +1,54 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Nursing_Service.Application.Services.Service.Query.GetServices
+@model List<GetServiceResultDTO>
 @{
+    Layout = "_NurseDashboard_Layout";
 }
 
 <div class="main-header">
     <h2>مدیریت توانایی‌ها</h2>
-    <span class="subtitle">توانایی‌ها </span>
+    <span class="subtitle">توانایی‌ها</span>
 </div>
-<table class="patients-table">
-    <div class="table-actions">
-        <button class="add-btn">
-            <span class="btn-text">افزودن مهارت</span>
-            <span class="material-icons">add</span>
-        </button>
-    </div>
 
+<div class="table-actions">
+    <a class="add-btn" href="/NurseDashboard/CreateAbility">
+        <span class="btn-text">افزودن مهارت</span>
+        <span class="material-icons">add</span>
+    </a>
+</div>
+
+<table class="patients-table">
     <thead>
         <tr>
             <th>شناسه</th>
             <th>سرویس</th>
-            <th>هزینه(تومان)</th>
-            <th>زمان انجام(دقیقه)</th>
+            <th>هزینه (تومان)</th>
+            <th>زمان انجام (دقیقه)</th>
             <th>عملیات</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td><span class="status">مراقبت از سالمند</span></td>
-            <td>200,000</td>
-            <td>120</td>
-            <td><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td><span class="status">مراقبت از سالمند</span></td>
-            <td>200,000</td>
-            <td>120</td>
-            <td><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td><span class="status">مراقبت از سالمند</span></td>
-            <td>200,000</td>
-            <td>120</td>
-            <td><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td><span class="status">مراقبت از سالمند</span></td>
-            <td>200,000</td>
-            <td>120</td>
-            <td><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td><span class="status">مراقبت از سالمند</span></td>
-            <td>200,000</td>
-            <td>120</td>
-            <td><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td><span class="status">مراقبت از سالمند</span></td>
-            <td>200,000</td>
-            <td>120</td>
-            <td><button class="edit-btn status offline">حذف</button></td>
-        </tr>
-        <tr>
-            <td><span class="status">1</span></td>
-            <td><span class="status">مراقبت از سالمند</span></td>
-            <td>200,000</td>
-            <td>120</td>
-            <td><button class="edit-btn status offline">حذف</button></td>
-        </tr>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td><span class="status">@item.Id</span></td>
+                    <td><span class="status">@item.Name</span></td>
+                    <td>@item.Cost.ToString("N0")</td>
+                    <td>@item.MinDuration?.ToString() ?? "-"</td>
+                    <td>
+                        <form asp-action="DeleteAbility" asp-route-id="@item.Id" method="post" style="display:inline;">
+                            <button type="submit" class="edit-btn status offline" onclick="return confirm('آیا مطمئن هستید؟');">حذف</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">هیچ مهارتی ثبت نشده است.</td>
+            </tr>
+        }
     </tbody>
 </table>

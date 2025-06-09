@@ -73,6 +73,7 @@ namespace Endpoint_WebApp.Controllers
                     {
                         new Claim(ClaimTypes.Name, signinResult.Data!.UserName),
                         new Claim(ClaimTypes.Role, signinResult.Data!.Role.ToString()),
+                        new Claim(ClaimTypes.NameIdentifier, signinResult.Data!.Id.ToString())
                     };
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -111,6 +112,7 @@ namespace Endpoint_WebApp.Controllers
                     {
                         new Claim(ClaimTypes.Name, signupResult.Data!.UserName),
                         new Claim(ClaimTypes.Role, signupResult.Data!.Role.ToString()),
+                        new Claim(ClaimTypes.NameIdentifier, signupResult.Data!.Id.ToString())
                     };
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
