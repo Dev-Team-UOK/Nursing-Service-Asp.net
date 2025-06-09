@@ -1,0 +1,51 @@
+﻿@using Nursing_Service.Application.Services.Users.Commands.Create
+@model CreateUserRequestInfo
+@{
+    Layout = "_AdminDashboard_Layout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/lib/AdminDashboardAssets/css/EditTemplate.css" />
+}
+
+<div class="form-header">
+    <h2>ایجاد اپراتور جدید</h2>
+    <span class="subtitle">لطفا اطلاعات اپراتور را وارد کنید</span>
+</div>
+
+<form asp-action="CreateOperator" method="post" class="app-form">
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" type="password" autocomplete="new-password" />
+        <span asp-validation-for="Password" class="field-validation"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">ایجاد اپراتور</button>
+</form>
+
+@* @section Scripts { *@
+@*     <partial name="_ValidationScriptsPartial" /> *@
+@* } *@

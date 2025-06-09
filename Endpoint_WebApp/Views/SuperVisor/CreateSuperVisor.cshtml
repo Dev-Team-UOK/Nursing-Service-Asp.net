@@ -1,0 +1,55 @@
+﻿@using Nursing_Service.Application.Services.SuperVisor.Command.Create
+@using Nursing_Service.Domain.Entities.SuperVisor
+@model CreateSuperVisorRequestInfo
+@{
+    Layout = "_AdminDashboard_Layout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/lib/AdminDashboardAssets/css/EditTemplate.css" />
+}
+<div class="form-header">
+    <h2>ایجاد سوپروایزر جدید</h2>
+    <span class="subtitle">لطفا اطلاعات سوپروایزر را وارد کنید</span>
+</div>
+<form asp-action="CreateSuperVisor" method="post" class="app-form">
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" type="password" autocomplete="new-password" />
+        <span asp-validation-for="Password" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Shift"></label>
+        <select asp-for="Shift" class="form-control" asp-items="Html.GetEnumSelectList<Shift>()"></select>
+        <span asp-validation-for="Shift" class="field-validation"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">ایجاد سوپروایزر</button>
+</form>
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,106 @@
+﻿.details-header {
+    margin-bottom: 1.5rem;
+    text-align: right;
+    background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%);
+    padding: 1.2rem 1.5rem 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(25, 118, 210, 0.08);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+    .details-header h2, .details-header h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 2rem;
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+    .details-header .subtitle {
+        color: #e3f2fd;
+        font-size: 1.1rem;
+        font-weight: 400;
+    }
+
+.details-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    padding: 2rem 1.5rem;
+    max-width: 650px;
+    margin: 0 auto 2rem auto;
+    direction: rtl;
+}
+
+.details-list {
+    margin: 0;
+    padding: 0;
+}
+
+.details-row {
+    display: flex;
+    margin-bottom: 1.1rem;
+}
+
+    .details-row dt {
+        min-width: 120px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .details-row dd {
+        margin: 0 0 0 1.5rem;
+        color: #444;
+        flex: 1;
+        word-break: break-word;
+    }
+
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto 2rem auto;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    direction: rtl;
+}
+
+    .details-table th, .details-table td {
+        padding: 0.8rem 1rem;
+        text-align: right;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .details-table th {
+        background: #f5f5f5;
+        font-weight: 600;
+        color: #1976d2;
+    }
+
+    .details-table tr:last-child td {
+        border-bottom: none;
+    }
+
+.status {
+    padding: 0.2rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+    .status.online {
+        background: #43a047;
+    }
+
+    .status.offline {
+        background: #d32f2f;
+    }
+
+    .status.pending {
+        background: #ffa000;
+        color: #333;
+    }

@@ -1,0 +1,85 @@
+﻿@using Nursing_Service.Application.Services.Nurse.Command.Create
+@model CreateNurseRequestInfo
+@{
+    Layout = "_AdminDashboard_Layout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/lib/AdminDashboardAssets/css/EditTemplate.css" />
+}
+<div class="form-header">
+    <h2>ایجاد پرستار جدید</h2>
+    <span class="subtitle">لطفا اطلاعات پرستار را وارد کنید</span>
+</div>
+<form asp-action="CreateNurse" method="post" class="app-form">
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" type="password" autocomplete="new-password" />
+        <span asp-validation-for="Password" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NurseNumber"></label>
+        <input asp-for="NurseNumber" class="form-control" />
+        <span asp-validation-for="NurseNumber" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="WorkHistoryInYear"></label>
+        <input asp-for="WorkHistoryInYear" class="form-control" type="number" min="0" />
+        <span asp-validation-for="WorkHistoryInYear" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="StartWorkingInCompany"></label>
+        <input asp-for="StartWorkingInCompany" class="form-control" type="date" />
+        <span asp-validation-for="StartWorkingInCompany" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label>سرویس‌های قابل انجام</label>
+        <select asp-for="DoService" class="form-control" id="DoService" multiple></select>
+        <span asp-validation-for="DoService" class="field-validation"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">ایجاد پرستار</button>
+</form>
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(function () {
+            $.getJSON('https://localhost:7010/api/service/getall', function (services) {
+                var $serviceList = $('#DoService');
+                $serviceList.empty();
+                services.forEach(function (service) {
+                    $serviceList.append(
+                        $('<option>', {
+                            value: service.id,
+                            text: service.name
+                        })
+                    );
+                });
+            });
+        });
+    </script>
+}

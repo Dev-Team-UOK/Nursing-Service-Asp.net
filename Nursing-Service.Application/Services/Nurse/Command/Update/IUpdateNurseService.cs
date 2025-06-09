@@ -12,7 +12,7 @@ namespace Nursing_Service.Application.Services.Nurse.Command.Update
         Task<BaseResultDTO> ExcuteAsync(UpdateNurseRequestInfo req);
     }
 
-    public class UpdateNurseService
+    public class UpdateNurseService : IUpdateNurseService
     {
         private IDataBaseContext _context;
 

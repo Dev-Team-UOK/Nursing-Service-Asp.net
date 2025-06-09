@@ -9,7 +9,7 @@ namespace Nursing_Service.Domain.Entities.Service
         public string Name { get; set; }
         public decimal Cost { get; set; }
         public short? MinDuration { get; set; }
-        public virtual List<Patient.PatientNeedService> PatientNeedServices { get; set; }
+        public virtual List<PatientNeedService> PatientNeedServices { get; set; }
         public virtual List<NurseCanDoService> NurseDoService { get; set; }
     }
 }

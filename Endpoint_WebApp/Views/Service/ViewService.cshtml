@@ -1,0 +1,28 @@
+﻿@using Nursing_Service.Application.Services.Service.Query.GetServices
+@model GetServiceResultDTO
+@{
+    Layout = "_AdminDashboard_Layout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/lib/AdminDashboardAssets/css/ViewTemplate.css" />
+}
+<div class="details-header">
+    <h2>مشاهده اطلاعات سرویس</h2>
+    <span class="subtitle">جزئیات سرویس</span>
+</div>
+<div class="details-container">
+    <dl class="details-list">
+        <div class="details-row">
+            <dt>نام سرویس:</dt>
+            <dd>@Model.Name</dd>
+        </div>
+        <div class="details-row">
+            <dt>هزینه:</dt>
+            <dd>@Model.Cost.ToString("N0") تومان</dd>
+        </div>
+        <div class="details-row">
+            <dt>حداقل مدت زمان (دقیقه):</dt>
+            <dd>@Model.MinDuration</dd>
+        </div>
+    </dl>
+</div>

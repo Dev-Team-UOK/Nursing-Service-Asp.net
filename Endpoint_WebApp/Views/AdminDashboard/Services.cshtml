@@ -10,10 +10,10 @@
 </div>
 <table class="patients-table">
     <div class="table-actions">
-        <button class="add-btn">
+        <a class="add-btn" href="/Services/Create-Service">
             <span class="btn-text">افزودن</span>
             <span class="material-icons">add</span>
-        </button>
+        </a>
     </div>
     <thead>
         <tr>
@@ -35,8 +35,9 @@
                     <td>@service.Cost.ToString("N0")</td>
                     <td>@service.MinDuration</td>
                     <td>
-                        <button class="edit-btn">ویرایش</button>
-                        <button class="edit-btn status offline">حذف</button>
+                        <a class="edit-btn" href="/Services/View-Service?id=@service.Id">مشاهده</a>
+                        <a class="edit-btn" href="/Services/Edit-Service?id=@service.Id">ویرایش</a>
+                        <a class="edit-btn status offline" href="/Services/Delete-Service?id=@service.Id">حذف</a>
                     </td>
                 </tr>
             }

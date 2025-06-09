@@ -1,0 +1,44 @@
+﻿@using Nursing_Service.Application.Services.PatinetNeedService.Query.GetPatientNeedServices
+@model GetPatientNeedServiceResultDTO
+@{
+    Layout = "_AdminDashboard_Layout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/lib/AdminDashboardAssets/css/ViewTemplate.css" />
+}
+<div class="details-header">
+    <h2>مشاهده اطلاعات درخواست</h2>
+    <span class="subtitle">جزئیات درخواست</span>
+</div>
+<div class="details-container">
+    <dl class="details-list">
+        <div class="details-row">
+            <dt>شناسه:</dt>
+            <dd>@Model.Id</dd>
+        </div>
+        <div class="details-row">
+            <dt>تاریخ سرویس:</dt>
+            <dd>@Model.ServiceDateTime</dd>
+        </div>
+        <div class="details-row">
+            <dt>بیمار:</dt>
+            <dd>@Model.PatientFullName</dd>
+        </div>
+        <div class="details-row">
+            <dt>پرستار:</dt>
+            <dd>@Model.NurseFullName</dd>
+        </div>
+        <div class="details-row">
+            <dt>سوپروایزر:</dt>
+            <dd>@Model.SuperVisorFullName</dd>
+        </div>
+        <div class="details-row">
+            <dt>سرویس:</dt>
+            <dd>@Model.ServiceName</dd>
+        </div>
+        <div class="details-row">
+            <dt>وضعیت انجام:</dt>
+            <dd>@(Model.IsDone ? "انجام شده" : "در انتظار")</dd>
+        </div>
+    </dl>
+</div>

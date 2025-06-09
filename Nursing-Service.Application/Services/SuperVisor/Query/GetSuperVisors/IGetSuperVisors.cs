@@ -42,10 +42,11 @@ namespace Nursing_Service.Application.Services.SuperVisor.Query.GetSuperVisors
 
                 foreach (var item in superVisors)
                 {
-                    var nurses = (await _nurseService.ExcuteAsync(superVisorId = item.Id)).Data;
+                    var nurses = (await _nurseService.ExcuteAsync(superVisorId:item.Id)).Data;
 
                     data.Add(new GetSuperVisorResultDTO
                     {
+                        Id = item.Id,
                         Email = item.Email,
                         UserName = item.UserName,
                         Password = item.Password,

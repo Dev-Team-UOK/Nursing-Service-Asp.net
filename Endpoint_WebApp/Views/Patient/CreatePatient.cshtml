@@ -1,0 +1,72 @@
+﻿@model Nursing_Service.Application.Services.Patient.Command.Create.CreatePatinetRequestInfo
+@{
+    Layout = "_AdminDashboard_Layout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/lib/AdminDashboardAssets/css/CreateTemplate.css" />
+}
+
+<div class="main-header">
+    <h2>افزودن بیمار جدید</h2>
+    <span class="subtitle">لطفا اطلاعات بیمار را وارد کنید</span>
+</div>
+
+<form asp-action="CreatePatient" asp-controller="Patient" method="post" class="dashboard-form">
+    <div class="form-group">
+        <label asp-for="FullName">نام و نام خانوادگی</label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NationalCode">کدملی</label>
+        <input asp-for="NationalCode" class="form-control" />
+        <span asp-validation-for="NationalCode" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Age">سن</label>
+        <input asp-for="Age" class="form-control" type="number" min="1" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Gender">جنسیت</label>
+        <select asp-for="Gender" class="form-control">
+            <option value="">انتخاب کنید</option>
+            <option value="0">مرد</option>
+            <option value="1">زن</option>
+        </select>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Height">قد (سانتی‌متر)</label>
+        <input asp-for="Height" class="form-control" type="number" min="1" />
+        <span asp-validation-for="Height" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Weight">وزن (کیلوگرم)</label>
+        <input asp-for="Weight" class="form-control" type="number" min="1" />
+        <span asp-validation-for="Weight" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber">شماره تماس</label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address">آدرس</label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IllnessHistory">سوابق بیماری</label>
+        <textarea asp-for="IllnessHistory" class="form-control"></textarea>
+        <span asp-validation-for="IllnessHistory" class="text-danger"></span>
+    </div>
+    <button type="submit" class="add-btn">ثبت بیمار</button>
+</form>
+
+@section Scripts {
+    @* <partial name="_ValidationScriptsPartial" /> *@
+    <script>
+
+    </script>
+ }

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>پرستار سلامت</title>
+    @RenderSection("Styles", required: false)
     <link rel="stylesheet" href="~/lib/AdminDashboardAssets/css/Admindashboard.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -14,7 +15,7 @@
     <div class="header-tools">
         <div class="search-box">
             <span class="material-icons">search</span>
-            <input type="text" placeholder="Type here..." />
+            <input disabled type="text" placeholder="اینجا جستجو کنید ..."  />
         </div>
         <button class="icon-btn">
             <span class="material-icons">person</span>
@@ -74,4 +75,6 @@
         </main>
     </div>
 </body>
+
+@RenderSection("Scripts", required: false)
 </html>

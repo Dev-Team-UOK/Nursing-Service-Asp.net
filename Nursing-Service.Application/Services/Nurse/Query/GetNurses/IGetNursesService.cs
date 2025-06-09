@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Nursing_Service.Application.Interfaces.Contexts;
 using Nursing_Service.Application.Services.PatinetNeedService.Query.GetPatientNeedServices;
 using Nursing_Service.Application.Services.Service.Query.GetServices;
+using Nursing_Service.Application.Services.SuperVisor.Query.GetSuperVisors;
 using Nursing_Service.Common.Dto.Base;
 using Nursing_Service.Domain.Entities.Patient;
 
@@ -32,6 +33,7 @@ namespace Nursing_Service.Application.Services.Nurse.Query.GetNurses
                     throw new NotImplementedException("شناسه پرستار نمیتواند 0 باشد.");
                 if (superVisorId == 0)
                     throw new NotImplementedException("شناسه سوپروایزور نمیتواند 0 باشد.");
+
                 List<Domain.Entities.Nurse.Nurse> nurses;
 
                 if (nurseId is not null)
@@ -39,7 +41,7 @@ namespace Nursing_Service.Application.Services.Nurse.Query.GetNurses
                 if (superVisorId is not null)
                     nurses = await _context.Nurses.Where(n => n.SuperVisorId == superVisorId && n.IsDeleted == false).ToListAsync();
                 else
-                    nurses = await _context.Nurses.Where(n => n.IsDeleted == false).ToListAsync();
+                    nurses = await _context.Nurses.Where(n => n.IsDeleted == false).Include(n => n.SuperVisor).ToListAsync();
 
                 if (nurses is null && nurseId is not null)
                     throw new NotImplementedException("هیچ پرستاری با شناسه مورد نظر پیدا نشد.");
@@ -53,7 +55,7 @@ namespace Nursing_Service.Application.Services.Nurse.Query.GetNurses
                         Message = "لیست پرستاران با موفقیت برگشت داده شد.",
                         Data = null
                     };
-
+                
                 foreach (var n in nurses)
                 {
                     result.Add(new GetNurseResultDTO

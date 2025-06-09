@@ -25,7 +25,7 @@ namespace Nursing_Service.Application.Services.SuperVisor.Command.Delete
                 if (superVisorId == 0)
                     throw new NotImplementedException("شناسه سوپروایزور نمیتواند 0 باشد.");
 
-                var superVisor = await _context.Nurses.FirstOrDefaultAsync(n => n.Id == superVisorId);
+                var superVisor = await _context.SuperVisors.FirstOrDefaultAsync(n => n.Id == superVisorId);
 
                 if (superVisor is null)
                     throw new NotImplementedException("هیچ سوپروایزوری با شناسه موردنظر یافت نشد.");

@@ -32,7 +32,7 @@ namespace Nursing_Service.Application.Services.Users.Commands.Create
                 var user = new User
                 {
                    Email = req.Email,
-                   Password = req.Password,
+                   Password = passHasher.HashPassword(req.Password),
                    PhoneNumber = req.PhoneNumber,
                    Role = RoleEnum.Operator,
                    UserName = req.UserName,

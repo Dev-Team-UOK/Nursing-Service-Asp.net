@@ -346,7 +346,7 @@ body {
         color: #d84315;
     }
 
-.sidebar-menu a {
+a {
     text-decoration: none !important;
     color: inherit;
 }

@@ -1,0 +1,34 @@
+﻿@using Nursing_Service.Application.Services.Service.Command.Create
+@model CreateServiceRequestInfo
+@{
+    Layout = "_AdminDashboard_Layout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/lib/AdminDashboardAssets/css/EditTemplate.css" />
+}
+<div class="form-header">
+    <h2>ایجاد سرویس جدید</h2>
+    <span class="subtitle">لطفا اطلاعات سرویس را وارد کنید</span>
+</div>
+<form asp-action="CreateService" method="post" class="app-form">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Cost"></label>
+        <input asp-for="Cost" class="form-control" type="number" step="0.01" min="0" />
+        <span asp-validation-for="Cost" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MinDuration"></label>
+        <input asp-for="MinDuration" class="form-control" type="number" min="0" />
+        <span asp-validation-for="MinDuration" class="field-validation"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">ایجاد سرویس</button>
+</form>
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -8,7 +8,7 @@ using Nursing_Service.Application.Services.Service.Query.GetServices;
 using Nursing_Service.Application.Services.SuperVisor.Query.GetSuperVisors;
 using Nursing_Service.Application.Services.Users.Query;
 
-namespace Endpoint_WebApp.Controllers
+namespace Endpoint_WebApp.Controllers.AdminDashboard
 {
     [Authorize(Roles = "Admin")]
     public class AdminDashboardController : Controller

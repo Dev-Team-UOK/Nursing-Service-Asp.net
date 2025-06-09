@@ -1,0 +1,70 @@
+﻿@using Nursing_Service.Application.Services.Nurse.Query.GetNurses
+@model GetNurseResultDTO
+@{
+    Layout = "_AdminDashboard_Layout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/lib/AdminDashboardAssets/css/ViewTemplate.css" />
+}
+<div class="details-header">
+    <h2>مشاهده اطلاعات پرستار</h2>
+    <span class="subtitle">جزئیات پرستار</span>
+</div>
+<div class="details-container">
+    <dl class="details-list">
+        <div class="details-row">
+            <dt>نام کاربری:</dt>
+            <dd>@Model.UserName</dd>
+        </div>
+        <div class="details-row">
+            <dt>نام:</dt>
+            <dd>@Model.FirstName</dd>
+        </div>
+        <div class="details-row">
+            <dt>نام خانوادگی:</dt>
+            <dd>@Model.LastName</dd>
+        </div>
+        <div class="details-row">
+            <dt>شماره همراه:</dt>
+            <dd>@Model.PhoneNumber</dd>
+        </div>
+        <div class="details-row">
+            <dt>ایمیل:</dt>
+            <dd>@Model.Email</dd>
+        </div>
+        <div class="details-row">
+            <dt>شماره پرستاری:</dt>
+            <dd>@Model.NurseNumber</dd>
+        </div>
+        <div class="details-row">
+            <dt>سابقه کاری (سال):</dt>
+            <dd>@Model.WorkHistoryInYear</dd>
+        </div>
+        <div class="details-row">
+            <dt>تاریخ شروع همکاری:</dt>
+            <dd>@Model.StartWorkingInCompany.ToString("yyyy/MM/dd")</dd>
+        </div>
+        <div class="details-row">
+            <dt>سوپروایزر:</dt>
+            <dd>@Model.SuperVisorFullName</dd>
+        </div>
+        <div class="details-row">
+            <dt>سرویس‌های قابل انجام:</dt>
+            <dd>
+                @if (Model.DoService != null && Model.DoService.Any())
+                {
+                    <ul>
+                        @foreach (var s in Model.DoService)
+                        {
+                            <li>@s.Name</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <span>ثبت نشده</span>
+                }
+            </dd>
+        </div>
+    </dl>
+</div>

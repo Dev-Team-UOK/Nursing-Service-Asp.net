@@ -1,0 +1,58 @@
+﻿@using Nursing_Service.Application.Services.SuperVisor.Query.GetSuperVisors
+@model GetSuperVisorResultDTO
+@{
+    Layout = "_AdminDashboard_Layout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/lib/AdminDashboardAssets/css/ViewTemplate.css" />
+}
+<div class="details-header">
+    <h2>مشاهده اطلاعات سوپروایزر</h2>
+    <span class="subtitle">جزئیات سوپروایزر</span>
+</div>
+<div class="details-container">
+    <dl class="details-list">
+        <div class="details-row">
+            <dt>نام کاربری:</dt>
+            <dd>@Model.UserName</dd>
+        </div>
+        <div class="details-row">
+            <dt>نام:</dt>
+            <dd>@Model.FirstName</dd>
+        </div>
+        <div class="details-row">
+            <dt>نام خانوادگی:</dt>
+            <dd>@Model.LastName</dd>
+        </div>
+        <div class="details-row">
+            <dt>شماره همراه:</dt>
+            <dd>@Model.PhoneNumber</dd>
+        </div>
+        <div class="details-row">
+            <dt>ایمیل:</dt>
+            <dd>@Model.Email</dd>
+        </div>
+        <div class="details-row">
+            <dt>شیفت:</dt>
+            <dd>@Model.Shift</dd>
+        </div>
+        <div class="details-row">
+            <dt>پرستاران زیرمجموعه:</dt>
+            <dd>
+                @if (Model.Nurses != null && Model.Nurses.Any())
+                {
+                    <ul>
+                        @foreach (var n in Model.Nurses)
+                        {
+                            <li>@n.FirstName @n.LastName (@n.UserName)</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <span>ثبت نشده</span>
+                }
+            </dd>
+        </div>
+    </dl>
+</div>

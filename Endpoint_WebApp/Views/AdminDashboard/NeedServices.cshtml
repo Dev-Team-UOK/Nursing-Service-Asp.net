@@ -9,6 +9,10 @@
 </div>
 <table class="patients-table">
     <div class="table-actions">
+        <a class="add-btn" href="/PatientNeedServices/Create-PatientNeedService">
+            <span class="btn-text">افزودن</span>
+            <span class="material-icons">add</span>
+        </a>
     </div>
     <thead>
         <tr>
@@ -34,8 +38,8 @@
                     <td>@request.SuperVisorFullName</td>
                     <td>@request.ServiceName</td>
                     <td>
-                        <button class="edit-btn">ویرایش</button>
-                        <button class="edit-btn status offline">حذف</button>
+                        <a class="edit-btn" href="/PatientNeedServices/Edit-PatientNeedService?id=@request.Id">ویرایش</a>
+                        <a class="edit-btn status offline" href="/PatientNeedServices/Delete-PatientNeedService?id=@request.Id">حذف</a>
                     </td>
                 </tr>
             }

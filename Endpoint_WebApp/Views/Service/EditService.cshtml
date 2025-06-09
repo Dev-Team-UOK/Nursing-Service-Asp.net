@@ -1,0 +1,35 @@
+﻿@using Nursing_Service.Application.Services.Service.Command.Update
+@model UpdateServiceRequestInfo
+@{
+    Layout = "_AdminDashboard_Layout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/lib/AdminDashboardAssets/css/EditTemplate.css" />
+}
+<div class="form-header">
+    <h2>ویرایش سرویس</h2>
+    <span class="subtitle">لطفا اطلاعات جدید را وارد کنید</span>
+</div>
+<form asp-action="EditService" method="post" class="app-form">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Cost"></label>
+        <input asp-for="Cost" class="form-control" type="number" step="0.01" min="0" />
+        <span asp-validation-for="Cost" class="field-validation"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MinDuration"></label>
+        <input asp-for="MinDuration" class="form-control" type="number" min="0" />
+        <span asp-validation-for="MinDuration" class="field-validation"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">ذخیره تغییرات</button>
+</form>
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Endpoint_WebApp.Controllers
+namespace Endpoint_WebApp.Controllers.SuperVisorDashboard
 {
-    [Authorize(Roles = "Nurse")]
-    public class NurseDashboardController : Controller
+    [Authorize(Roles = "SuperVisor")]
+    public class SuperVisorDashboard : Controller
     {
         public IActionResult Index()
         {

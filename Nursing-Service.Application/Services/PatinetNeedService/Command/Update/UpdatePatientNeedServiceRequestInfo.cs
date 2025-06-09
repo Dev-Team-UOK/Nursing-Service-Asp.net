@@ -6,5 +6,6 @@
         public DateTime? ServiceDateTime { get; set; }
         public ulong? SuperVisorId { get; set; }
         public ulong? ServiceId { get; set; }
+        public ulong? NurseId { get; set; }
     }
 }

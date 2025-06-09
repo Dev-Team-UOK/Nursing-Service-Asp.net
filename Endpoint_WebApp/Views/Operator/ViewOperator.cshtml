@@ -1,0 +1,38 @@
+﻿@using Nursing_Service.Application.Services.Users.Query
+@model GetUserResultDTO
+@{
+    Layout = "_AdminDashboard_Layout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/lib/AdminDashboardAssets/css/ViewTemplate.css" />
+}
+
+<div class="details-header">
+    <h2>مشاهده اطلاعات اپراتور</h2>
+    <span class="subtitle">جزئیات اپراتور</span>
+</div>
+
+<div class="details-container">
+    <dl class="details-list">
+        <div class="details-row">
+            <dt>نام کاربری:</dt>
+            <dd>@Model.UserName</dd>
+        </div>
+        <div class="details-row">
+            <dt>نام:</dt>
+            <dd>@Model.FirstName</dd>
+        </div>
+        <div class="details-row">
+            <dt>نام خانوادگی:</dt>
+            <dd>@Model.LastName</dd>
+        </div>
+        <div class="details-row">
+            <dt>شماره تماس:</dt>
+            <dd>@Model.PhoneNumber</dd>
+        </div>
+        <div class="details-row">
+            <dt>ایمیل:</dt>
+            <dd>@Model.Email</dd>
+        </div>
+    </dl>
+</div>
