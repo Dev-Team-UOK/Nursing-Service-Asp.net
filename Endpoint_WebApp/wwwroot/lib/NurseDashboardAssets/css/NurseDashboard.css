@@ -202,6 +202,46 @@ body {
 }
 
 
+
+
+/* دکمه افزودن */
+.table-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 18px;
+}
+
+.add-btn {
+    background: #ffd600;
+    color: #222;
+    border: none;
+    border-radius: 12px;
+    padding: 0 20px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+    transition: background 0.2s, color 0.2s;
+}
+
+    .add-btn .material-icons {
+        font-size: 24px;
+    }
+
+    .add-btn:hover {
+        background: #ffe066;
+        color: #1565c0;
+    }
+
+
+
+
+
+
 .profile-btn {
     display: flex;
     align-items: center;
