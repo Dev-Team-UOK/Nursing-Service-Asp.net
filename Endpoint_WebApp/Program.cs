@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Nursing_Service.Application.Interfaces.Contexts;
 using Nursing_Service.Application.Services.Authentication.Command.SignUp;
 using Nursing_Service.Application.Services.Nurse.Command.Create;
+using Nursing_Service.Application.Services.Nurse.Command.CreateAbility;
 using Nursing_Service.Application.Services.Nurse.Command.Delete;
 using Nursing_Service.Application.Services.Nurse.Command.Update;
 using Nursing_Service.Application.Services.Nurse.Query.GetNurses;
@@ -20,6 +21,7 @@ using Nursing_Service.Application.Services.Service.Command.Create;
 using Nursing_Service.Application.Services.Service.Command.Delete;
 using Nursing_Service.Application.Services.Service.Command.Update;
 using Nursing_Service.Application.Services.Service.Query.GetServices;
+using Nursing_Service.Application.Services.SuperVisor.Command.AssignNurseToPNS;
 using Nursing_Service.Application.Services.SuperVisor.Command.Create;
 using Nursing_Service.Application.Services.SuperVisor.Command.Delete;
 using Nursing_Service.Application.Services.SuperVisor.Command.Update;
@@ -96,7 +98,8 @@ builder.Services.AddScoped<IDeleteService, DeleteService>();
 builder.Services.AddScoped<ICreatePatientNeedService, CreatePatientNeedService>();
 builder.Services.AddScoped<IUpdatePatientNeedService, UpdatePatientNeedService>();
 builder.Services.AddScoped<IDeletePatientNeedService, DeletePatientNeedService>();
-
+builder.Services.AddScoped<ICreateAbility, CreateAbility>();
+builder.Services.AddScoped<IAssignNurseToPNS, AssignNurseToPNS>();
 
 builder.Services.AddTransient<ISMSIr, SMSIr>();
 

@@ -301,3 +301,8 @@ body {
         background: #fbe9e7;
         color: #d84315;
     }
+
+a {
+    text-decoration: none !important;
+    color: inherit;
+}

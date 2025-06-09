@@ -1,17 +1,11 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <title>پرستار سلامت</title>
-    <link rel="stylesheet" href="styles.css">
+    @RenderSection("Styles", required: false)
+    <link rel="stylesheet" href="~/lib/SuperVisorDashboard/css/SuperVisorDashboard.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
@@ -34,9 +28,11 @@
         <button class="icon-btn">
             <span class="material-icons">notifications</span>
         </button>
-        <button class="icon-btn logout" title="خروج">
-            <span class="material-icons">logout</span>
-        </button>
+        <a asp-action="SignOut" asp-controller="Authentication">
+            <button class="icon-btn logout" title="خروج">
+                <span class="material-icons">logout</span>
+            </button>
+        </a>
     </div>
 
 
@@ -48,9 +44,15 @@
                 <span>پرستار سلامت </span>
             </div>
             <ul class="sidebar-menu">
+                <a asp-action="Index" asp-controller="SuperVisorDashboard">
                 <li class="patients">صفحه اصلی</li>
+                </a>
+                <a asp-action="NursesList" asp-controller="SuperVisorDashboard">
                 <li class="services">‌لیست پرستاران</li>
+                </a>
+                <a asp-action="RequestList" asp-controller="SuperVisorDashboard">
                 <li class="requests">لیست درخواست‌ها</li>
+                </a>
             </ul>
 
             <div class="sidebar-footer">
@@ -71,4 +73,5 @@
     </div>
 </body>
 
+@RenderSection("Scripts", required: false)
 </html>

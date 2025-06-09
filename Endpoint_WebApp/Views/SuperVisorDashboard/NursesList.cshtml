@@ -1,7 +1,7 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Nursing_Service.Application.Services.Nurse.Query.GetNurses
+@model List<GetNurseResultDTO>
 @{
+    Layout = "_SuperVisorDashboard_Layout";
 }
 
 <div class="main-header">
@@ -9,83 +9,38 @@
     <span class="subtitle">اطلاعات پرستار</span>
 </div>
 <table class="patients-table">
-    <div class="table-actions">
-    </div>
     <thead>
         <tr>
             <th>نام کاربری</th>
             <th>شماره پرستاری</th>
             <th>نام و نام خانوادگی</th>
-            <th>کدملی</th>
+            <th>شروع همکاری</th>
             <th>تلفن همراه</th>
-            <th>سابقه کاری(سال) </th>
+            <th>سابقه کاری(سال)</th>
             <th>ایمیل</th>
         </tr>
     </thead>
-    </thead>
     <tbody>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">1234</span></td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td><span class="status">3750636785</span></td>
-            <td>09187889654</td>
-            <td>2</td>
-            <td>asoo.fatahi@gmail.com</td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">1234</span></td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td><span class="status">3750636785</span></td>
-            <td>09187889654</td>
-            <td>2</td>
-            <td>asoo.fatahi@gmail.com</td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">1234</span></td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td><span class="status">3750636785</span></td>
-            <td>09187889654</td>
-            <td>2</td>
-            <td>asoo.fatahi@gmail.com</td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">1234</span></td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td><span class="status">3750636785</span></td>
-            <td>09187889654</td>
-            <td>2</td>
-            <td>asoo.fatahi@gmail.com</td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">1234</span></td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td><span class="status">3750636785</span></td>
-            <td>09187889654</td>
-            <td>2</td>
-            <td>asoo.fatahi@gmail.com</td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">1234</span></td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td><span class="status">3750636785</span></td>
-            <td>09187889654</td>
-            <td>2</td>
-            <td>asoo.fatahi@gmail.com</td>
-        </tr>
-        <tr>
-            <td>آسو78</td>
-            <td><span class="status">1234</span></td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td><span class="status">3750636785</span></td>
-            <td>09187889654</td>
-            <td>2</td>
-            <td>asoo.fatahi@gmail.com</td>
-        </tr>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var nurse in Model)
+            {
+                <tr>
+                    <td>@nurse.UserName</td>
+                    <td><span class="status">@nurse.NurseNumber</span></td>
+                    <td><span class="status">@($"{nurse.FirstName} {nurse.LastName}")</span></td>
+                    <td><span class="status">@nurse.StartWorkingInCompany</span></td>
+                    <td>@nurse.PhoneNumber</td>
+                    <td>@(nurse.WorkHistoryInYear ?? null)</td>
+                    <td>@nurse.Email</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" class="text-center">پرستاری یافت نشد.</td>
+            </tr>
+        }
     </tbody>
 </table>
