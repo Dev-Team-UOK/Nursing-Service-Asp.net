@@ -11,7 +11,7 @@ namespace Nursing_Service.Persistence.Contexts
 {
     public class DataBaseContext : DbContext, IDataBaseContext
     {
-        public DataBaseContext(DbContextOptions options) : base(options)
+        public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options)
         {
         }
 

@@ -14,6 +14,7 @@ namespace Nursing_Service.Domain.Entities.Patient
         public virtual Service.Service Service { get; set; }
         public ulong ServiceId { get; set; }
         public virtual Patient Patient { get; set; }
-        public ulong PatientId { get; set; }    
+        public ulong PatientId { get; set; }
+        public string? NurseRepost { get; set; }
     }
 }
