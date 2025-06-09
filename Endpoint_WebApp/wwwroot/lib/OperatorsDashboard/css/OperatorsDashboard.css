@@ -484,3 +484,64 @@ body {
         color: #1976d2;
         transform: scale(1.15);
     }
+
+
+
+
+
+
+    
+/*  استایل مربوط به قسمت ایجاد بیمار جدید */
+body {
+    font-family: Tahoma, sans-serif;
+    background: linear-gradient(135deg, #61cbe9 0%, #b96de5 100%);
+    padding: 30px;
+  }
+  
+  .form-container {
+    max-width: 600px;
+    background-color: #d8c9fb;
+    padding: 25px;
+    margin: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #000000;
+  }
+  
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  
+  input,
+  textarea {
+    width: 580px;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+  }
+  
+  button {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #9b75e8;
+    color: #000000;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #6fbdee;
+  }

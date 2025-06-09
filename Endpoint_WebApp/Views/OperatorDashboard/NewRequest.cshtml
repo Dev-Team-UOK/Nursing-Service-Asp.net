@@ -3,3 +3,48 @@
 *@
 @{
 }
+<div class="trs-hero-container">
+    <div class="trs-hero-header">
+        <!-- Left: Content -->
+        <div class="trs-hero-content">
+            <form class="trs-hero-form" autocomplete="off">
+                <h2 class="trs-form-title">درخواست جدید</h2>
+                <div class="trs-form-row">
+                    <div class="trs-form-group">
+                        <label for="trs-profession"><b>سرویس</b></label>
+                        <select id="trs-profession" name="profession">
+                            <option value="registered-nurse" selected>سرم تراپی</option>
+                            <option value="licensed-practical-nurse">واکسناسیون</option>
+                            <option value="allied-health">مراقبت از سالمندان</option>
+                        </select>
+                    </div>
+                    <div class="trs-form-group">
+                        <label for="trs-specialty"><b>بیمار</b></label>
+                        <select id="trs-specialty" name="specialty" style="width:100%;">
+                            <option></option>
+                            <option>احمد محمودی</option>
+                            <option>احمد محمودی</option>
+                            <option>ناصر وکیلی</option>
+                        </select>
+                    </div>
+                    <div class="trs-form-group">
+                        <label for="trs-location"><b> آدرس</b></label>
+                        <input type="text" id="trs-location" name="location" placeholder="">
+                    </div>
+                </div>
+                <div class="trs-form-row-shifts">
+                    <div class="trs-form-group-shift">
+                        <label><b>تاریخ و ساعت</b></label>
+                        <div class="trs-shift-options">
+                            <!-- وارد کردن ساعت  و تاریخ -->
+                            <input type="datetime-local" class="datetime-input" value="2023-01-01T12:00" />
+                        </div>
+                    </div>
+                    <div class="trs-form-group-numshifts">
+                    </div>
+                </div>
+                <button class="trs-search-btn" type="submit"><b>ثبت</b></button>
+            </form>
+        </div>
+    </div>
+</div>
