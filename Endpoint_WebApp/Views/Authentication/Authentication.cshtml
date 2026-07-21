@@ -1,101 +1,179 @@
-﻿@{
+@{
     Layout = null;
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پرستار سلامت | ورود و عضویت</title>
+    
+    <!-- Vazirmatn Font -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" />
+    <!-- Bootstrap 5.3 RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <!-- SweetAlert CSS -->
     <link href="~/lib/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
-    <!-- Main CSS -->
+    
+    <!-- Custom Auth CSS -->
     <link href="~/css/Authentication.css" rel="stylesheet">
 </head>
 <body>
-    <br>
-    <br>
-    <div class="cont">
-        <div class="form sign-in">
-            <h2>خوش آمدید</h2>
-            <label>
-                <span>ایمیل</span>
-                <input type="email" id="Email_SignIn"/>
-            </label>
-            <label>
-                <span>رمز عبور</span>
-                <input type="password" id="Password_SignIn"/>
-            </label>
-            <label>
-                <span>نقش</span>
-                <select id="Role_SignIn" class="styled-select">
-                    <option value="nurse">پرستار</option>
-                    <option value="headnurse">سرپرستار</option>
-                </select>
-            </label>
-            <p class="forgot-pass">رمز عبور خود را فراموش کرده اید؟</p>
-            <button onclick="SignInUser()" type="button" class="submit">وارد شدن</button>
-        </div>
-        <div class="sub-cont">
-            <div class="img">
-                <div class="img__text m--up">
-                    <h3>حسابد کاربری ندارید؟ عضو شوید.<h3>
-                </div>
-                <div class="img__text m--in">
-                    <h3>اگر در حال حاظر حساب کاربری دارید؛ وارد شوید.<h3>
-                </div>
-                <div class="img__btn">
-                    <span class="m--up">عضویت</span>
-                    <span class="m--in">وارد شدن</span>
-                </div>
+    
+    <div class="auth-wrapper">
+        <div class="auth-header">
+            <div class="logo-box">
+                <i class="bi bi-heart-pulse-fill"></i>
             </div>
-            <div class="form sign-up">
-                <h2>ایجاد حساب کاربری</h2>
-                <label>
-                    <span>نام</span>
-                    <input type="text" id="Name_SignUp" />
-                </label>
-                <label>
-                    <span>نام خانوادگی</span>
-                    <input type="text" id="LastName_SignUp" />
-                </label>
-                <label>
-                    <span>ایمیل</span>
-                    <input type="email" id="Email_SignUp"/>
-                </label>
-                <label>
-                    <span>نام کاربری</span>
-                    <input type="text" id="UserName_SignUp"/>
-                </label>
-                <label>
-                    <span>همراه</span>
-                    <input type="text" id="Phone_SignUp"/>
-                </label>
-                <label>
-                    <span>رمز عبور</span>
-                    <input type="password" id="Password_SignUp"/>
-                </label>
-                <label>
-                    <span>نقش</span>
-                    <select id="Role_SignUp" class="styled-select">
-                        <option value="operator">اپراتور</option>
-                        <option value="nurse">پرستار</option>
-                        <option value="supervisor">سوپروایزور</option>
-                    </select>
-                </label>
-                <!-- Extra fields for role -->
-                <div id="ExtraFields_SignUp"></div>
+            <h1 class="auth-title">پرستار سلامت</h1>
+            <p class="auth-subtitle">سامانه جامع خدمات پرستاری و مراقبت در منزل</p>
+        </div>
+
+        <div class="card-custom">
+            <!-- Tabs Navigation -->
+            <ul class="nav nav-pills nav-fill nav-pills-custom" id="authTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="login-tab" data-bs-toggle="pill" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">
+                        <i class="bi bi-box-arrow-in-right me-1"></i> ورود
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="signup-tab" data-bs-toggle="pill" data-bs-target="#signup" type="button" role="tab" aria-controls="signup" aria-selected="false">
+                        <i class="bi bi-person-plus me-1"></i> عضویت
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tabs Content -->
+            <div class="tab-content" id="authTabsContent">
+                
+                <!-- Login Tab -->
+                <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab" tabindex="0">
+                    <form onsubmit="event.preventDefault();">
+                        <div class="mb-3">
+                            <label for="Email_SignIn" class="form-label">ایمیل کاربری</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-envelope"></i></span>
+                                <input type="email" id="Email_SignIn" class="form-control form-control-custom border-start-0" placeholder="name@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Password_SignIn" class="form-label">رمز عبور</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-shield-lock"></i></span>
+                                <input type="password" id="Password_SignIn" class="form-control form-control-custom border-start-0" placeholder="••••••••" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="Role_SignIn" class="form-label">نقش (جهت ورود)</label>
+                            <select id="Role_SignIn" class="form-select form-select-custom">
+                                <option value="nurse">پرستار</option>
+                                <option value="headnurse">سرپرستار</option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label text-muted small" for="rememberMe">
+                                    مرا به خاطر بسپار
+                                </label>
+                            </div>
+                            <a href="#" class="forgot-pass">فراموشی رمز؟</a>
+                        </div>
+
+                        <button type="button" onclick="SignInUser()" class="btn btn-primary-custom w-100">
+                            ورود به حساب <i class="bi bi-arrow-left"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Signup Tab -->
+                <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab" tabindex="0">
+                    <form onsubmit="event.preventDefault();">
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <label for="Name_SignUp" class="form-label">نام</label>
+                                <input type="text" id="Name_SignUp" class="form-control form-control-custom" placeholder="مثال: علی">
+                            </div>
+                            <div class="col-6">
+                                <label for="LastName_SignUp" class="form-label">نام خانوادگی</label>
+                                <input type="text" id="LastName_SignUp" class="form-control form-control-custom" placeholder="مثال: محمدی">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Email_SignUp" class="form-label">ایمیل</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-envelope"></i></span>
+                                <input type="email" id="Email_SignUp" class="form-control form-control-custom border-start-0" placeholder="name@example.com">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="UserName_SignUp" class="form-label">نام کاربری</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-person"></i></span>
+                                <input type="text" id="UserName_SignUp" class="form-control form-control-custom border-start-0" placeholder="نام کاربری برای ورود">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Phone_SignUp" class="form-label">شماره همراه</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-phone"></i></span>
+                                <input type="tel" id="Phone_SignUp" class="form-control form-control-custom border-start-0" placeholder="09123456789">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Password_SignUp" class="form-label">رمز عبور</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-shield-lock"></i></span>
+                                <input type="password" id="Password_SignUp" class="form-control form-control-custom border-start-0" placeholder="••••••••">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="Role_SignUp" class="form-label">نقش کاربر</label>
+                            <select id="Role_SignUp" class="form-select form-select-custom">
+                                <option value="operator">اپراتور</option>
+                                <option value="nurse">پرستار</option>
+                                <option value="supervisor">سوپروایزور</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Extra fields for role which might be manipulated by Authentication.js -->
+                        <div id="ExtraFields_SignUp" class="mb-4"></div>
+
+                        <button type="button" onclick="SignUpUser()" class="btn btn-primary-custom w-100">
+                            ثبت نام در سامانه <i class="bi bi-check2-circle"></i>
+                        </button>
+                    </form>
+                </div>
                 
             </div>
-            <button onclick="SignUpUser()" type="button" class="submit">عضویت</button>
+        </div>
+
+        <div class="text-center">
+            <a href="/" class="back-to-home">
+                <i class="bi bi-house"></i> بازگشت به صفحه اصلی
+            </a>
         </div>
     </div>
 
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Jquery --> 
+    <script src="~/lib/jquery/dist/jquery.min.js"></script> 
+    <!-- Bootstrap JS Bundle for tabs -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- SweetAlert JS -->
     <script src="~/lib/Sweetalert2/sweetalert2.min.js"></script>
     <!-- Main JS -->
     <script src="~/js/Authentication.js"></script>
-
-
 </body>
 </html>

@@ -352,7 +352,7 @@ a {
 }
 
 .dashboard-cards {
-    display: flex;
+/*    display: flex;*/
     gap: 50px;
     flex-wrap: wrap;
     margin-bottom: 40px;

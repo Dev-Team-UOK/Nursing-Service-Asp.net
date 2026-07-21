@@ -8,5 +8,5 @@ window.addEventListener('load', function () {
             loader.style.opacity = '0';
             setTimeout(() => loader.style.display = 'none', 600);
         }
-    }, 2500); // مدت زمان نمایش لودر (۲.۵ ثانیه)
+    }, 2500); 
 });
