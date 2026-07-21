@@ -61,8 +61,8 @@ builder.Services.AddAuthentication(options =>
     options.SlidingExpiration = true;
 });
 
-builder.Services.AddEntityFrameworkSqlServer().AddDbContext<DataBaseContext>(option =>
-    option.UseSqlServer(@"Data Source=localHost\DEVINSTANCE; Initial Catalog=NursingService; User Id=sa; Password=aA123456; Encrypt=false;")
+builder.Services.AddDbContext<DataBaseContext>(option =>
+    option.UseSqlite("Data Source=app.db")
 );
 
 builder.Services.Configure<SmsIrConfig>(builder.Configuration.GetSection("SmsIrConfig"));
@@ -108,6 +108,12 @@ builder.Services.AddTransient<Nursing_Service.Infrastructure.Email.IEmailService
 
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<DataBaseContext>();
+    dbContext.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
