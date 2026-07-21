@@ -1,4 +1,4 @@
-﻿@using Endpoint_WebApp.Models.ViewModels.AdminDashboard
+@using Endpoint_WebApp.Models.ViewModels.AdminDashboard
 @model ReportsViewModel
 @{
     Layout = "_AdminDashboard_Layout";
@@ -8,37 +8,71 @@
     var lastMonthServices = Model.NumberOfPNSInThisMonth;
 }
 
-<div class="dashboard-cards">
+<div class="page-header">
+    <div>
+        <h2 class="page-title">گزارشات آماری</h2>
+        <span class="page-subtitle">خلاصه وضعیت سیستم در یک نگاه</span>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
     <!-- کارت پرستاران -->
-    <div class="report-card" style="background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(44,62,80,0.10); padding: 32px 28px; min-width: 240px; flex: 1; display: flex; align-items: center; gap: 18px; margin: 1rem; max-width: 70%;">
-        <span class="material-icons" style="font-size: 48px; color: #1976d2;">medical_services</span>
-        <div>
-            <div style="font-size: 1.2rem; color: #1976d2; font-weight: bold;">تعداد کل پرستاران</div>
-            <div style="font-size: 2.2rem; font-weight: bold; color: #222;">@totalNurses</div>
+    <div class="col-md-6 col-lg-3">
+        <div class="card-custom h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);">
+            <div class="card-body p-4 d-flex align-items-center gap-4">
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-primary bg-primary bg-opacity-10" style="width: 64px; height: 64px;">
+                    <i class="bi bi-heart-pulse-fill fs-2"></i>
+                </div>
+                <div>
+                    <h6 class="text-muted mb-1 fw-bold">کل پرستاران</h6>
+                    <h3 class="mb-0 fw-bold text-dark">@totalNurses</h3>
+                </div>
+            </div>
         </div>
     </div>
+
     <!-- کارت بیماران -->
-    <div class="report-card" style="background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(44,62,80,0.10); padding: 32px 28px; min-width: 240px; flex: 1; display: flex; align-items: center; gap: 18px; margin: 1rem; max-width: 70%;">
-        <span class="material-icons" style="font-size: 48px; color: #43a047;">accessible</span>
-        <div>
-            <div style="font-size: 1.2rem; color: #43a047; font-weight: bold;">تعداد کل بیماران</div>
-            <div style="font-size: 2.2rem; font-weight: bold; color: #222;">@totalPatients</div>
+    <div class="col-md-6 col-lg-3">
+        <div class="card-custom h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);">
+            <div class="card-body p-4 d-flex align-items-center gap-4">
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-success bg-success bg-opacity-10" style="width: 64px; height: 64px;">
+                    <i class="bi bi-person-wheelchair fs-2"></i>
+                </div>
+                <div>
+                    <h6 class="text-muted mb-1 fw-bold">کل بیماران</h6>
+                    <h3 class="mb-0 fw-bold text-dark">@totalPatients</h3>
+                </div>
+            </div>
         </div>
     </div>
+
     <!-- کارت سرویس‌ها -->
-    <div class="report-card" style="background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(44,62,80,0.10); padding: 32px 28px; min-width: 240px; flex: 1; display: flex; align-items: center; gap: 18px; margin: 1rem; max-width: 70%;">
-        <span class="material-icons" style="font-size: 48px; color: #ffb300;">healing</span>
-        <div>
-            <div style="font-size: 1.2rem; color: #ffb300; font-weight: bold;">تعداد سرویس‌ها</div>
-            <div style="font-size: 2.2rem; font-weight: bold; color: #222;">@totalServices</div>
+    <div class="col-md-6 col-lg-3">
+        <div class="card-custom h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);">
+            <div class="card-body p-4 d-flex align-items-center gap-4">
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-warning bg-warning bg-opacity-10" style="width: 64px; height: 64px;">
+                    <i class="bi bi-clipboard2-pulse fs-2"></i>
+                </div>
+                <div>
+                    <h6 class="text-muted mb-1 fw-bold">تعداد سرویس‌ها</h6>
+                    <h3 class="mb-0 fw-bold text-dark">@totalServices</h3>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- کارت خدمات انجام شده در ماه اخیر -->
-    <div class="report-card" style="background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(44,62,80,0.10); padding: 32px 28px; min-width: 240px; flex: 1; display: flex; align-items: center; gap: 18px; margin: 1rem; max-width: 70%;">
-        <span class="material-icons" style="font-size: 48px; color: #1976d2;">event_available</span>
-        <div>
-            <div style="font-size: 1.2rem; color: #1976d2; font-weight: bold;">خدمات انجام شده در ماه جاری</div>
-            <div style="font-size: 2.2rem; font-weight: bold; color: #222;">@lastMonthServices</div>
+
+    <!-- خدمات انجام شده -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card-custom h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #ccfbf1 0%, #ffffff 100%);">
+            <div class="card-body p-4 d-flex align-items-center gap-4">
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-teal bg-teal bg-opacity-10" style="width: 64px; height: 64px; color: var(--primary-color);">
+                    <i class="bi bi-calendar2-check-fill fs-2"></i>
+                </div>
+                <div>
+                    <h6 class="text-muted mb-1 fw-bold">درخواست‌های ماه جاری</h6>
+                    <h3 class="mb-0 fw-bold text-dark">@lastMonthServices</h3>
+                </div>
+            </div>
         </div>
     </div>
 </div>

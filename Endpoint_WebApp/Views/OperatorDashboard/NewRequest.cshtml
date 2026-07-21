@@ -1,50 +1,55 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
+    Layout = "_OperatorDashboard_Layout";
 }
-<div class="trs-hero-container">
-    <div class="trs-hero-header">
-        <!-- Left: Content -->
-        <div class="trs-hero-content">
-            <form class="trs-hero-form" autocomplete="off">
-                <h2 class="trs-form-title">درخواست جدید</h2>
-                <div class="trs-form-row">
-                    <div class="trs-form-group">
-                        <label for="trs-profession"><b>سرویس</b></label>
-                        <select id="trs-profession" name="profession">
-                            <option value="registered-nurse" selected>سرم تراپی</option>
-                            <option value="licensed-practical-nurse">واکسناسیون</option>
-                            <option value="allied-health">مراقبت از سالمندان</option>
-                        </select>
-                    </div>
-                    <div class="trs-form-group">
-                        <label for="trs-specialty"><b>بیمار</b></label>
-                        <select id="trs-specialty" name="specialty" style="width:100%;">
-                            <option></option>
-                            <option>احمد محمودی</option>
-                            <option>احمد محمودی</option>
-                            <option>ناصر وکیلی</option>
-                        </select>
-                    </div>
-                    <div class="trs-form-group">
-                        <label for="trs-location"><b> آدرس</b></label>
-                        <input type="text" id="trs-location" name="location" placeholder="">
-                    </div>
-                </div>
-                <div class="trs-form-row-shifts">
-                    <div class="trs-form-group-shift">
-                        <label><b>تاریخ و ساعت</b></label>
-                        <div class="trs-shift-options">
-                            <!-- وارد کردن ساعت  و تاریخ -->
-                            <input type="datetime-local" class="datetime-input" value="2023-01-01T12:00" />
+
+<div class="page-header">
+    <div>
+        <h2 class="page-title">درخواست جدید</h2>
+        <span class="page-subtitle">ثبت درخواست خدمات پزشکی یا پرستاری برای بیماران</span>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card-custom">
+            <div class="card-body-custom">
+                <form autocomplete="off">
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                            <label for="trs-profession" class="form-label">نوع سرویس</label>
+                            <select id="trs-profession" class="form-select">
+                                <option value="registered-nurse" selected>سرم تراپی</option>
+                                <option value="licensed-practical-nurse">واکسناسیون</option>
+                                <option value="allied-health">مراقبت از سالمندان</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="trs-specialty" class="form-label">بیمار</label>
+                            <select id="trs-specialty" class="form-select">
+                                <option value="">انتخاب بیمار...</option>
+                                <option>احمد محمودی</option>
+                                <option>رضا اکبری</option>
+                                <option>ناصر وکیلی</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="service-date" class="form-label">تاریخ و ساعت مراجعه</label>
+                            <input type="datetime-local" id="service-date" class="form-control" value="2023-01-01T12:00" />
                         </div>
                     </div>
-                    <div class="trs-form-group-numshifts">
+                    
+                    <div class="mb-4">
+                        <label for="trs-location" class="form-label">آدرس محل انجام خدمت</label>
+                        <input type="text" id="trs-location" class="form-control" placeholder="آدرس دقیق منزل بیمار">
                     </div>
-                </div>
-                <button class="trs-search-btn" type="submit"><b>ثبت</b></button>
-            </form>
+                    
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary-custom px-5" onclick="event.preventDefault();">
+                            <i class="bi bi-save"></i> ثبت درخواست
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

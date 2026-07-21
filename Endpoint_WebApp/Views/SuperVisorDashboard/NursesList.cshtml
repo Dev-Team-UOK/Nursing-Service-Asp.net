@@ -1,46 +1,55 @@
-﻿@using Nursing_Service.Application.Services.Nurse.Query.GetNurses
+@using Nursing_Service.Application.Services.Nurse.Query.GetNurses
 @model List<GetNurseResultDTO>
 @{
     Layout = "_SuperVisorDashboard_Layout";
 }
 
-<div class="main-header">
-    <h2>لیست پرستاران</h2>
-    <span class="subtitle">اطلاعات پرستار</span>
+<div class="page-header">
+    <div>
+        <h2 class="page-title">لیست پرستاران</h2>
+        <span class="page-subtitle">مشاهده لیست پرستاران تحت نظارت شما در این شیفت</span>
+    </div>
 </div>
-<table class="patients-table">
-    <thead>
-        <tr>
-            <th>نام کاربری</th>
-            <th>شماره پرستاری</th>
-            <th>نام و نام خانوادگی</th>
-            <th>شروع همکاری</th>
-            <th>تلفن همراه</th>
-            <th>سابقه کاری(سال)</th>
-            <th>ایمیل</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null && Model.Any())
-        {
-            foreach (var nurse in Model)
-            {
-                <tr>
-                    <td>@nurse.UserName</td>
-                    <td><span class="status">@nurse.NurseNumber</span></td>
-                    <td><span class="status">@($"{nurse.FirstName} {nurse.LastName}")</span></td>
-                    <td><span class="status">@nurse.StartWorkingInCompany</span></td>
-                    <td>@nurse.PhoneNumber</td>
-                    <td>@(nurse.WorkHistoryInYear ?? null)</td>
-                    <td>@nurse.Email</td>
-                </tr>
-            }
-        }
-        else
-        {
-            <tr>
-                <td colspan="7" class="text-center">پرستاری یافت نشد.</td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+<div class="card-custom">
+    <div class="card-body-custom p-0">
+        <div class="table-responsive">
+            <table class="table table-custom table-hover">
+                <thead>
+                    <tr>
+                        <th>نام کاربری</th>
+                        <th>نام و نام خانوادگی</th>
+                        <th>شماره پرستاری</th>
+                        <th>شروع همکاری</th>
+                        <th>سابقه (سال)</th>
+                        <th>تلفن همراه</th>
+                        <th>ایمیل</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var nurse in Model)
+                        {
+                            <tr>
+                                <td><span class="badge bg-light text-dark border">@nurse.UserName</span></td>
+                                <td class="fw-bold">@($"{nurse.FirstName} {nurse.LastName}")</td>
+                                <td><span class="badge bg-secondary">@nurse.NurseNumber</span></td>
+                                <td class="text-muted small">@nurse.StartWorkingInCompany</td>
+                                <td>@(nurse.WorkHistoryInYear?.ToString() ?? "-")</td>
+                                <td dir="ltr" class="text-end">@nurse.PhoneNumber</td>
+                                <td>@nurse.Email</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center py-4 text-muted">پرستاری یافت نشد.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

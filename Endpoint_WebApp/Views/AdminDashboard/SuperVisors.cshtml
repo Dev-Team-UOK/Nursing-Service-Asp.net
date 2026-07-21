@@ -1,55 +1,72 @@
-﻿@using Nursing_Service.Application.Services.SuperVisor.Query.GetSuperVisors
+@using Nursing_Service.Application.Services.SuperVisor.Query.GetSuperVisors
 @using Nursing_Service.Common.Extensions
 @model List<GetSuperVisorResultDTO>
 @{
     Layout = "_AdminDashboard_Layout";
 }
-<div class="main-header">
-    <h2>لیست سوپروایزرها</h2>
-    <span class="subtitle">اطلاعات سوپروایزر</span>
-</div>
-<table class="patients-table">
-    <div class="table-actions">
-        <a class="add-btn" href="/SuperVisors/Create-SuperVisor">
-            <span class="btn-text">افزودن</span>
-            <span class="material-icons">add</span>
-        </a>
+
+<div class="page-header">
+    <div>
+        <h2 class="page-title">لیست سوپروایزرها</h2>
+        <span class="page-subtitle">مدیریت مدیران و سرپرستاران شیفت‌ها</span>
     </div>
-    <thead>
-        <tr>
-            <th>نام کاربری</th>
-            <th>نام و نام خانوادگی</th>
-            <th>تلفن همراه</th>
-            <th>شیفت</th>
-            <th>ایمیل</th>
-            <th>عملیات</th>
-        </tr>
-    </thead>
-    <tbody>
-        @* Dynamically render each supervisor row *@
-        @if (Model != null && Model.Any())
-        {
-            foreach (var supervisor in Model)
-            {
-                <tr>
-                    <td>@supervisor.UserName</td>
-                    <td><span class="status">@supervisor.FirstName @supervisor.LastName</span></td>
-                    <td>@supervisor.PhoneNumber</td>
-                    <td>@supervisor.Shift.GetDisplayName()</td>
-                    <td>@supervisor.Email</td>
-                    <td>
-                        <a class="edit-btn" href="/SuperVisors/View-SuperVisor?id=@supervisor.Id">مشاهده</a>
-                        <a class="edit-btn" href="/SuperVisors/Edit-SuperVisor?id=@supervisor.Id">ویرایش</a>
-                        <a class="edit-btn status offline" href="/SuperVisors/Delete-SuperVisor?id=@supervisor.Id">حذف</a>
-                    </td>
-                </tr>
-            }
-        }
-        else
-        {
-            <tr>
-                <td colspan="7" style="text-align:center;">هیچ سوپروایزری یافت نشد.</td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <a class="btn-primary-custom" href="/SuperVisors/Create-SuperVisor">
+        <i class="bi bi-plus-lg"></i>
+        <span>افزودن سوپروایزر جدید</span>
+    </a>
+</div>
+
+<div class="card-custom">
+    <div class="card-body-custom p-0">
+        <div class="table-responsive">
+            <table class="table table-custom table-hover">
+                <thead>
+                    <tr>
+                        <th>نام کاربری</th>
+                        <th>نام و نام خانوادگی</th>
+                        <th>تلفن همراه</th>
+                        <th>شیفت</th>
+                        <th>ایمیل</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var supervisor in Model)
+                        {
+                            <tr>
+                                <td><span class="badge bg-light text-dark border">@supervisor.UserName</span></td>
+                                <td class="fw-bold">@supervisor.FirstName @supervisor.LastName</td>
+                                <td dir="ltr" class="text-end">@supervisor.PhoneNumber</td>
+                                <td>
+                                    @{
+                                        var shiftClass = supervisor.Shift.GetDisplayName() switch {
+                                            "صبح" => "bg-info text-dark",
+                                            "عصر" => "bg-warning text-dark",
+                                            "شب" => "bg-dark",
+                                            _ => "bg-secondary"
+                                        };
+                                    }
+                                    <span class="badge badge-status @shiftClass">@supervisor.Shift.GetDisplayName()</span>
+                                </td>
+                                <td>@supervisor.Email</td>
+                                <td>
+                                    <a class="action-btn btn-view" href="/SuperVisors/View-SuperVisor?id=@supervisor.Id" title="مشاهده"><i class="bi bi-eye"></i></a>
+                                    <a class="action-btn btn-edit" href="/SuperVisors/Edit-SuperVisor?id=@supervisor.Id" title="ویرایش"><i class="bi bi-pencil"></i></a>
+                                    <a class="action-btn btn-delete" href="/SuperVisors/Delete-SuperVisor?id=@supervisor.Id" title="حذف"><i class="bi bi-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center py-4 text-muted">هیچ سوپروایزری یافت نشد.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

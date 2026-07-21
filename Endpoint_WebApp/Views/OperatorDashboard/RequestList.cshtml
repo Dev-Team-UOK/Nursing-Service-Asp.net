@@ -1,86 +1,55 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
+    Layout = "_OperatorDashboard_Layout";
 }
 
-
-<div class="main-header">
-    <h2>لیست درخواست‌ها</h2>
-    <span class="subtitle">درخواست‌ها </span>
-</div>
-<table class="patients-table">
-    <div class="table-actions">
+<div class="page-header">
+    <div>
+        <h2 class="page-title">لیست درخواست‌ها</h2>
+        <span class="page-subtitle">مشاهده لیست تمامی درخواست‌های ثبت شده در سامانه</span>
     </div>
+</div>
 
-    <thead>
-        <tr>
-            <th>تاریخ ایجاد</th>
-            <th>نام و نام خانوادگی</th>
-            <th>تلفن</th>
-            <th>آدرس</th>
-            <th>سرویس</th>
-            <th>عملیات</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>09336547943</td>
-            <td>کردستان، سقز خیابان نالی، کوچه یاسا3، پلاک 23</td>
-            <td>واکسیناسیون</td>
-            <td><button class="edit-btn">مشاهده</button></td>
-        </tr>
-        <tr>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>09336547943</td>
-            <td>کردستان، سقز خیابان نالی، کوچه یاسا3، پلاک 23</td>
-            <td>واکسیناسیون</td>
-            <td><button class="edit-btn">مشاهده</button></td>
-        </tr>
-        <tr>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>09336547943</td>
-            <td>
-                تهران بزرگ، تهرانپارس، خیابان اصلی وحدت، خیابان فردوسی، کوچه اصلی بهاران، کوچه نهال، پلاک13
-            </td>
-            <td>واکسیناسیون</td>
-            <td><button class="edit-btn">مشاهده</button></td>
-        </tr>
-        <tr>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>09336547943</td>
-            <td>کردستان، سقز خیابان نالی، کوچه یاسا3، پلاک 23</td>
-            <td>واکسیناسیون</td>
-            <td><button class="edit-btn">مشاهده</button></td>
-        </tr>
-        <tr>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>09336547943</td>
-            <td>کردستان، سقز خیابان نالی، کوچه یاسا3، پلاک 23</td>
-            <td>واکسیناسیون</td>
-            <td><button class="edit-btn">مشاهده</button></td>
-        </tr>
-        <tr>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>09336547943</td>
-            <td>کردستان، سقز خیابان نالی، کوچه یاسا3، پلاک 23</td>
-            <td>واکسیناسیون</td>
-            <td><button class="edit-btn">مشاهده</button></td>
-        </tr>
-        <tr>
-            <td>1404/02/09</td>
-            <td><span class="status">احمد وکیلی</span></td>
-            <td>09336547943</td>
-            <td>کردستان، سقز خیابان نالی، کوچه یاسا3، پلاک 23</td>
-            <td>واکسیناسیون</td>
-            <td><button class="edit-btn">مشاهده</button></td>
-        </tr>
-    </tbody>
-</table>
+<div class="card-custom">
+    <div class="card-body-custom p-0">
+        <div class="table-responsive">
+            <table class="table table-custom table-hover">
+                <thead>
+                    <tr>
+                        <th>تاریخ ایجاد</th>
+                        <th>نام و نام خانوادگی</th>
+                        <th>تلفن</th>
+                        <th>آدرس</th>
+                        <th>سرویس</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td dir="ltr" class="text-end text-muted small"><i class="bi bi-calendar3 me-1"></i> 1404/02/09</td>
+                        <td class="fw-bold">احمد وکیلی</td>
+                        <td dir="ltr" class="text-end">09336547943</td>
+                        <td class="text-truncate" style="max-width: 250px;" title="کردستان، سقز خیابان نالی، کوچه یاسا3، پلاک 23">کردستان، سقز خیابان نالی...</td>
+                        <td><span class="badge bg-info text-dark">واکسیناسیون</span></td>
+                        <td><button class="btn btn-sm btn-outline-primary rounded-pill px-3">مشاهده</button></td>
+                    </tr>
+                    <tr>
+                        <td dir="ltr" class="text-end text-muted small"><i class="bi bi-calendar3 me-1"></i> 1404/02/09</td>
+                        <td class="fw-bold">رضا اکبری</td>
+                        <td dir="ltr" class="text-end">09121234567</td>
+                        <td class="text-truncate" style="max-width: 250px;" title="تهران بزرگ، تهرانپارس، خیابان اصلی وحدت...">تهران بزرگ، تهرانپارس...</td>
+                        <td><span class="badge bg-info text-dark">سرم تراپی</span></td>
+                        <td><button class="btn btn-sm btn-outline-primary rounded-pill px-3">مشاهده</button></td>
+                    </tr>
+                    <tr>
+                        <td dir="ltr" class="text-end text-muted small"><i class="bi bi-calendar3 me-1"></i> 1404/02/08</td>
+                        <td class="fw-bold">زهرا مرادی</td>
+                        <td dir="ltr" class="text-end">09197654321</td>
+                        <td class="text-truncate" style="max-width: 250px;" title="اصفهان، خیابان چهارباغ بالا، کوچه 12، پلاک 5">اصفهان، خیابان چهارباغ...</td>
+                        <td><span class="badge bg-info text-dark">مراقبت از سالمند</span></td>
+                        <td><button class="btn btn-sm btn-outline-primary rounded-pill px-3">مشاهده</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

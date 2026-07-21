@@ -1,54 +1,61 @@
-﻿@using Nursing_Service.Application.Services.Service.Query.GetServices
+@using Nursing_Service.Application.Services.Service.Query.GetServices
 @model List<GetServiceResultDTO>
 @{
     Layout = "_NurseDashboard_Layout";
 }
 
-<div class="main-header">
-    <h2>مدیریت توانایی‌ها</h2>
-    <span class="subtitle">توانایی‌ها</span>
-</div>
-
-<div class="table-actions">
-    <a class="add-btn" href="/NurseDashboard/CreateAbility">
-        <span class="btn-text">افزودن مهارت</span>
-        <span class="material-icons">add</span>
+<div class="page-header">
+    <div>
+        <h2 class="page-title">مدیریت توانایی‌ها</h2>
+        <span class="page-subtitle">مشاهده و مدیریت سرویس‌هایی که شما قادر به انجام آن‌ها هستید</span>
+    </div>
+    <a class="btn-primary-custom" href="/NurseDashboard/CreateAbility">
+        <i class="bi bi-plus-lg"></i>
+        <span>افزودن مهارت جدید</span>
     </a>
 </div>
 
-<table class="patients-table">
-    <thead>
-        <tr>
-            <th>شناسه</th>
-            <th>سرویس</th>
-            <th>هزینه (تومان)</th>
-            <th>زمان انجام (دقیقه)</th>
-            <th>عملیات</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null && Model.Any())
-        {
-            foreach (var item in Model)
-            {
-                <tr>
-                    <td><span class="status">@item.Id</span></td>
-                    <td><span class="status">@item.Name</span></td>
-                    <td>@item.Cost.ToString("N0")</td>
-                    <td>@item.MinDuration?.ToString() ?? "-"</td>
-                    <td>
-                        <form asp-action="DeleteAbility" asp-route-id="@item.Id" method="post" style="display:inline;">
-                            <button type="submit" class="edit-btn status offline" onclick="return confirm('آیا مطمئن هستید؟');">حذف</button>
-                        </form>
-                    </td>
-                </tr>
-            }
-        }
-        else
-        {
-            <tr>
-                <td colspan="5" class="text-center">هیچ مهارتی ثبت نشده است.</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="card-custom">
+    <div class="card-body-custom p-0">
+        <div class="table-responsive">
+            <table class="table table-custom table-hover">
+                <thead>
+                    <tr>
+                        <th>شناسه</th>
+                        <th>سرویس</th>
+                        <th>هزینه (تومان)</th>
+                        <th>زمان انجام (دقیقه)</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><span class="badge bg-light text-dark border">@item.Id</span></td>
+                                <td class="fw-bold">@item.Name</td>
+                                <td><span class="badge bg-success bg-opacity-10 text-success border border-success">@item.Cost.ToString("N0")</span></td>
+                                <td><i class="bi bi-clock me-1 text-muted"></i> @(item.MinDuration?.ToString() ?? "-")</td>
+                                <td>
+                                    <form asp-action="DeleteAbility" asp-route-id="@item.Id" method="post" class="d-inline">
+                                        <button type="submit" class="action-btn btn-delete border-0" onclick="return confirm('آیا از حذف این مهارت مطمئن هستید؟');" title="حذف مهارت">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center py-4 text-muted">هیچ مهارتی ثبت نشده است.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

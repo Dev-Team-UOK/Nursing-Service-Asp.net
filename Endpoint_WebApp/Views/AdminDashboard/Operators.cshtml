@@ -1,55 +1,59 @@
-﻿@using Nursing_Service.Application.Services.Users.Query
+@using Nursing_Service.Application.Services.Users.Query
 @model List<GetUserResultDTO>
 @{
     Layout = "_AdminDashboard_Layout";
 }
 
-<div class="main-header">
-    <h2>لیست اپراتورها</h2>
-    <span class="subtitle">اطلاعات اپراتور</span>
-</div>
-<table class="patients-table">
-    <div class="table-actions">
-        <a class="add-btn" href="/Operators/Create-Operator">
-            <span class="btn-text">افزودن</span>
-            <span class="material-icons">add</span>
-        </a>
+<div class="page-header">
+    <div>
+        <h2 class="page-title">لیست اپراتورها</h2>
+        <span class="page-subtitle">مدیریت پرسنل اپراتور سامانه</span>
     </div>
+    <a class="btn-primary-custom" href="/Operators/Create-Operator">
+        <i class="bi bi-plus-lg"></i>
+        <span>افزودن اپراتور جدید</span>
+    </a>
+</div>
 
-    <thead>
-        <tr>
-            <th>نام کاربری</th>
-            <th>نام</th>
-            <th>نام خانوادگی</th>
-            <th>تلفن همراه</th>
-            <th>ایمیل</th>
-            <th>عملیات</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null && Model.Any())
-        {
-            foreach (var user in Model)
-            {
-                <tr>
-                    <td>@user.UserName</td>
-                    <td><span class="status">@user.FirstName</span></td>
-                    <td><span class="status">@user.LastName</span></td>
-                    <td>@user.PhoneNumber</td>
-                    <td>@user.Email</td>
-                    <td>
-                        <a class="edit-btn" href="/Operators/View-Operator?id=@user.Id">مشاهده</a>
-                        <a class="edit-btn" href="/Operators/Edit-Operator?id=@user.Id">ویرایش</a>
-                        <a class="edit-btn status offline" href="/Operators/Delete-Operator?id=@user.Id">حذف</a>
-                    </td>
-                </tr>
-            }
-        }
-        else
-        {
-            <tr>
-                <td colspan="6" style="text-align:center;">اپراتوری یافت نشد.</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="card-custom">
+    <div class="card-body-custom p-0">
+        <div class="table-responsive">
+            <table class="table table-custom table-hover">
+                <thead>
+                    <tr>
+                        <th>نام کاربری</th>
+                        <th>نام و نام خانوادگی</th>
+                        <th>تلفن همراه</th>
+                        <th>ایمیل</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var user in Model)
+                        {
+                            <tr>
+                                <td><span class="badge bg-light text-dark border">@user.UserName</span></td>
+                                <td class="fw-bold">@user.FirstName @user.LastName</td>
+                                <td dir="ltr" class="text-end">@user.PhoneNumber</td>
+                                <td>@user.Email</td>
+                                <td>
+                                    <a class="action-btn btn-view" href="/Operators/View-Operator?id=@user.Id" title="مشاهده"><i class="bi bi-eye"></i></a>
+                                    <a class="action-btn btn-edit" href="/Operators/Edit-Operator?id=@user.Id" title="ویرایش"><i class="bi bi-pencil"></i></a>
+                                    <a class="action-btn btn-delete" href="/Operators/Delete-Operator?id=@user.Id" title="حذف"><i class="bi bi-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center py-4 text-muted">اپراتوری یافت نشد.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

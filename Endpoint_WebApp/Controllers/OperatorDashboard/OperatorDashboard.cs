@@ -6,7 +6,7 @@ namespace Endpoint_WebApp.Controllers.OperatorDashboard
     [Authorize(Roles = "Operator")]
     public class OperatorDashboard : Controller
     {
-        public IActionResult Index()
+        public IActionResult HomePage()
         {
             return View();
         }

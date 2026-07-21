@@ -1,58 +1,67 @@
-﻿@using Nursing_Service.Application.Services.PatinetNeedService.Query.GetPatientNeedServices
+@using Nursing_Service.Application.Services.PatinetNeedService.Query.GetPatientNeedServices
 @model List<GetPatientNeedServiceResultDTO>
 @{
     Layout = "_NurseDashboard_Layout";
 }
 
-<div class="main-header">
-    <h2>لیست درخواست‌ها</h2>
-    <span class="subtitle">درخواست‌ها </span>
+<div class="page-header">
+    <div>
+        <h2 class="page-title">لیست درخواست‌های من</h2>
+        <span class="page-subtitle">درخواست‌های ارجاع شده به شما جهت انجام وظیفه</span>
+    </div>
 </div>
-<table class="patients-table">
-    <thead>
-        <tr>
-            <th>شناسه</th>
-            <th>تاریخ</th>
-            <th>بیمار</th>
-            <th>سرویس</th>
-            <th>وضعیت سرویس</th>
-            <th>ثبت گزارشات</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null && Model.Any())
-        {
-            foreach (var item in Model)
-            {
-                <tr>
-                    <td><span class="status">@item.Id</span></td>
-                    <td>@item.ServiceDateTime.ToString("yyyy/MM/dd HH:mm")</td>
-                    <td><span class="status">@item.PatientFullName</span></td>
-                    <td>@item.ServiceName</td>
-                    <td>
-                        <select class="styled-select" disabled>
-                            <option value="notdone" selected="@(item.IsDone ? "" : "selected")">اقدام نشده</option>
-                            <option value="done" selected="@(item.IsDone ? "selected" : "")">انجام شد</option>
-                        </select>
-                    </td>
-                    <td>
-                        @if (item.IsDone)
+
+<div class="card-custom">
+    <div class="card-body-custom p-0">
+        <div class="table-responsive">
+            <table class="table table-custom table-hover">
+                <thead>
+                    <tr>
+                        <th>شناسه</th>
+                        <th>تاریخ و زمان</th>
+                        <th>بیمار</th>
+                        <th>سرویس</th>
+                        <th>وضعیت سرویس</th>
+                        <th>ثبت گزارشات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
                         {
-                            <span>ثبت شد</span>
+                            <tr>
+                                <td><span class="badge bg-light text-dark border">@item.Id</span></td>
+                                <td dir="ltr" class="text-end text-muted small"><i class="bi bi-calendar3 me-1"></i> @item.ServiceDateTime.ToString("yyyy/MM/dd HH:mm")</td>
+                                <td class="fw-bold">@item.PatientFullName</td>
+                                <td><span class="badge bg-info text-dark">@item.ServiceName</span></td>
+                                <td>
+                                    <select class="form-select form-select-sm" disabled style="width: 130px; background-color: transparent;">
+                                        <option value="notdone" selected="@(item.IsDone ? "" : "selected")">اقدام نشده</option>
+                                        <option value="done" selected="@(item.IsDone ? "selected" : "")">انجام شد</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    @if (item.IsDone)
+                                    {
+                                        <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> ثبت شد</span>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-sm btn-outline-primary rounded-pill px-3">ثبت گزارش</button>
+                                    }
+                                </td>
+                            </tr>
                         }
-                        else
-                        {
-                            <button class="edit-btn">ثبت</button>
-                        }
-                    </td>
-                </tr>
-            }
-        }
-        else
-        {
-            <tr>
-                <td colspan="6" class="text-center">درخواستی وجود ندارد.</td>
-            </tr>
-        }
-    </tbody>
-</table>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center py-4 text-muted">درخواستی برای شما ثبت نشده است.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

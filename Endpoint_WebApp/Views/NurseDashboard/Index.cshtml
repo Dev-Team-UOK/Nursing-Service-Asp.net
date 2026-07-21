@@ -1,4 +1,40 @@
-﻿@{
+@{
 	Layout = "_NurseDashboard_Layout";
 }
 
+<div class="page-header">
+    <div>
+        <h2 class="page-title">داشبورد پرستار</h2>
+        <span class="page-subtitle">خوش آمدید! به پنل کاربری خود وارد شدید.</span>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-6 col-lg-4">
+        <div class="card-custom h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);">
+            <div class="card-body p-4 d-flex flex-column align-items-center justify-content-center text-center gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-success bg-success bg-opacity-10" style="width: 72px; height: 72px;">
+                    <i class="bi bi-clipboard2-check fs-1"></i>
+                </div>
+                <div>
+                    <h5 class="fw-bold text-dark mb-1">درخواست‌های امروز</h5>
+                    <a href="/NurseDashboard/RequestList" class="btn btn-sm btn-outline-success rounded-pill mt-2 px-3">مشاهده درخواست‌ها</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+        <div class="card-custom h-100 border-0 shadow-sm" style="background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);">
+            <div class="card-body p-4 d-flex flex-column align-items-center justify-content-center text-center gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-primary bg-primary bg-opacity-10" style="width: 72px; height: 72px;">
+                    <i class="bi bi-star fs-1"></i>
+                </div>
+                <div>
+                    <h5 class="fw-bold text-dark mb-1">مهارت‌های من</h5>
+                    <a href="/NurseDashboard/Ability" class="btn btn-sm btn-outline-primary rounded-pill mt-2 px-3">مدیریت مهارت‌ها</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

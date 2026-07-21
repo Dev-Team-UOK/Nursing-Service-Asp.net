@@ -1,28 +1,47 @@
-﻿@model Endpoint_WebApp.Models.ViewModels.NurseDashboard.CreateAbilityViewModel
+@using Nursing_Service.Common.Consts
+@model Endpoint_WebApp.Models.ViewModels.NurseDashboard.CreateAbilityViewModel
 @{
     Layout = "_NurseDashboard_Layout";
     ViewData["Title"] = "افزودن مهارت جدید";
 }
 
-<div class="main-header">
-    <h2>افزودن مهارت جدید</h2>
+<div class="page-header">
+    <div>
+        <h2 class="page-title">افزودن مهارت جدید</h2>
+        <span class="page-subtitle">انتخاب سرویسی که توانایی انجام آن را دارید</span>
+    </div>
+    <a href="/NurseDashboard/Ability" class="btn btn-outline-secondary btn-sm-custom">
+        <i class="bi bi-arrow-right"></i> بازگشت به لیست
+    </a>
 </div>
 
-<form asp-action="CreateAbility" method="post" id="createAbilityForm">
-    <div class="form-group">
-        <label for="ServiceId">انتخاب سرویس</label>
-        <select asp-for="ServiceId" class="form-control" id="ServiceId" required>
-            <option value="">-- انتخاب سرویس --</option>
-            <!-- آیتم‌ها با جاوااسکریپت اضافه می‌شوند -->
-        </select>
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card-custom">
+            <div class="card-body-custom">
+                <form asp-action="CreateAbility" method="post" id="createAbilityForm">
+                    <div class="mb-4">
+                        <label for="ServiceId" class="form-label">سرویس مورد نظر را انتخاب کنید</label>
+                        <select asp-for="ServiceId" class="form-select" id="ServiceId" required>
+                            <option value="">-- انتخاب سرویس --</option>
+                            <!-- آیتم‌ها با جاوااسکریپت اضافه می‌شوند -->
+                        </select>
+                        <div class="form-text mt-2 text-muted">مهارت‌هایی که اضافه می‌کنید در پروفایل شما ثبت شده و بر اساس آن‌ها درخواست‌ها به شما ارجاع داده می‌شود.</div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary-custom w-100">
+                        <i class="bi bi-check2-circle"></i> ثبت مهارت
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
-    <button type="submit" class="btn btn-primary">ثبت مهارت</button>
-</form>
+</div>
 
 @section Scripts {
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            fetch('/api/services') // فرض بر این است که یک API با این مسیر دارید
+            fetch('@Consts.APIHostAddress/api/services')
                 .then(response => response.json())
                 .then(data => {
                     const select = document.getElementById('ServiceId');

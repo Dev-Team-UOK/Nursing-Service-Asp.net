@@ -32,7 +32,7 @@ function SignInUser() {
                     } else if (data.message === "سوپر وایزر وارد شدید") {
                         window.location.replace("/SuperVisorDashboard/Index");
                     } else if (data.message === "اپراتور وارد شدید") {
-                        window.location.replace("/OperatorDashboard/Index");
+                        window.location.replace("/OperatorDashboard/homepage");
                     }
                 });
             }

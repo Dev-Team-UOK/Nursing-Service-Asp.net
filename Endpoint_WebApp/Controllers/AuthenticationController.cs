@@ -40,7 +40,8 @@ namespace Endpoint_WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> SignIn(string email, string password)
         {
-            if (email == "admin" && password == "admin")
+            #region login with hardcoded users for tests
+            if (email.ToLower() == "admin" && password.ToLower() == "admin")
             {
                 var claims = new List<Claim>
                 {
@@ -59,6 +60,64 @@ namespace Endpoint_WebApp.Controllers
                     Data = null
                 });
             }
+            else if (email.ToLower() == "operator" && password.ToLower() == "operator")
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, "Operator"),
+                    new Claim(ClaimTypes.Role, "Operator")
+                };
+
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+                await HttpContext.SignInAsync(principal);
+
+                return Json(new BaseResultDTO<SignInUserResultDto>
+                {
+                    IsSuccess = true,
+                    Message = "اپراتور وارد شدید",
+                    Data = null
+                });
+            }
+            else if (email.ToLower() == "nurse" && password.ToLower() == "nurse")
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, "Nurse"),
+                    new Claim(ClaimTypes.Role, "Nurse")
+                };
+
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+                await HttpContext.SignInAsync(principal);
+
+                return Json(new BaseResultDTO<SignInUserResultDto>
+                {
+                    IsSuccess = true,
+                    Message = "پرستار وارد شدید",
+                    Data = null
+                });
+            }
+            else if (email.ToLower() == "supervisor" && password.ToLower() == "supervisor")
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, "SuperVisor"),
+                    new Claim(ClaimTypes.Role, "SuperVisor")
+                };
+
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+                await HttpContext.SignInAsync(principal);
+
+                return Json(new BaseResultDTO<SignInUserResultDto>
+                {
+                    IsSuccess = true,
+                    Message = "سوپر وایزر وارد شدید",
+                    Data = null
+                });
+            }
+            #endregion
             else
             {
                 var signinResult = await _signInUserService.ExcuteAsync(new SignInUserRequestInfo
@@ -79,7 +138,7 @@ namespace Endpoint_WebApp.Controllers
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var principal = new ClaimsPrincipal(identity);
                     await HttpContext.SignInAsync(principal);
-     
+
                 }
 
                 return Json(signinResult);

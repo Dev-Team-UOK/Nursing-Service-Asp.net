@@ -1,69 +1,75 @@
-﻿@using Nursing_Service.Application.Services.Patient.Query.GetPatients
+@using Nursing_Service.Application.Services.Patient.Query.GetPatients
 @model List<GetPatientsResultDTO> 
 @{
 	Layout = "_AdminDashboard_Layout";
 }
 
-<div class="main-header">
-    <h2>لیست بیماران</h2>
-    <span class="subtitle">اطلاعات بیمار</span>
-</div>
-<table class="patients-table">
-    <div class="table-actions">
-        <a class="add-btn" href="/Patients/Create-Patient">
-            <span class="btn-text">افزودن</span>
-            <span class="material-icons">add</span>
-        </a>
+<div class="page-header">
+    <div>
+        <h2 class="page-title">لیست بیماران</h2>
+        <span class="page-subtitle">مدیریت و مشاهده اطلاعات بیماران</span>
     </div>
+    <a class="btn-primary-custom" href="/Patients/Create-Patient">
+        <i class="bi bi-plus-lg"></i>
+        <span>افزودن بیمار جدید</span>
+    </a>
+</div>
 
-    <thead>
-        <tr>
-            <th>سن</th>
-            <th>نام و نام خانوادگی</th>
-            <th>کدملی</th>
-            <th>تلفن همراه</th>
-            <th>وضعیت درخواست</th>
-            <th>عملیات</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null && Model.Any())
-        {
-            foreach (var patient in Model)
-            {
-                <tr>
-                    <td>@patient.Age</td>
-                    <td><span class="status">@patient.FullName</span></td>
-                    <td><span class="status">@patient.NationalCode</span></td>
-                    <td>@patient.PhoneNumber</td>
-                    <td>
-                        @{
-                            var statusClass = patient.Services!.Any(s => s.IsDone == false && s.IsPast == true) is true ? "offline" :
-                            patient.Services.Any(s => s.IsDone == false) is false ? "online" : "pending";
+<div class="card-custom">
+    <div class="card-body-custom p-0">
+        <div class="table-responsive">
+            <table class="table table-custom table-hover">
+                <thead>
+                    <tr>
+                        <th>نام و نام خانوادگی</th>
+                        <th>کدملی</th>
+                        <th>سن</th>
+                        <th>تلفن همراه</th>
+                        <th>وضعیت درخواست</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var patient in Model)
+                        {
+                            <tr>
+                                <td class="fw-bold">@patient.FullName</td>
+                                <td>@patient.NationalCode</td>
+                                <td>@patient.Age</td>
+                                <td dir="ltr" class="text-end">@patient.PhoneNumber</td>
+                                <td>
+                                    @{
+                                        var statusClass = patient.Services!.Any(s => s.IsDone == false && s.IsPast == true) is true ? "bg-danger" :
+                                        patient.Services.Any(s => s.IsDone == false) is false ? "bg-success" : "bg-warning text-dark";
 
-                            var context = statusClass switch
-                            {
-                                "online" => statusClass = "انجام شده",
-                                "offline" => statusClass = "انجام نشده",
-                                "pending" => statusClass = "درحال انجام",
-                                _ => statusClass = "status unknown"
-                            };
+                                        var context = statusClass switch
+                                        {
+                                            "bg-success" => "انجام شده",
+                                            "bg-danger" => "انجام نشده",
+                                            "bg-warning text-dark" => "درحال انجام",
+                                            _ => "نامشخص"
+                                        };
+                                    }
+                                    <span class="badge badge-status @statusClass">@context</span>
+                                </td>
+                                <td>
+                                    <a class="action-btn btn-view" href="/Patients/View-Patient?id=@patient.Id" title="مشاهده"><i class="bi bi-eye"></i></a>
+                                    <a class="action-btn btn-edit" href="/Patients/Edit-Patient?id=@patient.Id" title="ویرایش"><i class="bi bi-pencil"></i></a>
+                                    <a class="action-btn btn-delete" href="/Patients/Delete-Patient?id=@patient.Id" title="حذف"><i class="bi bi-trash"></i></a>
+                                </td>
+                            </tr>
                         }
-                        <span class="status @statusClass">@context</span>
-                    </td>
-                    <td>
-                        <a class="edit-btn" href="/Patients/View-Patient?id=@patient.Id">مشاهده</a>
-                        <a class="edit-btn" href="/Patients/Edit-Patient?id=@patient.Id">ویرایش</a>
-                        <a class="edit-btn status offline" href="/Patients/Delete-Patient?id=@patient.Id">حذف</a>
-                    </td>
-                </tr>
-            }
-        }
-        else
-        {
-            <tr>
-                <td colspan="6" style="text-align:center;">بیماری یافت نشد.</td>
-            </tr>
-        }
-    </tbody>
-</table>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center py-4 text-muted">بیماری یافت نشد.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

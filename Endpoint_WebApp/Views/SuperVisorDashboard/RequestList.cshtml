@@ -1,4 +1,4 @@
-﻿@using Nursing_Service.Application.Services.PatinetNeedService.Query.GetPatientNeedServices
+@using Nursing_Service.Application.Services.PatinetNeedService.Query.GetPatientNeedServices
 @using Nursing_Service.Common.Consts
 @model List<GetPatientNeedServiceResultDTO>
 @{
@@ -7,107 +7,74 @@
 @{
     var superVisorId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 }
-@section Styles
-{
-    <style>
-        .nurse-select {
-            background: #fff;
-            border: 1.5px solid #3f51b5;
-            border-radius: 6px;
-            padding: 6px 12px;
-            font-size: 1rem;
-            color: #333;
-            min-width: 140px;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            box-shadow: 0 1px 4px rgba(63,81,181,0.06);
-            outline: none;
-            margin-left: 6px;
-        }
 
-            .nurse-select:focus {
-                border-color: #1976d2;
-                box-shadow: 0 2px 8px rgba(33,150,243,0.10);
-            }
-
-        .assign-btn {
-            background: linear-gradient(90deg, #3f51b5 0%, #2196f3 100%);
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            padding: 6px 22px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 8px rgba(33, 150, 243, 0.08);
-            margin-right: 8px;
-        }
-
-            .assign-btn:hover, .assign-btn:focus {
-                background: linear-gradient(90deg, #303f9f 0%, #1976d2 100%);
-                box-shadow: 0 4px 16px rgba(33, 150, 243, 0.16);
-            }
-    </style>
-}
-
-
-<div class="main-header">
-    <h2>لیست درخواست‌ها</h2>
-    <span class="subtitle">درخواست‌ها</span>
+<div class="page-header">
+    <div>
+        <h2 class="page-title">لیست درخواست‌ها</h2>
+        <span class="page-subtitle">بررسی درخواست‌ها و ارجاع آن‌ها به پرستاران تحت نظارت</span>
+    </div>
 </div>
-<table class="patients-table">
-    <thead>
-        <tr>
-            <th>شناسه</th>
-            <th>تاریخ</th>
-            <th>بیمار</th>
-            <th>پرستار</th>
-            <th>سرویس</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null && Model.Any())
-        {
-            foreach (var item in Model)
-            {
-                <tr>
-                    <td><span class="status">@item.Id</span></td>
-                    <td>@item.ServiceDateTime.ToString("yyyy/MM/dd HH:mm")</td>
-                    <td><span class="status">@item.PatientFullName</span></td>
-                    <td>
-                        @if (string.IsNullOrWhiteSpace(item.NurseFullName))
+
+<div class="card-custom">
+    <div class="card-body-custom p-0">
+        <div class="table-responsive">
+            <table class="table table-custom table-hover">
+                <thead>
+                    <tr>
+                        <th>شناسه</th>
+                        <th>تاریخ و زمان</th>
+                        <th>بیمار</th>
+                        <th>سرویس</th>
+                        <th>پرستار مسئول</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
                         {
-                            <select class="nurse-select" data-request-id="@item.Id">
-                                <option value="">انتخاب پرستار</option>
-                            </select>
-                            <button type="button" class="assign-btn" data-request-id="@item.Id">ثبت</button>
+                            <tr>
+                                <td><span class="badge bg-light text-dark border">@item.Id</span></td>
+                                <td dir="ltr" class="text-end text-muted small"><i class="bi bi-calendar3 me-1"></i> @item.ServiceDateTime.ToString("yyyy/MM/dd HH:mm")</td>
+                                <td class="fw-bold">@item.PatientFullName</td>
+                                <td><span class="badge bg-info text-dark">@item.ServiceName</span></td>
+                                <td>
+                                    @if (string.IsNullOrWhiteSpace(item.NurseFullName))
+                                    {
+                                        <div class="d-flex align-items-center gap-2">
+                                            <select class="form-select form-select-sm nurse-select" data-request-id="@item.Id" style="min-width: 150px;">
+                                                <option value="">انتخاب پرستار...</option>
+                                            </select>
+                                            <button type="button" class="btn btn-sm btn-primary assign-btn" data-request-id="@item.Id">ثبت و ارجاع</button>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <span class="fw-bold text-success"><i class="bi bi-person-check-fill me-1"></i> @item.NurseFullName</span>
+                                    }
+                                </td>
+                            </tr>
                         }
-                        else
-                        {
-                            @item.NurseFullName
-                        }
-                    </td>
-                    <td>@item.ServiceName</td>
-                </tr>
-            }
-        }
-        else
-        {
-            <tr>
-                <td colspan="5" class="text-center">درخواستی وجود ندارد.</td>
-            </tr>
-        }
-    </tbody>
-</table>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center py-4 text-muted">درخواستی وجود ندارد.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     <script>
-        // مقدار شناسه را از Razor به جاوااسکریپت پاس بده
         const superVisorId = '@superVisorId';
-
         let nurses = [];
+        
         fetch(`@Consts.APIHostAddress/api/nurse/getAll?superVisorId=${superVisorId}`)
             .then(response => response.json())
             .then(data => {
@@ -131,11 +98,17 @@
                     alert('لطفا یک پرستار انتخاب کنید.');
                     return;
                 }
+                
+                // Show loading state
+                const originalText = e.target.innerHTML;
+                e.target.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+                e.target.disabled = true;
+
                 fetch('/SuperVisorDashboard/AssignNurse', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val() // اگر AntiForgeryToken دارید
+                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val() 
                     },
                     body: JSON.stringify({ requestId: requestId, nurseId: nurseId })
                 })
@@ -145,7 +118,14 @@
                         location.reload();
                     } else {
                         alert('خطا در ثبت پرستار.');
+                        e.target.innerHTML = originalText;
+                        e.target.disabled = false;
                     }
+                })
+                .catch(() => {
+                    alert('ارتباط با سرور قطع شد.');
+                    e.target.innerHTML = originalText;
+                    e.target.disabled = false;
                 });
             }
         });
