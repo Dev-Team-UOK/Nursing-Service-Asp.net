@@ -2,6 +2,6 @@
 {
     public interface ISMSIr
     {
-        Task<SendSMSByUrlResponseModel> SendSmsAsync(string mobile, string message);
+        Task<SendSMSByUrlResponseModel> SendSmsAsync(string mobile);
     }
 }

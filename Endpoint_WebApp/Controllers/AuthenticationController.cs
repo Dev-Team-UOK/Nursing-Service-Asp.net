@@ -259,7 +259,7 @@ namespace Endpoint_WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> SendSMS(string phone)
         {
-            var response = await _smsir.SendSmsAsync(phone, "test sms. service work");
+            var response = await _smsir.SendSmsAsync(phone);
 
             return Json(new { isSuccess = true, message = $"پیامک تست به {phone} با موفقیت ارسال شد." });
         }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace Nursing_Service.Infrastructure.SMS.Ir
 {
@@ -10,15 +11,33 @@ namespace Nursing_Service.Infrastructure.SMS.Ir
 
         public SMSIr(IOptions<SmsIrConfig> config)
         {
-            _config = config.Value; 
+            _config = config.Value;
         }
 
-        public async Task<SendSMSByUrlResponseModel> SendSmsAsync(string mobile, string message)
+        public async Task<SendSMSByUrlResponseModel> SendSmsAsync(string mobile)
         {
             HttpClient httpClient = new HttpClient();
 
-            var response = await httpClient.GetAsync(
-                $"{BaseUrl}/send?username={_config.UserName}&password={_config.Token}&mobile={mobile}&line={_config.Line}&text={message}"
+            httpClient.DefaultRequestHeaders.Add("x-api-key", _config.Token);
+
+            VerifySendModel model = new VerifySendModel()
+            {
+                Mobile = mobile,
+                // TODO: Hard Code Template Id provided 
+                TemplateId = 100000,
+                Parameters = new VerifySendParameterModel[] {
+                    new VerifySendParameterModel {
+                        Name = "CODE", Value = "1234"
+                    }
+                }
+            };
+
+            string payload = JsonConvert.SerializeObject(model);
+            StringContent stringContent = new(payload, Encoding.UTF8, "application/json");
+
+            var response = await httpClient.PostAsync(
+                $"{BaseUrl}/send/verify", 
+                stringContent
             );
 
             var jsonResponse = await response.Content.ReadAsStringAsync();
