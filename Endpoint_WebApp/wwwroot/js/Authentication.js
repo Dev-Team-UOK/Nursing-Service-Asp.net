@@ -1,7 +1,4 @@
-﻿document.querySelector('.img__btn').addEventListener('click', function () {
-    document.querySelector('.cont').classList.toggle('s--signup');
-});
-
+// Removed old .img__btn listener which caused JS error
 function SignInUser() {
     var Email = $("#Email_SignIn").val();
     var Password = $("#Password_SignIn").val();
@@ -171,3 +168,84 @@ $(function () {
     });
     $('#Role_SignUp').trigger('change');
 });
+
+function sendTestSMS() {
+    var phone = $("#testPhoneInput").val();
+    if (!phone) {
+        swal.fire('خطا', 'لطفا شماره همراه را وارد کنید', 'error');
+        return;
+    }
+
+    var phoneRegex = /^0\d{10}$/;
+    if (!phoneRegex.test(phone)) {
+        swal.fire('خطا', 'فرمت شماره همراه وارد شده معتبر نیست', 'error');
+        return;
+    }
+    
+    $.ajax({
+        contentType: 'application/x-www-form-urlencoded',
+        dataType: 'json',
+        type: "POST",
+        url: "/Authentication/SendSMS",
+        data: { 'phone': phone },
+        success: function (data) {
+            if (data.isSuccess == true) {
+                swal.fire('موفق!', data.message, 'success');
+                $('#smsModal').modal('hide');
+            } else {
+                swal.fire('هشدار!', data.message, 'warning');
+            }
+        },
+        error: function (request, status, error) {
+            swal.fire('هشدار!', request.responseText || 'خطا در ارتباط با سرور', 'warning');
+        }
+    });
+}
+
+function sendTestEmail() {
+    var email = $("#testEmailInput").val();
+    if (!email) {
+        swal.fire('خطا', 'لطفا ایمیل را وارد کنید', 'error');
+        return;
+    }
+    // اعتبارسنجی ایمیل
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        swal.fire('خطا', 'فرمت ایمیل وارد شده معتبر نیست', 'error');
+        return;
+    }
+
+    $.ajax({
+        contentType: 'application/x-www-form-urlencoded',
+        dataType: 'json',
+        type: "POST",
+        url: "/Authentication/SendEmail",
+        data: { 'email': email },
+        success: function (data) {
+            if (data.isSuccess == true) {
+                swal.fire('موفق!', data.message, 'success');
+                $('#emailModal').modal('hide');
+            } else {
+                swal.fire('هشدار!', data.message, 'warning');
+            }
+        },
+        error: function (request, status, error) {
+            swal.fire('هشدار!', request.responseText || 'خطا در ارتباط با سرور', 'warning');
+        }
+    });
+}
+
+// Info Modal Logic
+$(document).ready(function() {
+    // Show the info modal when page loads
+    var infoModalEl = document.getElementById('infoModal');
+    if (infoModalEl) {
+        var infoModal = new bootstrap.Modal(infoModalEl);
+        infoModal.show();
+    }
+});
+
+function nextInfoStep() {
+    $('#infoStep1').addClass('d-none');
+    $('#infoStep2').removeClass('d-none');
+}

@@ -1,4 +1,4 @@
-﻿using System.Security.Claims;
+using System.Security.Claims;
 using Endpoint_WebApp.Models.ViewModels.Authentication;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -40,7 +40,7 @@ namespace Endpoint_WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> SignIn(string email, string password)
         {
-            #region login with hardcoded users for tests
+            #region login with hardcoded users for test
             if (email.ToLower() == "admin" && password.ToLower() == "admin")
             {
                 var claims = new List<Claim>
@@ -245,6 +245,20 @@ namespace Endpoint_WebApp.Controllers
             }
             else
                 throw new ArgumentOutOfRangeException(nameof(req.Role));
+        }
+
+        [HttpPost]
+        public IActionResult SendSMS(string phone)
+        {
+            // کد ارسال پیامک اینجا قرار می‌گیرد
+            return Json(new { isSuccess = true, message = $"پیامک تست به {phone} با موفقیت ارسال شد." });
+        }
+
+        [HttpPost]
+        public IActionResult SendEmail(string email)
+        {
+            // کد ارسال ایمیل اینجا قرار می‌گیرد
+            return Json(new { isSuccess = true, message = $"ایمیل تست به {email} با موفقیت ارسال شد." });
         }
 
         [Route("/SignOut")]
