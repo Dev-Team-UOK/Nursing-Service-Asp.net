@@ -18,7 +18,7 @@ namespace Nursing_Service.Infrastructure.SMS.Ir
             HttpClient httpClient = new HttpClient();
 
             var response = await httpClient.GetAsync(
-                $"{BaseUrl}send?username={_config.UserName}&password={_config.Token}&mobile={mobile}&line={_config.Line}&text={message}"
+                $"{BaseUrl}/send?username={_config.UserName}&password={_config.Token}&mobile={mobile}&line={_config.Line}&text={message}"
             );
 
             var jsonResponse = await response.Content.ReadAsStringAsync();

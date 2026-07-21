@@ -102,6 +102,8 @@ builder.Services.AddScoped<ICreateAbility, CreateAbility>();
 builder.Services.AddScoped<IAssignNurseToPNS, AssignNurseToPNS>();
 
 builder.Services.AddTransient<ISMSIr, SMSIr>();
+builder.Services.Configure<Nursing_Service.Infrastructure.Email.EmailConfig>(builder.Configuration.GetSection("EmailConfig"));
+builder.Services.AddTransient<Nursing_Service.Infrastructure.Email.IEmailService, Nursing_Service.Infrastructure.Email.EmailService>();
 
 
 

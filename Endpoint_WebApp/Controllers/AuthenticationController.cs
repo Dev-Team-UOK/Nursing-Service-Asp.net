@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using System.Threading.Tasks;
 using Endpoint_WebApp.Models.ViewModels.Authentication;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -10,6 +11,8 @@ using Nursing_Service.Application.Services.SuperVisor.Command.Create;
 using Nursing_Service.Application.Services.Users.Queries.SignIn;
 using Nursing_Service.Common.Dto.Base;
 using Nursing_Service.Domain.Entities.User;
+using Nursing_Service.Infrastructure.SMS.Ir;
+using Nursing_Service.Infrastructure.Email;
 
 namespace Endpoint_WebApp.Controllers
 {
@@ -19,16 +22,22 @@ namespace Endpoint_WebApp.Controllers
         private readonly ISignInUserService _signInUserService;
         private readonly ICreateNurseService _createNurseService;
         private readonly ICreateSuperVisor _createSuperVisor;
+        private readonly ISMSIr _smsir;
+        private readonly IEmailService _emailService;
 
         public AuthenticationController(ISignUpUserService signUp,
             ISignInUserService signIn,
             ICreateNurseService createNurseService,
-            ICreateSuperVisor createSuperVisor)
+            ICreateSuperVisor createSuperVisor,
+            ISMSIr smsir,
+            IEmailService emailService)
         {
             _signUpUserService = signUp;
             _signInUserService = signIn;
             _createNurseService = createNurseService;
             _createSuperVisor = createSuperVisor;
+            _smsir = smsir;
+            _emailService = emailService;
         }
 
         [Route("/Authentication/")]
@@ -248,17 +257,22 @@ namespace Endpoint_WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult SendSMS(string phone)
+        public async Task<IActionResult> SendSMS(string phone)
         {
-            // کد ارسال پیامک اینجا قرار می‌گیرد
+            var response = await _smsir.SendSmsAsync(phone, "test sms. service work");
+
             return Json(new { isSuccess = true, message = $"پیامک تست به {phone} با موفقیت ارسال شد." });
         }
 
         [HttpPost]
-        public IActionResult SendEmail(string email)
+        public async Task<IActionResult> SendEmail(string email)
         {
-            // کد ارسال ایمیل اینجا قرار می‌گیرد
-            return Json(new { isSuccess = true, message = $"ایمیل تست به {email} با موفقیت ارسال شد." });
+            var result = await _emailService.SendEmailAsync(email, "تست ایمیل - پرستار سلامت", "این یک ایمیل تستی از سامانه پرستار سلامت می‌باشد.");
+            if (result.IsSuccessful)
+            {
+                return Json(new { isSuccess = true, message = $"ایمیل تست به {email} با موفقیت ارسال شد." });
+            }
+            return Json(new { isSuccess = false, message = result.Message });
         }
 
         [Route("/SignOut")]
